@@ -308,6 +308,111 @@ body {
     transform: translateY(-2px);
 }
 
+/* Book Feature Section */
+.book-feature {
+    background: #fff;
+    padding: 80px 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.book-feature .book-cover {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+}
+
+.book-info {
+    flex: 1 1 400px;
+    max-width: 500px;
+}
+
+.book-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #5C4033;
+}
+
+/* About Me Section */
+.about-me-section {
+    background: #FFF9E5;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.about-me-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #5C4033;
+}
+
+.about-me-section p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* Stay Connected */
+.stay-connected {
+    background: #fff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.stay-connected h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #5C4033;
+}
+
+.stay-connected p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.email-signup {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.email-signup input[type="email"] {
+    padding: 12px 20px;
+    width: 280px;
+    max-width: 90%;
+    border: 2px solid #5C4033;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+.email-signup button {
+    background-color: #0077FF;
+    color: white;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.email-signup button:hover {
+    background-color: #005FCC;
+    transform: translateY(-2px);
+}
+
 /* Footer */
 footer, .soft-footer {
     background: #FFF9E5;
