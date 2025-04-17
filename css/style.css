@@ -1,0 +1,24 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* General Body Styling */
+body {
+  background: #fff;
+  color: #0D1B2A;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.top-header { /* to be added later */ }
+
+/* Footer Styles */
+footer { /* to be added later */ }
+
+/* Page-Specific Sections */
+main { padding-top: 100px; }
