@@ -135,27 +135,31 @@ main {
 .hero-nav ul li a {
     position: relative;
     text-decoration: none;
-    color: #5C4033;
+    color: #5C4033; /* normal brown */
     font-weight: bold;
     font-size: 18px;
     transition: color 0.3s;
 }
 
-/* Subtle underline on hover */
+/* Underline Animation */
 .hero-nav ul li a::after {
     content: '';
     position: absolute;
     width: 0%;
     height: 2px;
     display: block;
-    background: #0D1B2A;
+    background: #ffffff; /* underline color now matches hover color (white) */
     transition: width 0.3s;
     bottom: -5px;
     left: 0;
 }
 
+.hero-nav ul li a:hover {
+    color: #ffffff; /* turn text white on hover */
+}
+
 .hero-nav ul li a:hover::after {
-    width: 100%;
+    width: 100%; /* expand underline */
 }
 
 /* Dropdown Styles */
