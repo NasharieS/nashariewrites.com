@@ -95,8 +95,8 @@ main {
 .hero-main-title,
 .hero-sub-title {
     font-family: 'Playfair Display', serif;
-    color: #ffffff;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    color: #5C4033; 
+    text-shadow: none;
     letter-spacing: 1px;
 }
 
@@ -113,9 +113,9 @@ main {
 }
 
 .subtitle {
-    font-family: 'Poppins', sans-serif;
+     font-family: 'Playfair Display', serif;
+    color: #5C4033; 
     font-size: 24px;
-    color: #ffffff;
     margin-top: 10px;
     margin-bottom: 30px;
 }
@@ -192,6 +192,16 @@ main {
 
 .dropdown-menu li a:hover {
     color: #0077FF;
+}
+
+/* Arrow Rotation */
+.dropdown-toggle .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-toggle .arrow {
+    transform: rotate(180deg);
 }
 
 /* Hero Logo */
