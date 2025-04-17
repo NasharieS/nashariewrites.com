@@ -113,13 +113,13 @@ body {
 }
 
 .hero-nav ul li a:hover {
-    color: #fff; /* White on hover */
-    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.6); /* subtle white glow */
+    color: #0077FF;
+    text-shadow: 0 0 6px rgba(0, 119, 255, 0.5);
 }
 
 .dropdown-menu li a:hover {
-    color: #fff; /* White on hover for dropdown too */
-    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.6);
+    color: #0077FF; /* match dropdown hover */
+    text-shadow: none;
 }
 
 /* Dropdown Menu */
