@@ -20,15 +20,12 @@ body {
 .top-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background: #FFF9E5; /* pastel yellow */
-    padding: 15px 30px;
-    position: fixed;
-    top: 0;
-    left: 0;
+    justify-content: center; /* center the nav now */
+    background: #FFF9E5;
+    padding: 20px 0;
     width: 100%;
-    z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* softer shadow now */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: relative; /* ← not fixed anymore */
 }
 
 /* Logo */
