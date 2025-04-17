@@ -164,11 +164,6 @@ body {
     transform: translateY(0);
 }
 
-/* Show it ONLY when hovering */
-.dropdown:hover .dropdown-menu {
-    display: flex; /* only appears on hover */
-}
-
 .dropdown-menu li {
     padding: 10px 20px;
 }
@@ -236,11 +231,6 @@ body {
     align-items: center;
     padding: 80px 20px;
     gap: 40px;
-    background: #fff;
-}
-
-.about-book-section,
-.more-preview {
     background: #fff;
 }
 
