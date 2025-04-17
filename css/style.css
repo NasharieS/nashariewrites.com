@@ -36,42 +36,6 @@ body {
     overflow: visible; 
 }
 
-.hero-inkstroke {
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  background: url('../images/inkstroke.png') no-repeat center center;
-  background-size: contain;
-  opacity: 0.1;
-  animation: scribble 12s infinite alternate ease-in-out;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.stroke1 {
-  top: 20%;
-  left: 15%;
-  animation-delay: 0s;
-}
-
-.stroke2 {
-  top: 40%;
-  right: 10%;
-  animation-delay: 5s;
-}
-
-.stroke3 {
-  bottom: 20%;
-  left: 30%;
-  animation-delay: 10s;
-}
-
-@keyframes scribble {
-  0% { transform: scale(0) rotate(0deg); opacity: 0; }
-  50% { transform: scale(1) rotate(10deg); opacity: 0.2; }
-  100% { transform: scale(0) rotate(-10deg); opacity: 0; }
-}
-
 .hero-logo-container {
   position: absolute;
   top: 20px;
@@ -217,30 +181,6 @@ body {
 .dropdown-menu li a:hover {
   color: #ffffff;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
-}
-
-.stroke1 {
-  top: 20%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.stroke2 {
-  top: 50%;
-  right: 5%;
-  animation-delay: 4s;
-}
-
-.stroke3 {
-  bottom: 15%;
-  left: 30%;
-  animation-delay: 8s;
-}
-
-@keyframes scribble {
-  0% { transform: scale(0) rotate(0deg); opacity: 0; }
-  50% { transform: scale(1) rotate(10deg); opacity: 0.2; }
-  100% { transform: scale(0) rotate(-10deg); opacity: 0; }
 }
 
 /* About Book Section */
