@@ -20,5 +20,12 @@ body {
 /* Footer Styles */
 footer { /* to be added later */ }
 
+.color-block {
+    width: 100%;
+    height: 80px; /* or however tall you want the block */
+    background-color: #FFE4B5; /* light tan color, you can change it */
+    margin: 50px 0; /* space above and below */
+}
+
 /* Page-Specific Sections */
 main { padding-top: 100px; }
