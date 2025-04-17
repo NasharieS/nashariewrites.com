@@ -8,7 +8,7 @@
 
 /* Body */
 body {
-    background: #fff;
+    background: #FFF9E5;
     color: #0D1B2A;
     line-height: 1.6;
     min-height: 100vh;
@@ -19,7 +19,7 @@ body {
 /* Hero Section */
 .hero-section {
     background: #FFF9E5;
-    height: 100vh;
+    min-height: 100vh; /* instead of just height */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -192,6 +192,11 @@ body {
     align-items: center;
     padding: 80px 20px;
     gap: 40px;
+    background: #fff;
+}
+
+.about-book-section,
+.more-preview {
     background: #fff;
 }
 
