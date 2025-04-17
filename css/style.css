@@ -16,6 +16,14 @@ body {
   flex-direction: column;
 }
 
+.yellow-background {
+    background: #FFF9E5;
+}
+
+.white-background {
+    background: #fff;
+}
+
 .hero-section {
     background: #FFF9E5;
     min-height: 100vh;
@@ -266,12 +274,12 @@ body {
   text-align: center;
 }
 
-.about-me-section .headshot {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
+.headshot {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
 }
 
 .about-me-section h2 {
