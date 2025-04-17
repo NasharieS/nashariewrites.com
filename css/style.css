@@ -96,6 +96,11 @@ body {
     transition: color 0.3s;
 }
 
+.hero-nav ul li a .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
 .hero-nav ul li a::after {
     content: '';
     position: absolute;
@@ -145,6 +150,10 @@ body {
     border-radius: 8px;
     z-index: 100;
     list-style: none;
+}
+
+.dropdown:hover .arrow {
+    transform: rotate(180deg);
 }
 
 /* On hover */
