@@ -185,33 +185,62 @@ body {
 
 /* About Book Section */
 .about-book-section {
+    padding: 80px 20px;
+    background: #fff;
+}
+
+.book-feature {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 80px 20px;
     gap: 40px;
-    background: #fff;
+    text-align: left;
 }
 
-.book-feature .book-cover {
+.book-cover {
     width: 100%;
-    max-width: 250px;
-    height: auto;
+    max-width: 280px;
     border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.book-info {
+    flex: 1 1 400px;
+    max-width: 600px;
 }
 
 .book-info h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 40px;
-  color: #5C4033;
-  margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #5C4033;
 }
 
 .book-info p {
-  font-size: 18px;
-  line-height: 1.8;
-  color: #333;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.button {
+    display: inline-block;
+    background-color: #0077FF;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background-color: #005FCC;
+    transform: translateY(-2px);
 }
 
 /* About Me Section */
