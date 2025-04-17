@@ -194,6 +194,13 @@ body {
     background: #fff;
 }
 
+.book-feature .book-cover {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 8px;
+}
+
 .book-info h2 {
   font-family: 'Playfair Display', serif;
   font-size: 40px;
