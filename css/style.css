@@ -85,19 +85,24 @@ main {
     text-align: center;
 }
 
-.hero-main-title {
+.hero-main-title,
+.hero-sub-title {
     font-family: 'Playfair Display', serif;
-    font-size: 48px;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4); /* Soft dark shadow */
+    letter-spacing: 1px;
+}
+
+/* Boost font size too */
+.hero-main-title {
+    font-size: 64px;
     font-weight: 700;
-    color: #ffffff; /* white text */
     margin-bottom: 0;
 }
 
 .hero-sub-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 64px;
+    font-size: 80px;
     font-weight: 900;
-    color: #ffffff; /* white text */
     margin-top: 10px;
 }
 
