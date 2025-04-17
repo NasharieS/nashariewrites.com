@@ -133,6 +133,7 @@ main {
 }
 
 .hero-nav ul li a {
+    position: relative;
     text-decoration: none;
     color: #5C4033;
     font-weight: bold;
@@ -140,8 +141,57 @@ main {
     transition: color 0.3s;
 }
 
-.hero-nav ul li a:hover {
-    color: #0D1B2A;
+/* Subtle underline on hover */
+.hero-nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    display: block;
+    background: #0D1B2A;
+    transition: width 0.3s;
+    bottom: -5px;
+    left: 0;
+}
+
+.hero-nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #FFF9E5;
+    padding: 10px 0;
+    display: none;
+    flex-direction: column;
+    min-width: 200px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 100;
+}
+
+.dropdown-menu li {
+    padding: 10px 20px;
+}
+
+.dropdown-menu li a {
+    color: #5C4033;
+    font-size: 16px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: flex;
+}
+
+.dropdown-menu li a:hover {
+    color: #0077FF;
 }
 
 /* Hero Logo */
