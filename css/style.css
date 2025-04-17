@@ -21,14 +21,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #5C4033;
+    background: #FFF9E5; /* pastel yellow */
     padding: 15px 30px;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* softer shadow now */
 }
 
 /* Logo */
@@ -191,14 +191,15 @@ main {
     transform: translateY(-2px); /* Little "lift" on hover */
 }
 
-/* Footer Words (Not Sticky Footer) */
-footer {
-    background: #5C4033;
-    color: #D3D3D3;
+/* Footer */
+footer, .soft-footer {
+    background: #FFF9E5; /* pastel yellow */
+    color: #5C4033; /* deep brown text */
     text-align: center;
     padding: 20px 0;
     font-size: 14px;
     margin-top: 100px;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05); /* tiny subtle shadow on top */
 }
 
 /* Page-Specific Sections */
