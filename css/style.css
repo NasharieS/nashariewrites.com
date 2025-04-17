@@ -216,9 +216,8 @@ body {
 
 /* About Me Section */
 .about-me-section {
-  background: #FFF9E5;
-  padding: 80px 20px;
-  text-align: center;
+    padding: 80px 20px;
+    text-align: center;
 }
 
 .headshot {
@@ -245,10 +244,14 @@ body {
 }
 
 /* Logo Meaning Section */
-.logo-meaning-section {
-  background: #fff;
-  padding: 80px 20px;
-  text-align: center;
+.logo-meaning {
+    padding: 80px 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
 }
 
 .logo-meaning-section h2 {
@@ -268,9 +271,8 @@ body {
 
 /* Stay Connected */
 .stay-connected {
-  background: #FFF9E5;
-  padding: 80px 20px;
-  text-align: center;
+    padding: 80px 20px;
+    text-align: center;
 }
 
 .stay-connected h2 {
