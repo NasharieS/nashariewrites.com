@@ -20,12 +20,12 @@ body {
 .top-header {
     display: flex;
     align-items: center;
-    justify-content: center; /* center the nav now */
+    justify-content: center;
     background: #FFF9E5;
     padding: 20px 0;
     width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    position: relative; /* ← not fixed anymore */
+    position: relative;
 }
 
 /* Logo */
@@ -40,11 +40,6 @@ body {
 }
 
 /* Navigation */
-.nav-container {
-    display: flex;
-    align-items: center;
-}
-
 .nav-container ul {
     list-style: none;
     display: flex;
@@ -57,58 +52,31 @@ body {
 
 .nav-container ul li a {
     text-decoration: none;
-    color: #D3D3D3;
+    color: #5C4033;
     font-size: 18px;
     font-weight: bold;
     padding: 8px 14px;
     border-radius: 8px;
-    transition: background 0.3s, color 0.3s;
+    transition: color 0.3s;
 }
 
 .nav-container ul li a:hover,
 .nav-container ul li.active-tab a {
-    background: rgba(0, 119, 255, 0.7);
-    color: #fff;
+    background: none;
+    color: #0D1B2A; /* darker navy on hover */
 }
 
-/* Main Container */
+/* Main */
 main {
-    margin-top: 100px; /* push down under fixed header */
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Section Titles */
-.section-title {
-    font-size: 40px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 20px;
-    text-align: center;
-    position: relative;
-}
-
-.section-title::after {
-    content: "";
-    display: block;
-    margin: 10px auto 0;
-    width: 160px;
-    border-bottom: 4px solid #0077FF;
-}
-
-/* Section Styles */
-.section {
-    width: 100%;
-    padding: 80px 20px;
-    text-align: center;
-}
-
-/* Hero Section */
 /* Hero Section */
 .hero-section {
-    background: #FFF9E5; /* pastel yellow */
+    background: #FFF9E5;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -131,9 +99,16 @@ main {
     margin-top: 10px;
 }
 
-/* Nav inside Hero */
+.subtitle {
+    font-size: 24px;
+    color: #555;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+/* Hero Nav */
 .hero-nav {
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .hero-nav ul {
@@ -151,93 +126,62 @@ main {
     transition: color 0.3s;
 }
 
-/* 👇 Hover effect: ONLY text color changes */
 .hero-nav ul li a:hover {
-    color: #0D1B2A;
+    color: #0D1B2A; /* darker navy hover */
 }
 
-/* Remove old nav hover background */
-.nav-container ul li a:hover,
-.nav-container ul li.active-tab a {
-    background: none;
-    color: #0D1B2A;
-}
-
-/* Make your text pop */
-.hero-content h1 {
-  font-size: 72px;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  color: #0D1B2A;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.15);
-}
-
-.subtitle {
-  font-size: 26px;
-  color: #555;
-  margin-top: 10px;
-  margin-bottom: 30px;
-}
-
-.subtitle {
-  font-size: 24px;
-  color: #555;
-  margin-top: 10px;
-  margin-bottom: 30px;
-}
-
-.hero-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  padding: 0;
-  margin-top: 20px;
-}
-
-.hero-nav ul li a {
-  text-decoration: none;
-  color: #5C4033;
-  font-weight: bold;
-  font-size: 18px;
-  transition: color 0.3s;
-}
-
-.hero-nav ul li a:hover {
-  color: #0077FF;
-}
-
+/* About Book Section */
 .about-book-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 80px 20px;
-  gap: 40px;
-  background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+    gap: 40px;
+    background: #fff;
 }
 
 .about-me, .book-highlight {
-  flex: 1 1 400px;
-  text-align: center;
+    flex: 1 1 400px;
+    text-align: center;
 }
 
 .about-me p, .book-highlight p {
-  max-width: 500px;
-  margin: 0 auto;
-  font-size: 18px;
-  line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.8;
 }
 
 .book-highlight img {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
-/* Pastel Yellow Block Sections */
+/* Yellow Block Divider */
 .yellow-block {
-    background-color: #FFF9E5; /* pastel yellow */
+    background-color: #FFF9E5;
+    height: 50px;
+}
+
+/* More Preview Section */
+.section-title {
+    font-size: 40px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    margin: 10px auto 0;
+    width: 160px;
+    border-bottom: 4px solid #0077FF;
 }
 
 /* General Content */
@@ -251,7 +195,7 @@ main {
 /* Button Styling */
 .button {
     display: inline-block;
-    background-color: #0077FF; /* Bold Blue */
+    background-color: #0077FF;
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
@@ -265,20 +209,17 @@ main {
 }
 
 .button:hover {
-    background-color: #005FCC; /* Darker blue on hover */
-    transform: translateY(-2px); /* Little "lift" on hover */
+    background-color: #005FCC;
+    transform: translateY(-2px);
 }
 
 /* Footer */
 footer, .soft-footer {
-    background: #FFF9E5; /* pastel yellow */
-    color: #5C4033; /* deep brown text */
+    background: #FFF9E5;
+    color: #5C4033;
     text-align: center;
     padding: 20px 0;
     font-size: 14px;
     margin-top: 100px;
-    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05); /* tiny subtle shadow on top */
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
 }
-
-/* Page-Specific Sections */
-main { padding-top: 100px; }
