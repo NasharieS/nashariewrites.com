@@ -30,12 +30,12 @@ body {
 
 .hero-inkstroke {
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   background: url('../images/inkstroke.png') no-repeat center center;
   background-size: contain;
-  opacity: 0.08;
-  animation: floatInk 20s infinite alternate ease-in-out;
+  opacity: 0.1;
+  animation: scribble 12s infinite alternate ease-in-out;
   pointer-events: none;
   z-index: 1;
 }
@@ -58,19 +58,10 @@ body {
   animation-delay: 10s;
 }
 
-@keyframes floatInk {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.08;
-  }
-  50% {
-    transform: translateY(-20px) rotate(5deg);
-    opacity: 0.1;
-  }
-  100% {
-    transform: translateY(0px) rotate(-5deg);
-    opacity: 0.08;
-  }
+@keyframes scribble {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1) rotate(10deg); opacity: 0.2; }
+  100% { transform: scale(0) rotate(-10deg); opacity: 0; }
 }
 
 .hero-logo-container {
@@ -244,23 +235,15 @@ body {
   100% { transform: scale(0) rotate(-10deg); opacity: 0; }
 }
 
-/* Book Feature Section */
-.book-feature {
-  background: #fff;
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.book-feature .book-cover {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.book-info {
-  max-width: 700px;
-  margin: 0 auto;
+/* About Book Section */
+.about-book-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+    gap: 40px;
+    background: #fff;
 }
 
 .book-info h2 {
