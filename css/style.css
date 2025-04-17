@@ -32,11 +32,11 @@ body {
   position: absolute;
   width: 150px;
   height: 150px;
-  background: url('images/inkstroke.png') no-repeat center center;
+  background: url('../images/inkstroke.png') no-repeat center center;
   background-size: contain;
   opacity: 0.08;
   animation: floatInk 20s infinite alternate ease-in-out;
-  pointer-events: none; 
+  pointer-events: none;
   z-index: 1;
 }
 
