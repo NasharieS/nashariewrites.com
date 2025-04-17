@@ -220,19 +220,6 @@ body {
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* Ink Stroke Animation */
-.hero-inkstroke {
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  background: url('images/inkstroke.png') no-repeat center center;
-  background-size: contain;
-  opacity: 0.1;
-  animation: scribble 12s infinite alternate ease-in-out;
-  pointer-events: none;
-  z-index: 1;
-}
-
 .stroke1 {
   top: 20%;
   left: 10%;
