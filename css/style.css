@@ -86,24 +86,37 @@ main {
 }
 
 .hero-main-title {
+    font-family: 'Playfair Display', serif;
     font-size: 48px;
     font-weight: 700;
-    color: #0D1B2A;
+    color: #ffffff; /* white text */
     margin-bottom: 0;
 }
 
 .hero-sub-title {
+    font-family: 'Playfair Display', serif;
     font-size: 64px;
     font-weight: 900;
-    color: #0D1B2A;
+    color: #ffffff; /* white text */
     margin-top: 10px;
 }
 
+/* And also tweak this to match: */
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.15); /* still keep a soft glow */
+}
+
 .subtitle {
-    font-size: 24px;
-    color: #555;
-    margin-top: 10px;
-    margin-bottom: 30px;
+  font-family: 'Poppins', sans-serif; /* keep subtitle friendly and clean */
+  font-size: 24px;
+  color: #ffffff; /* white to match */
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 /* Hero Nav */
