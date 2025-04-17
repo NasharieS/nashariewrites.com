@@ -17,6 +17,16 @@ body {
 /* Header Styles */
 .top-header { /* to be added later */ }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+}
+
 /* Footer Styles */
 footer { /* to be added later */ }
 
