@@ -16,64 +16,6 @@ body {
     flex-direction: column;
 }
 
-/* Header */
-.top-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #FFF9E5;
-    padding: 20px 0;
-    width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    position: relative;
-}
-
-/* Logo */
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    height: 50px;
-    width: auto;
-}
-
-/* Navigation */
-.nav-container ul {
-    list-style: none;
-    display: flex;
-    align-items: center;
-}
-
-.nav-container ul li {
-    margin-left: 20px;
-}
-
-.nav-container ul li a {
-    text-decoration: none;
-    color: #5C4033;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 8px 14px;
-    border-radius: 8px;
-    transition: color 0.3s;
-}
-
-.nav-container ul li a:hover,
-.nav-container ul li.active-tab a {
-    background: none;
-    color: #0D1B2A; /* Darker navy hover */
-}
-
-/* Main */
-main {
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 /* Hero Section */
 .hero-section {
     background: #FFF9E5;
@@ -83,21 +25,34 @@ main {
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative;
+}
+
+.hero-logo-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+}
+
+.hero-logo {
+    height: 50px;
+    width: auto;
 }
 
 .hero-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px; /* spacing between title, subtitle, nav */
+    gap: 10px;
 }
 
 .hero-main-title,
 .hero-sub-title {
     font-family: 'Playfair Display', serif;
-    color: #5C4033; 
-    text-shadow: none;
+    color: #5C4033; /* brown instead of white */
     letter-spacing: 1px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.1);
 }
 
 .hero-main-title {
@@ -113,19 +68,19 @@ main {
 }
 
 .subtitle {
-     font-family: 'Playfair Display', serif;
-    color: #5C4033; 
+    font-family: 'Poppins', sans-serif;
     font-size: 24px;
+    color: #555;
     margin-top: 10px;
     margin-bottom: 30px;
 }
 
-/* Hero Nav (inside hero section) */
+/* Navigation inside Hero */
 .hero-nav {
     margin-top: 20px;
 }
 
-.hero-nav > ul {
+.hero-nav ul {
     list-style: none;
     display: flex;
     gap: 30px;
@@ -135,39 +90,41 @@ main {
 .hero-nav ul li a {
     position: relative;
     text-decoration: none;
-    color: #5C4033; /* normal brown */
+    color: #5C4033;
     font-weight: bold;
     font-size: 18px;
     transition: color 0.3s;
 }
 
-/* Underline Animation */
 .hero-nav ul li a::after {
     content: '';
     position: absolute;
     width: 0%;
     height: 2px;
     display: block;
-    background: #ffffff; /* underline color now matches hover color (white) */
+    background: #ffffff;
     transition: width 0.3s;
     bottom: -5px;
     left: 0;
 }
 
-.hero-nav ul li a:hover {
-    color: #ffffff; /* turn text white on hover */
-}
-
 .hero-nav ul li a:hover::after {
-    width: 100%; /* expand underline */
+    width: 100%;
 }
 
-/* Dropdown Styles */
+.hero-nav ul li a:hover {
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Dropdown Menu */
 .dropdown {
     position: relative;
 }
 
 .dropdown-menu {
+    list-style: none;
+    padding-left: 0;
     position: absolute;
     top: 100%;
     left: 0;
@@ -188,6 +145,7 @@ main {
 .dropdown-menu li a {
     color: #5C4033;
     font-size: 16px;
+    transition: color 0.3s;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -195,30 +153,8 @@ main {
 }
 
 .dropdown-menu li a:hover {
-    color: #0077FF;
-}
-
-/* Arrow Rotation */
-.dropdown-toggle .arrow {
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-.dropdown:hover .dropdown-toggle .arrow {
-    transform: rotate(180deg);
-}
-
-/* Hero Logo */
-.hero-logo-container {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 2;
-}
-
-.hero-logo {
-    height: 50px;
-    width: auto;
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 /* About Book Section */
@@ -273,14 +209,6 @@ main {
     margin: 10px auto 0;
     width: 160px;
     border-bottom: 4px solid #0077FF;
-}
-
-/* General Content */
-.section-content {
-    max-width: 900px;
-    margin: 0 auto;
-    font-size: 18px;
-    line-height: 1.8;
 }
 
 /* Button Styling */
