@@ -125,7 +125,7 @@ main {
     margin-top: 20px;
 }
 
-.hero-nav ul {
+.hero-nav > ul {
     list-style: none;
     display: flex;
     gap: 30px;
