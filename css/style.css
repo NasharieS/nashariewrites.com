@@ -121,6 +121,27 @@ main {
     line-height: 1.8;
 }
 
+/* Button Styling */
+.button {
+    display: inline-block;
+    background-color: #0077FF; /* Bold Blue */
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background-color: #005FCC; /* Darker blue on hover */
+    transform: translateY(-2px); /* Little "lift" on hover */
+}
+
 /* Footer Words (Not Sticky Footer) */
 footer {
     background: #5C4033;
