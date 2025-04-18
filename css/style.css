@@ -270,23 +270,24 @@ body {
 
 /* Book Cover */
 .book-cover {
-    width: 100%;
-    height: 100%;
-    max-width: 380px; /* or 360px if you want wider too */
-    height: 550px; /* ⬅️ MAKE TALLER */
-    border-radius: 8px;
-    flex-shrink: 0;
-    overflow: hidden;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute; /* 🛠 KEY */
+  top: 0;
+  left: 0;
+  z-index: 3; /* 🛠 Always over the pages */
+  border-radius: 8px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .book-cover img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* ✅ Will fill the container fully */
+    object-fit: cover;
     border-radius: 8px;
 }
 
