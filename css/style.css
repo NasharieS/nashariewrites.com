@@ -44,7 +44,7 @@ body {
 }
 
 .hero-logo {
-  height: 50px;
+  height: 90px; /* was 50px before */
   width: auto;
 }
 
