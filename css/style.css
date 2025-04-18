@@ -259,9 +259,8 @@ body {
 }
 
 .book-container {
-  flex: 1 1 550px; /* 🛠 even bigger */
-  max-width: 550px; /* 🛠 full cover showing */
-  margin-left: 20px; /* 🛠 small left push only */
+  flex: 1 1 600px; /* 🛠 wider flex basis */
+  max-width: 600px; /* 🛠 allow larger width */
   perspective: 1200px;
   display: flex;
   justify-content: center;
@@ -269,8 +268,8 @@ body {
 }
 
 .book {
-  width: 400px;
-  height: 600px;
+  width: 500px; /* 🛠 wider book */
+  height: 750px; /* 🛠 proportionally taller */
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s ease-in-out;
@@ -294,15 +293,14 @@ body {
 .book-cover img {
   width: 100%;
   height: 100%;
-  max-height: 100%;
-  object-fit: cover; /* <-- IMPORTANT: NOT 'contain' */
+  object-fit: cover; /* Full cover */
   border-radius: 8px;
 }
 
 /* Pages inside book */
 .book-pages {
-  width: 95%;
-  height: 95%;
+  width: 90%;
+  height: 90%;
   background: #faf8f0;
   position: absolute;
   top: 2.5%;
