@@ -187,13 +187,19 @@ body {
 .about-book-section {
     padding: 80px 20px;
     background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    text-align: left;
 }
 
-.book-feature .book-cover {
-  width: 100%;
-  max-width: 280px;
-  border-radius: 8px;
-  flex-shrink: 0;
+.book-cover {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 8px;
+    flex-shrink: 0;
 }
 
 .book-info {
@@ -265,13 +271,34 @@ body {
 
 /* Logo Meaning Section */
 .logo-meaning {
+    background: #FFF9E5;
     padding: 80px 20px;
     text-align: center;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     gap: 30px;
+}
+
+.logo-meaning-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.logo-meaning-icon {
+    width: 60px;
+    height: auto;
+}
+
+.logo-quote {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    color: #5C4033;
+    max-width: 600px;
+    text-align: center;
+    padding: 0 20px;
 }
 
 .logo-meaning-section h2 {
