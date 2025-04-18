@@ -143,7 +143,6 @@ body {
   visibility: hidden;
   transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  
   position: absolute;
   top: 100%;
   left: 0;
@@ -185,9 +184,14 @@ body {
 
 /* About Book Section */
 .about-book-section {
-  padding: 80px 20px;
-  background: #fff;
-  text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 40px;
+    background: #fff;
+    min-height: 100vh;
 }
 
 .book-content {
@@ -200,15 +204,17 @@ body {
 }
 
 .book-cover {
-  width: 100%;
-  max-width: 280px;
-  border-radius: 8px;
-  flex-shrink: 0;
+    width: 100%;
+    max-width: 220px; /* 👈 Smaller to fit better */
+    height: auto;
+    border-radius: 8px;
+    flex-shrink: 0;
 }
 
 .book-info {
-  flex: 1 1 400px;
-  max-width: 600px;
+    flex: 1 1 400px;
+    max-width: 500px;
+    text-align: left;
 }
 
 .book-info h2 {
