@@ -1,108 +1,204 @@
-.transfer-hero {
-  background: url('images/hallway1.png') no-repeat center center/cover;
-  height: 160vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  animation: heroZoomOut 3s ease-out forwards;
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-@keyframes heroZoomOut {
-  0% {
-    height: 160vh;
-    width: 110vw;
-  }
-  100% {
-    height: 90vh;
+/* Body */
+body {
+    background: linear-gradient(to bottom, #D3D3D3, #5C4033);
+    color: #0D1B2A;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFF9E5;
+    padding: 20px 40px;
+    position: fixed;
     width: 100%;
-  }
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.transfer-hero::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('images/crack-overlay.png') repeat;
-  opacity: 0.06;
-  z-index: 1;
+.header-logo {
+    height: 110px;
+    width: auto;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
+.nav-container {
+    display: flex;
 }
 
-.transfer-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 64px;
-  color: #5C4033;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
-  margin-bottom: 20px;
-  animation: fadeInText 1.5s ease-in forwards;
+.nav-container ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
 }
 
-.transfer-one-liner {
-  font-family: 'Poppins', sans-serif;
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 30px;
-  animation: fadeInText 2s ease-in forwards;
+.nav-container ul li {
+    position: relative;
 }
 
-.transfer-one-liner span {
-  display: block;
+.nav-container ul li a {
+    text-decoration: none;
+    color: #5C4033;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 20px;
+    transition: color 0.3s;
 }
 
+.nav-container ul li a:hover {
+    color: #0077FF;
+}
+
+.nav-container ul li ul {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background: #FFF9E5;
+    padding: 10px 0;
+    flex-direction: column;
+    border-radius: 8px;
+    min-width: 200px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+}
+
+.nav-container ul li:hover > ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-container ul li ul li {
+    padding: 10px 20px;
+}
+
+.nav-container ul li ul li a {
+    color: #5C4033;
+    font-size: 16px;
+}
+
+.nav-container ul li ul li a:hover {
+    color: #0077FF;
+}
+
+/* Hero Section */
+.hero {
+    background: url('../images/hallway1.png') no-repeat center center/cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFF;
+    padding: 20px;
+    position: relative;
+    margin-top: 150px; /* Pushes content below fixed header */
+    animation: heroZoomOut 3s ease-out forwards, smoothImageTransition 12s infinite linear 3s;
+}
+
+/* Hero Zoom Out */
+@keyframes heroZoomOut {
+    0% {
+        height: 130vh;
+        width: 110vw;
+        opacity: 1;
+    }
+    100% {
+        height: 90vh;
+        width: 100%;
+    }
+}
+
+/* Background Morph Images */
+@keyframes smoothImageTransition {
+    0%, 100% { background-image: url('../images/hallway1.png'); }
+    25% { background-image: url('../images/hallway2.png'); }
+    50% { background-image: url('../images/hallway3.png'); }
+    75% { background-image: url('../images/hallway4.png'); }
+}
+
+/* Crack Overlay */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/crack-overlay.png') repeat center center;
+    opacity: 0.08;
+    mix-blend-mode: screen;
+    z-index: 2;
+    animation: crackGlitch 8s linear infinite;
+}
+
+@keyframes crackGlitch {
+    0% { opacity: 0.06; transform: scale(1); }
+    50% { opacity: 0.1; transform: scale(1.01) rotate(0.2deg); }
+    100% { opacity: 0.06; transform: scale(1); }
+}
+
+/* Title */
+.hero .title {
+    font-size: 60px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-shadow: 5px 5px 15px rgba(0, 0, 0, 1), -5px -5px 15px rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    opacity: 0;
+    animation: fadeInText 1.5s ease-in 1s forwards;
+    position: relative;
+    z-index: 5;
+}
+
+/* One-Liner */
+.one-liner {
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    max-width: 900px;
+    line-height: 1.5;
+    animation: fadeInText 2s ease-in 1.8s forwards;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 5;
+}
+
+.one-liner span {
+    display: block;
+}
+
+/* Fade In Text */
 @keyframes fadeInText {
-  0% { opacity: 0; transform: translateY(-20px); }
-  100% { opacity: 1; transform: translateY(0); }
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Nav */
-.transfer-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  padding: 0;
-  margin-top: 30px;
-}
-
-.transfer-nav ul li {
-  background: #0077FF;
-  padding: 15px 30px;
-  border-radius: 8px;
-  position: relative;
-  cursor: pointer;
-  font-weight: bold;
-  color: #fff;
-}
-
-.transfer-nav ul li ul {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #5C4033;
-  display: none;
-  flex-direction: column;
-  padding: 10px;
-  border-radius: 8px;
-}
-
-.transfer-nav ul li:hover ul {
-  display: flex;
-}
-
-.transfer-nav ul li ul li {
-  padding: 10px 20px;
-}
-
-.transfer-nav ul li ul li a {
-  color: #FFF9E5;
-  text-decoration: none;
+/* Footer */
+footer {
+    background: #5C4033;
+    color: #D3D3D3;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    font-size: 14px;
+    width: 100%;
+    z-index: 100;
+    margin-top: 50px;
 }
