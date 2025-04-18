@@ -205,7 +205,7 @@ body {
 
 .book-cover {
     width: 100%;
-    max-width: 320px; /* or 340px if you want wider too */
+    max-width: 340px; /* or 340px if you want wider too */
     height: 500px; /* ⬅️ MAKE TALLER */
     border-radius: 8px;
     flex-shrink: 0;
