@@ -19,13 +19,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #FFF9E5;
+    background: rgba(255, 249, 229, 0.8); /* Transparent cream color */
     padding: 20px 40px;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Start invisible */
+    animation: fadeInHeader 2s ease-in 2s forwards; /* Fade in after 2s */
 }
 
 .header-logo {
@@ -129,6 +131,18 @@ body {
     25% { background-image: url('../images/hallway2.png'); }
     50% { background-image: url('../images/hallway3.png'); }
     75% { background-image: url('../images/hallway4.png'); }
+}
+
+/* Header Animation */
+@keyframes fadeInHeader {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Crack Overlay */
