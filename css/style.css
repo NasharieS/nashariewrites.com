@@ -223,10 +223,10 @@ body {
 
 /* Left: Synopsis Text */
 .synopsis-text {
-  flex: 1 1 600px; /* Flexible */
-  max-width: 750px; /* Wider */
+  flex: 1 1 500px; /* 🛠 Flexible but slightly less wide */
+  max-width: 600px; /* 🛠 Narrower so it condenses */
   text-align: left;
-  padding-right: 10px; /* (optional) extra breathing room */
+  padding-right: 20px; /* (optional) extra breathing room on the right */
 }
 
 .synopsis-text p {
@@ -259,8 +259,9 @@ body {
 }
 
 .book-container {
-  flex: 1 1 400px;
-  max-width: 400px;
+  flex: 1 1 450px; /* 🛠 Allow it to be wider */
+  max-width: 450px; /* 🛠 Wider than before */
+  margin-left: 30px; /* 🛠 Pushes it off the left edge */
   perspective: 1200px;
   display: flex;
   justify-content: center;
