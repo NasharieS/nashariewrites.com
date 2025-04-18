@@ -185,39 +185,43 @@ body {
 
 /* About Book Section */
 .about-book-section {
-    padding: 80px 20px;
-    background: #fff;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    text-align: left;
+  padding: 80px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.book-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  text-align: left;
 }
 
 .book-cover {
-    width: 100%;
-    max-width: 280px;
-    border-radius: 8px;
-    flex-shrink: 0;
+  width: 100%;
+  max-width: 280px;
+  border-radius: 8px;
+  flex-shrink: 0;
 }
 
 .book-info {
-    flex: 1 1 400px;
-    max-width: 600px;
+  flex: 1 1 400px;
+  max-width: 600px;
 }
 
 .book-info h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 40px;
-    margin-bottom: 15px;
-    color: #5C4033;
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  margin-bottom: 15px;
+  color: #5C4033;
 }
 
 .book-info p {
-    font-size: 18px;
-    line-height: 1.8;
-    color: #333;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
 }
 
 .button {
