@@ -35,6 +35,16 @@ body {
     width: auto;
 }
 
+.header {
+    background: rgba(255, 249, 229, 0.8); /* Start soft and semi-transparent */
+    transition: background 0.4s ease; /* Smooth transition */
+}
+
+/* When scrolled, add a class that makes it solid */
+.header.solid {
+    background: #FFF9E5; /* Full solid cream */
+}
+
 .nav-container {
     display: flex;
 }
