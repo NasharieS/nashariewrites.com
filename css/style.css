@@ -210,6 +210,9 @@ body {
   justify-content: center;
   align-items: flex-start;
   gap: 60px;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 /* Left: Synopsis Text */
@@ -248,16 +251,18 @@ body {
   transform: scale(1.05);
 }
 
-/* Right: Book Container */
 .book-container {
-  flex: 1 1 300px;
-  max-width: 350px;
+  flex: 1 1 400px;
+  max-width: 400px;
   perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .book {
   width: 100%;
-  height: 500px;
+  height: 600px; /* 🛠 Taller to fill space better */
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s ease-in-out;
@@ -266,11 +271,13 @@ body {
 /* Book Cover */
 .book-cover {
     width: 100%;
+    height: 100%;
     max-width: 380px; /* or 360px if you want wider too */
     height: 550px; /* ⬅️ MAKE TALLER */
     border-radius: 8px;
     flex-shrink: 0;
     overflow: hidden;
+    backface-visibility: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -285,47 +292,49 @@ body {
 
 /* Pages inside book */
 .book-pages {
-  width: 98%;
-  height: 96%;
+  width: 95%;
+  height: 95%;
   background: #faf8f0;
   position: absolute;
-  left: 1%;
-  top: 2%;
+  top: 2.5%;
+  left: 2.5%;
   z-index: 1;
   box-shadow: inset -3px 0px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 }
 
 /* Left and Right Pages */
 .left-page,
 .right-page {
-  position: absolute;
-  width: 95%;
+  width: 90%;
   height: 90%;
   background: linear-gradient(to right, #fdfdfd 0%, #f5f5f5 100%);
   box-shadow: inset -1px 0px 4px rgba(0, 0, 0, 0.1);
+  position: absolute;
   transition: transform 0.8s ease-in-out;
+  border-radius: 8px;
 }
 
 .left-page {
-  left: 0;
+  left: 5%;
 }
 
 .right-page {
-  right: 0;
+  right: 5%;
 }
 
 /* Animate on hover */
 .book-container:hover .book-cover {
-  transform: rotateY(-25deg);
+  transform: rotateY(-20deg);
   transition: transform 0.6s ease-in-out; /* 🛠 Faster, smoother */
 }
 
 .book-container:hover .left-page {
-  transform: rotateY(-15deg);
+  transform: rotateY(-10deg);
 }
 
 .book-container:hover .right-page {
-  transform: rotateY(165deg);
+  transform: rotateY(160deg);
 }
 
 .section-title {
