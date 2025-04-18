@@ -8,7 +8,7 @@
 
 /* Body */
 body {
-    background: linear-gradient(to bottom, #D3D3D3, #5C4033);
+    background: #FFF9E5; /* Same as Home page */
     color: #0D1B2A;
     min-height: 100vh;
     overflow-x: hidden;
@@ -216,13 +216,11 @@ body {
 
 /* Footer */
 footer {
-    background: #5C4033;
-    color: #D3D3D3;
+    background: #FFF9E5; /* Match the soft yellow */
+    color: #5C4033; /* Nice brown text */
     text-align: center;
-    padding: 15px 0;
-    position: relative;
+    padding: 20px 0;
     font-size: 14px;
     width: 100%;
-    z-index: 100;
     margin-top: 50px;
 }
