@@ -268,12 +268,13 @@ body {
 }
 
 .book {
-  width: 380px; /* ✅ Keep */
-  height: 630px; /* 🛠 Increase this */
+  width: 420px; /* 🛠 Wider */
+  height: 630px; /* 🛠 Taller */
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s ease-in-out;
 }
+
 
 .book-cover {
   width: 100%;
