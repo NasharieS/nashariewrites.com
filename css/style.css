@@ -259,8 +259,8 @@ body {
 }
 
 .book-container {
-  flex: 1 1 600px; /* 🛠 wider flex basis */
-  max-width: 600px; /* 🛠 allow larger width */
+  flex: 1 1 500px; /* 🛠 not huge */
+  max-width: 500px;
   perspective: 1200px;
   display: flex;
   justify-content: center;
@@ -268,8 +268,8 @@ body {
 }
 
 .book {
-  width: 500px; /* 🛠 wider book */
-  height: 750px; /* 🛠 proportionally taller */
+  width: 380px; /* 🛠 slightly wider */
+  height: 580px; /* 🛠 adjust proportionally */
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s ease-in-out;
@@ -293,7 +293,7 @@ body {
 .book-cover img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Full cover */
+  object-fit: contain; /* 🛠 back to contain to see full cover */
   border-radius: 8px;
 }
 
