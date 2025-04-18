@@ -216,9 +216,10 @@ body {
 
 /* Left: Synopsis Text */
 .synopsis-text {
-  flex: 1 1 650px; /* ⬅️ More flexible */
-  max-width: 700px; /* ⬅️ Wider */
+  flex: 1 1 600px; /* Flexible */
+  max-width: 750px; /* Wider */
   text-align: left;
+  padding-right: 10px; /* (optional) extra breathing room */
 }
 
 .synopsis-text p {
@@ -260,33 +261,33 @@ body {
 }
 
 .book {
-  width: 100%;
-  max-width: 380px;
-  height: 550px;
+  width: 350px; /* ⬅️ wider */
+  height: 550px; /* ⬅️ taller */
   position: relative;
-  perspective: 1200px;
   transform-style: preserve-3d;
   transition: transform 0.8s ease-in-out;
 }
 
 .book-cover {
-  position: relative; /* 🛠 NOT absolute anymore */
   width: 100%;
   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 3;
   border-radius: 8px;
   overflow: hidden;
+  backface-visibility: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  backface-visibility: hidden;
 }
 
 .book-cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* ✅ Still use contain */
+  border-radius: 8px;
 }
 
 /* Pages inside book */
