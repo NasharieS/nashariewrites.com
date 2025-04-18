@@ -21,9 +21,9 @@
     <ul>
       <li><a href="../index.html">Home</a></li>
       <li class="dropdown">
-        <a href="../pages/works.html">Works</a>
-        <ul>
-          <li><a href="../pages/works.html#the-transfer-student">The Transfer Student</a></li>
+        <a href="../pages/works.html">Works <span class="arrow">▼</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="../pages/transfer-student.html">The Transfer Student</a></li>
           <li><a href="../pages/works.html#short-stories">Short Stories</a></li>
           <li><a href="../pages/works.html#blog-posts">Blog Posts</a></li>
         </ul>
@@ -53,40 +53,23 @@
 <!-- JavaScript for Dropdown Behavior -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const dropdowns = document.querySelectorAll(".nav-container ul li");
+    const dropdowns = document.querySelectorAll(".dropdown");
 
     dropdowns.forEach((dropdown) => {
-      dropdown.addEventListener("click", function (event) {
-        event.stopPropagation(); // Prevents closing immediately
-
-        // Close other open dropdowns
-        document.querySelectorAll(".nav-container ul li ul").forEach(menu => {
-          if (menu !== this.querySelector("ul")) {
-            menu.style.display = "none";
-          }
-        });
-
-        // Toggle current dropdown
-        let submenu = this.querySelector("ul");
-        if (submenu) {
-          submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
-        }
+      dropdown.addEventListener("mouseenter", function () {
+        this.querySelector(".dropdown-menu").style.display = "flex";
+        this.querySelector(".arrow").style.transform = "rotate(180deg)";
       });
-    });
 
-    // Close all dropdowns when clicking outside
-    document.addEventListener("click", function (event) {
-      let isClickInside = [...dropdowns].some(dropdown => dropdown.contains(event.target));
-      if (!isClickInside) {
-        document.querySelectorAll(".nav-container ul li ul").forEach(menu => {
-          menu.style.display = "none";
-        });
-      }
+      dropdown.addEventListener("mouseleave", function () {
+        this.querySelector(".dropdown-menu").style.display = "none";
+        this.querySelector(".arrow").style.transform = "rotate(0deg)";
+      });
     });
   });
 </script>
 
-  <script>
+   <script>
   window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
     if (window.scrollY > 50) { 
