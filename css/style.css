@@ -205,11 +205,11 @@ body {
 
 .book-cover {
   width: 100%;
-  max-width: 350px; /* ✅ Keep width big */
-  height: 500px;    /* ✅ Increase height */
+  max-width: 350px; /* Keep width big */
+  height: 500px;    /* Increase height */
   border-radius: 8px;
   flex-shrink: 0;
-  object-fit: cover;
+  object-fit: contain; /* Change from 'cover' to 'contain' */
 }
 
 .block-title {
@@ -361,7 +361,7 @@ body {
 
 /* Stay Connected */
 .stay-connected {
-    padding: 50px 20px;
+    padding: 50px 20px 30px;
     text-align: center;
 }
 
