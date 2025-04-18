@@ -205,9 +205,10 @@ body {
 
 .book-cover {
   width: 100%;
-  max-width: 320px; /* 🛠 slightly bigger */
-  height: 480px;    /* 🛠 made it taller */
+  max-width: 350px; /* ✅ Keep width big */
+  height: 500px;    /* ✅ Increase height */
   border-radius: 8px;
+  flex-shrink: 0;
   object-fit: cover;
 }
 
@@ -284,7 +285,7 @@ body {
 
 /* Logo Meaning Section */
 .logo-meaning {
-    padding: 80px 20px;
+    padding: 50px 20px; /* ✅ Was 80px before, shrink top and bottom */
     text-align: center;
     display: flex;
     flex-wrap: wrap;
@@ -360,7 +361,7 @@ body {
 
 /* Stay Connected */
 .stay-connected {
-    padding: 80px 20px;
+    padding: 50px 20px;
     text-align: center;
 }
 
