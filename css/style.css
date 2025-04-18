@@ -186,6 +186,7 @@ body {
 .about-book-section {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 40px 20px;
@@ -315,7 +316,8 @@ body {
 
 /* Animate on hover */
 .book-container:hover .book-cover {
-  transform: rotateY(-30deg);
+  transform: rotateY(-25deg);
+  transition: transform 0.6s ease-in-out; /* 🛠 Faster, smoother */
 }
 
 .book-container:hover .left-page {
