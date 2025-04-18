@@ -188,7 +188,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px 20px;
+  padding: 40px 20px 80px; /* 🛠 top padding 40px instead of 80px */
   background: #fff;
 }
 
@@ -223,10 +223,10 @@ body {
 
 /* Left: Synopsis Text */
 .synopsis-text {
-  flex: 1 1 450px; /* 🛠 allow more flexible, smaller width */
-  max-width: 550px; /* 🛠 even narrower */
+  flex: 1 1 400px; /* 🛠 narrower */
+  max-width: 500px; /* 🛠 significantly condensed */
   text-align: left;
-  padding-right: 20px; /* 🛠 keep some breathing room */
+  padding-right: 30px; /* 🛠 little extra padding to balance */
 }
 
 .synopsis-text p {
@@ -259,9 +259,9 @@ body {
 }
 
 .book-container {
-  flex: 1 1 500px; /* 🛠 allow bigger */
-  max-width: 500px; /* 🛠 larger than before */
-  margin-left: 40px; /* 🛠 push even more right */
+  flex: 1 1 550px; /* 🛠 even bigger */
+  max-width: 550px; /* 🛠 full cover showing */
+  margin-left: 20px; /* 🛠 small left push only */
   perspective: 1200px;
   display: flex;
   justify-content: center;
