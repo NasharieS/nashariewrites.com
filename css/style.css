@@ -205,11 +205,10 @@ body {
 
 .book-cover {
   width: 100%;
-  max-width: 300px;
-  height: 450px;
-  object-fit: cover; 
+  max-width: 320px; /* 🛠 slightly bigger */
+  height: 480px;    /* 🛠 made it taller */
   border-radius: 8px;
-  flex-shrink: 0;
+  object-fit: cover;
 }
 
 .block-title {
