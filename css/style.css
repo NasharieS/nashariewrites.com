@@ -205,7 +205,7 @@ body {
 
 .book-cover {
     width: 100%;
-    max-width: 220px; /* 👈 Smaller to fit better */
+    max-width: 300px; 
     height: auto;
     border-radius: 8px;
     flex-shrink: 0;
