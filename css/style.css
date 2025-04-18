@@ -191,15 +191,6 @@ body {
   background: #fff;
 }
 
-@media (min-width: 900px) {
-  .about-book-section {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 60px;
-  }
-}
-
 .book-content {
   display: flex;
   flex-wrap: wrap;
@@ -209,6 +200,15 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: auto;
+}
+
+/* Responsive behavior */
+@media (min-width: 900px) {
+  .about-book-section {
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+  }
 }
 
 .block-title {
