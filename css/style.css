@@ -195,7 +195,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   gap: 60px;
   width: 100%;
   max-width: 1200px;
