@@ -184,14 +184,23 @@ body {
 
 /* About Book Section */
 .about-book-section {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 20px;
+  background: #fff;
+}
+
+@media (min-width: 900px) {
+  .about-book-section {
     flex-direction: column;
-    justify-content: center;
+  }
+  .book-content {
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    padding: 80px 20px;
-    gap: 40px;
-    background: #fff;
+    gap: 60px;
+  }
 }
 
 .block-title {
@@ -201,17 +210,6 @@ body {
   text-align: center;
   color: #5C4033;
   margin-bottom: 10px;
-}
-
-.book-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 60px;
-  width: 100%;
-  max-width: 1200px;
-  margin: auto;
 }
 
 /* Left: Synopsis Text */
@@ -261,8 +259,8 @@ body {
 }
 
 .book {
-  width: 350px; /* ⬅️ wider */
-  height: 550px; /* ⬅️ taller */
+  width: 400px;
+  height: 600px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s ease-in-out;
@@ -286,7 +284,7 @@ body {
 .book-cover img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* ✅ Still use contain */
+  object-fit: cover; /* <-- IMPORTANT: NOT 'contain' */
   border-radius: 8px;
 }
 
