@@ -108,7 +108,7 @@ body {
     color: #FFF;
     padding: 20px;
     position: relative;
-    margin-top: 150px; /* Pushes content below fixed header */
+    margin-top: 100px;
     animation: heroZoomOut 3s ease-out forwards, smoothImageTransition 12s infinite linear 3s;
 }
 
