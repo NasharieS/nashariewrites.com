@@ -270,6 +270,9 @@ body {
 .book {
   width: 450px; /* 🛠 Just a little more width */
   height: 630px; /* Keep the nice height */
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease-in-out;
 }
 
 .book-cover {
@@ -328,9 +331,12 @@ body {
 }
 
 /* Animate on hover */
+.book-container:hover .book {
+  transform: rotateY(-15deg);
+}
+
 .book-container:hover .book-cover {
-  transform: rotateY(-20deg);
-  transition: transform 0.6s ease-in-out; /* 🛠 Faster, smoother */
+  transform: rotateY(-25deg);
 }
 
 .book-container:hover .left-page {
@@ -338,7 +344,7 @@ body {
 }
 
 .book-container:hover .right-page {
-  transform: rotateY(160deg);
+  transform: rotateY(150deg);
 }
 
 .section-title {
