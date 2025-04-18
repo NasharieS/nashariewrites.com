@@ -268,13 +268,9 @@ body {
 }
 
 .book {
-  width: 420px; /* 🛠 Wider */
-  height: 630px; /* 🛠 Taller */
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.8s ease-in-out;
+  width: 450px; /* 🛠 Just a little more width */
+  height: 630px; /* Keep the nice height */
 }
-
 
 .book-cover {
   width: 100%;
