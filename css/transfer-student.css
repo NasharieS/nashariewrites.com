@@ -20,14 +20,20 @@ body {
     align-items: center;
     justify-content: space-between;
     background: #FFF9E5;
-    padding: 10px 40px; /* Slimmer header */
-    height: 90px;
+    padding: 10px 30px;
+    height: 110px; /* 🛠 Control height, not huge */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
-    animation: fadeInHeader 2s ease forwards;
+    opacity: 0; /* 🛠 Fade effect */
+    animation: fadeInHeader 2s ease-out forwards 1s; /* Fade after 1s */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeInHeader {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 /* Logo */
@@ -50,17 +56,35 @@ body {
     align-items: center;
 }
 
-.nav-container ul li {
-    position: relative;
-}
-
 .nav-container ul li a {
+    position: relative;
     text-decoration: none;
     color: #5C4033;
     font-weight: bold;
     font-size: 18px;
-    padding: 10px 20px;
-    transition: color 0.3s;
+    padding: 12px 0;
+    text-align: center;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-container ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #ffffff;
+    bottom: 5px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.nav-container ul li a:hover::after {
+    width: 100%;
+}
+
+.nav-container ul li a:hover {
+    color: #0077FF;
+    text-shadow: 0 0 6px rgba(0, 119, 255, 0.5);
 }
 
 .arrow {
@@ -101,6 +125,7 @@ body {
 /* Hero Section */
 .hero {
     background: url('../images/hallway1.png') no-repeat center center/cover;
+    background-attachment: fixed; /* 🛠 Lock background */
     height: 100vh;
     width: 100%;
     display: flex;
@@ -109,10 +134,10 @@ body {
     justify-content: center;
     text-align: center;
     color: #FFF;
-    padding: 20px;
-    margin-top: 90px; /* Matches header height */
-    animation: heroZoomOut 3s ease-out forwards, smoothImageTransition 12s infinite linear 3s;
+    padding: 0;
+    margin-top: 0; /* 🛠 Remove margin so header and hallway are flushed */
     position: relative;
+    animation: heroZoomOut 3s ease-out forwards, smoothImageTransition 12s infinite linear 3s;
 }
 
 /* Hero Zoom Out */
