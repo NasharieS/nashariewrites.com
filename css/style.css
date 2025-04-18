@@ -189,20 +189,11 @@ body {
     background: #fff;
 }
 
-.book-feature {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    text-align: left;
-}
-
-.book-cover {
-    width: 100%;
-    max-width: 280px;
-    border-radius: 8px;
-    flex-shrink: 0;
+.book-feature .book-cover {
+  width: 100%;
+  max-width: 280px;
+  border-radius: 8px;
+  flex-shrink: 0;
 }
 
 .book-info {
