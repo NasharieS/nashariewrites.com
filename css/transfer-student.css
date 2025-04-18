@@ -21,14 +21,13 @@ body {
     justify-content: space-between;
     background: #FFF9E5;
     padding: 10px 30px;
-    height: 110px; /* 🛠 Control height, not huge */
-    position: fixed;
+    height: 110px;
     width: 100%;
+    position: fixed;
     top: 0;
+    left: 0;
     z-index: 1000;
-    opacity: 0; /* 🛠 Fade effect */
-    animation: fadeInHeader 2s ease-out forwards 1s; /* Fade after 1s */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Start hidden */
     transition: opacity 0.6s ease, background-color 0.6s ease;
 }
 
@@ -110,26 +109,30 @@ body {
     z-index: 1001;
 }
 
-.dropdown-menu li {
-    padding: 10px 20px;
+.dropdown {
+    position: relative; /* Important! */
 }
 
-.dropdown-menu li a {
-    color: #5C4033;
-    font-size: 16px;
-}
-
-.dropdown-menu li a:hover {
-    color: #0077FF;
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #FFF9E5;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    min-width: 200px;
+    z-index: 1001;
 }
 
 .dropdown:hover .dropdown-menu {
-  display: flex;
-  flex-direction: column;
+    display: flex;
 }
 
 .dropdown:hover .arrow {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 /* Hero Section */
@@ -143,11 +146,10 @@ body {
     justify-content: center;
     text-align: center;
     color: #FFF;
-    padding: 0;
-    margin-top: 0;
+    padding-top: 110px; /* Push down to match header */
     position: relative;
     animation: heroZoomOut 3s ease-out forwards, smoothImageTransition 12s infinite linear 3s;
-    overflow: hidden; /* 🛠 Lock the background in place */
+    overflow: hidden;
 }
 
 /* Hero Zoom Out */
