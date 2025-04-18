@@ -212,6 +212,15 @@ body {
   flex-shrink: 0;
 }
 
+.block-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 900;
+  text-align: center;
+  color: #5C4033;
+  margin-bottom: 40px;
+}
+
 .book-info {
     flex: 1 1 400px;
     max-width: 500px;
@@ -229,6 +238,7 @@ body {
   font-size: 18px;
   line-height: 1.8;
   color: #333;
+  margin-bottom: 20px; /* 🛠 Adds space between each sentence */
 }
 
 .book-description {
