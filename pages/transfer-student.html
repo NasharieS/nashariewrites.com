@@ -53,16 +53,16 @@
 <!-- JavaScript for Header Fade In -->
 <script>
   const header = document.querySelector('.header');
-  header.style.opacity = '0'; // Start fully invisible
+  header.style.opacity = '0'; // Start invisible
 
   window.addEventListener('scroll', function() {
     if (window.scrollY > 50) {
+      header.style.opacity = '1';
       header.classList.add('solid');
-      header.style.opacity = '1'; // Fade it in
-      header.style.transition = 'opacity 0.6s ease'; // Smooth fade
+      header.style.transition = 'opacity 0.6s ease, background-color 0.6s ease';
     } else {
+      header.style.opacity = '0';
       header.classList.remove('solid');
-      header.style.opacity = '0'; // Hide it again if user scrolls back up
     }
   });
 </script>
