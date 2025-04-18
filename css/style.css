@@ -205,11 +205,21 @@ body {
 
 .book-cover {
     width: 100%;
-    max-width: 340px; /* ⬅️ Bigger width */
-    height: auto;
+    max-width: 320px; /* or 340px if you want wider too */
+    height: 500px; /* ⬅️ MAKE TALLER */
     border-radius: 8px;
     flex-shrink: 0;
-   object-fit: contain; /* ✅ No cropping */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ✅ Will fill the container fully */
+    border-radius: 8px;
 }
 
 .block-title {
