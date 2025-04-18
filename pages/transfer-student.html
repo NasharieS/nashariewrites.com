@@ -50,25 +50,7 @@
   <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
 </footer>
 
-<!-- JavaScript for Dropdown Behavior -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const dropdowns = document.querySelectorAll(".dropdown");
-
-    dropdowns.forEach((dropdown) => {
-      dropdown.addEventListener("mouseenter", function () {
-        this.querySelector(".dropdown-menu").style.display = "flex";
-        this.querySelector(".arrow").style.transform = "rotate(180deg)";
-      });
-
-      dropdown.addEventListener("mouseleave", function () {
-        this.querySelector(".dropdown-menu").style.display = "none";
-        this.querySelector(".arrow").style.transform = "rotate(0deg)";
-      });
-    });
-  });
-</script>
-
+<!-- JavaScript for Header Fade In -->
    <script>
   window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
