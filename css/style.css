@@ -204,12 +204,12 @@ body {
 }
 
 .book-cover {
-  width: 100%;
-  max-width: 350px; /* Keep width big */
-  height: 500px;    /* Increase height */
-  border-radius: 8px;
-  flex-shrink: 0;
-  object-fit: contain; /* Change from 'cover' to 'contain' */
+    width: 100%;
+    max-width: 340px; /* ⬅️ Bigger width */
+    height: auto;
+    border-radius: 8px;
+    flex-shrink: 0;
+   object-fit: contain; /* ✅ No cropping */
 }
 
 .block-title {
@@ -363,6 +363,7 @@ body {
 .stay-connected {
     padding: 50px 20px 30px;
     text-align: center;
+    margin-bottom: 0; /* ✅ Force no extra space */
 }
 
 .stay-connected h2 {
