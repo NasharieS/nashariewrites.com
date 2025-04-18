@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Transfer Student | Nasharie Writes</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/transfer-student.css">
-  <link rel="icon" type="image/png" href="images/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/transfer-student.css" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="transfer-student-page">
+<body>
 
-<!-- Navigation Bar -->
-<header class="nav-container">
-  <a href="index.html" class="logo-link">
-    <img src="images/blanklogo.png" alt="Nasharie Logo" class="hero-logo">
+<!-- Header Section -->
+<header class="header">
+  <a href="index.html">
+    <img src="images/blanklogo.png" alt="Nasharie Writes Logo" class="header-logo">
   </a>
-  <nav>
+
+  <nav class="nav-container">
     <ul>
       <li><a href="index.html">Home</a></li>
       <li class="dropdown">
-        <a href="works.html">Works <span class="arrow">▼</span></a>
-        <ul class="dropdown-menu">
+        <a href="works.html">Works</a>
+        <ul>
           <li><a href="works.html#the-transfer-student">The Transfer Student</a></li>
           <li><a href="works.html#short-stories">Short Stories</a></li>
           <li><a href="works.html#blog-posts">Blog Posts</a></li>
@@ -40,10 +40,51 @@
 <section class="hero">
   <h1 class="title">The Transfer Student</h1>
   <h2 class="one-liner">
-    <span>The power to witness the past. The burden of seeing the future.</span>
+    <span>The power to witness the past. The burden of seeing the future.</span>  
     <span>A fight for education she never saw coming.</span>
   </h2>
 </section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
+</footer>
+
+<!-- JavaScript for Dropdown Behavior -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdowns = document.querySelectorAll(".nav-container ul li");
+
+    dropdowns.forEach((dropdown) => {
+      dropdown.addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevents closing immediately
+
+        // Close other open dropdowns
+        document.querySelectorAll(".nav-container ul li ul").forEach(menu => {
+          if (menu !== this.querySelector("ul")) {
+            menu.style.display = "none";
+          }
+        });
+
+        // Toggle current dropdown
+        let submenu = this.querySelector("ul");
+        if (submenu) {
+          submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
+        }
+      });
+    });
+
+    // Close all dropdowns when clicking outside
+    document.addEventListener("click", function (event) {
+      let isClickInside = [...dropdowns].some(dropdown => dropdown.contains(event.target));
+      if (!isClickInside) {
+        document.querySelectorAll(".nav-container ul li ul").forEach(menu => {
+          menu.style.display = "none";
+        });
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
