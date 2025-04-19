@@ -229,11 +229,12 @@ body {
   padding-right: 30px; /* 🛠 little extra padding to balance */
 }
 
-.synopsis-text p {
-  font-size: 18px;
-  line-height: 1.8;
-  color: #333;
-  margin-bottom: 20px;
+.synopsis-text {
+  flex: 1 1 400px;
+  max-width: 500px;
+  text-align: left;
+  padding-right: 30px;
+  margin-top: 20px; /* 🛠 add this line! */
 }
 
 /* Button under the text */
