@@ -273,7 +273,7 @@ body {
   height: 630px;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.8s ease-in-out;
+  transition: transform 0.9s ease-in-out;
   overflow: hidden; /* 🛠 New */
 }
 
@@ -338,13 +338,14 @@ body {
 .middle-pages {
   position: absolute;
   top: 5%;
-  left: 48%;
-  width: 4%;
+  left: 45%; /* slightly more left */
+  width: 10%; /* a little wider */
   height: 90%;
-  background: #ffffff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.15); /* subtle page depth */
-  z-index: 2; /* between book-pages and book-cover */
+  background: linear-gradient(to right, #ffffff 0%, #f0f0f0 100%); /* nice paper look */
+  box-shadow: 0 0 15px rgba(0,0,0,0.1); /* more subtle */
+  z-index: 2;
   border-radius: 2px;
+  transition: transform 0.8s ease-in-out; /* 🛠 so it animates smoothly */
 }
 
 /* Animate on hover */
@@ -364,9 +365,10 @@ body {
   transform: rotateY(160deg);
 }
 
-.book-container:hover .middle-pages {
+.book-container:hover .middle-pages,
+.book.hovered .middle-pages,
+#sneak-peek-button:hover ~ .book-container .middle-pages {
   transform: rotateY(-5deg);
-  transition: transform 0.8s ease-in-out;
 }
 
 .book.hovered,
@@ -412,6 +414,10 @@ body {
 #sneak-peek-button:hover ~ .book-container .right-page,
 .book-container:hover .right-page {
   transform: rotateY(160deg);
+}
+
+#sneak-peek-button:hover ~ .book-container .middle-pages {
+  transform: rotateY(-5deg);
 }
 
 .section-title {
