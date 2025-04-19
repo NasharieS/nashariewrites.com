@@ -227,14 +227,7 @@ body {
   max-width: 500px;
   text-align: left;
   padding-right: 30px;
-}
-
-.synopsis-text {
-  flex: 1 1 400px;
-  max-width: 500px;
-  text-align: left;
-  padding-right: 30px;
-  margin-top: 20px; /* 🛠 add this line! */
+  margin-top: 20px;
 }
 
 /* Button under the text */
