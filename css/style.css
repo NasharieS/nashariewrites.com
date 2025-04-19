@@ -352,6 +352,18 @@ body {
   transform-origin: right center;
 }
 
+.middle-pages {
+  position: absolute;
+  top: 5%;
+  left: 48%;
+  width: 4%;
+  height: 90%;
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15); /* subtle page depth */
+  z-index: 2; /* between book-pages and book-cover */
+  border-radius: 2px;
+}
+
 /* Animate on hover */
 .book-container:hover .book {
   transform: rotateY(-15deg);
@@ -365,6 +377,26 @@ body {
   transform: rotateY(-10deg);
 }
 
+.book-container:hover .right-page {
+  transform: rotateY(160deg);
+}
+
+#sneak-peek-button:hover ~ .book-container .book,
+.book-container:hover .book {
+  transform: rotateY(-15deg);
+}
+
+#sneak-peek-button:hover ~ .book-container .book-cover,
+.book-container:hover .book-cover {
+  transform: rotateY(-35deg);
+}
+
+#sneak-peek-button:hover ~ .book-container .left-page,
+.book-container:hover .left-page {
+  transform: rotateY(-10deg);
+}
+
+#sneak-peek-button:hover ~ .book-container .right-page,
 .book-container:hover .right-page {
   transform: rotateY(160deg);
 }
