@@ -223,10 +223,10 @@ body {
 
 /* Left: Synopsis Text */
 .synopsis-text {
-  flex: 1 1 400px; /* 🛠 narrower */
-  max-width: 500px; /* 🛠 significantly condensed */
+  flex: 1 1 400px;
+  max-width: 500px;
   text-align: left;
-  padding-right: 30px; /* 🛠 little extra padding to balance */
+  padding-right: 30px;
 }
 
 .synopsis-text {
