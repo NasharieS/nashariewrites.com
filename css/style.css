@@ -241,8 +241,8 @@ body {
   margin-top: 30px;
 }
 
+/* Normal button styling */
 .cta-button {
-  display: inline-block;
   background: #0077FF;
   color: white;
   padding: 14px 28px;
@@ -253,7 +253,9 @@ body {
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.cta-button:hover {
+/* Darken when button is hovered */
+.cta-button:hover,
+#book-link:hover ~ .synopsis-text .cta-button {
   background: #005FCC;
   transform: scale(1.05);
 }
