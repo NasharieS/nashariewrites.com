@@ -338,84 +338,43 @@ body {
 .middle-pages {
   position: absolute;
   top: 5%;
-  left: 45%; /* slightly more left */
-  width: 10%; /* a little wider */
+  left: 46%;
+  width: 8%;
   height: 90%;
-  background: linear-gradient(to right, #ffffff 0%, #f0f0f0 100%); /* nice paper look */
-  box-shadow: 0 0 15px rgba(0,0,0,0.1); /* more subtle */
+  background: linear-gradient(to right, #f5f5f5 0%, #dcdcdc 100%); /* Slightly darker paper gradient */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15); /* subtle page depth */
   z-index: 2;
   border-radius: 2px;
-  transition: transform 0.8s ease-in-out; /* 🛠 so it animates smoothly */
+  transition: transform 0.8s ease-in-out;
 }
 
 /* Animate on hover */
-.book-container:hover .book {
-  transform: rotateY(-15deg);
-}
-
-.book-container:hover .book-cover {
-  transform: rotateY(-35deg); /* 🛠 slightly more open */
-}
-
-.book-container:hover .left-page {
-  transform: rotateY(-10deg);
-}
-
-.book-container:hover .right-page {
-  transform: rotateY(160deg);
-}
-
-.book-container:hover .middle-pages,
-.book.hovered .middle-pages,
-#sneak-peek-button:hover ~ .book-container .middle-pages {
-  transform: rotateY(-5deg);
-}
-
 .book.hovered,
-.book-container:hover .book {
+.book-container:hover .book,
+#sneak-peek-button:hover ~ .book-container .book {
   transform: rotateY(-15deg);
 }
 
 .book.hovered .book-cover,
-.book-container:hover .book-cover {
+.book-container:hover .book-cover,
+#sneak-peek-button:hover ~ .book-container .book-cover {
   transform: rotateY(-35deg);
 }
 
 .book.hovered .left-page,
-.book-container:hover .left-page {
+.book-container:hover .left-page,
+#sneak-peek-button:hover ~ .book-container .left-page {
   transform: rotateY(-10deg);
 }
 
 .book.hovered .right-page,
-.book-container:hover .right-page {
+.book-container:hover .right-page,
+#sneak-peek-button:hover ~ .book-container .right-page {
   transform: rotateY(160deg);
 }
 
 .book.hovered .middle-pages,
-.book-container:hover .middle-pages {
-  transform: rotateY(-5deg);
-}
-
-#sneak-peek-button:hover ~ .book-container .book,
-.book-container:hover .book {
-  transform: rotateY(-15deg);
-}
-
-#sneak-peek-button:hover ~ .book-container .book-cover,
-.book-container:hover .book-cover {
-  transform: rotateY(-35deg);
-}
-
-#sneak-peek-button:hover ~ .book-container .left-page,
-.book-container:hover .left-page {
-  transform: rotateY(-10deg);
-}
-
-#sneak-peek-button:hover ~ .book-container .right-page,
-.book-container:hover .right-page {
-  transform: rotateY(160deg);
-}
-
+.book-container:hover .middle-pages,
 #sneak-peek-button:hover ~ .book-container .middle-pages {
   transform: rotateY(-5deg);
 }
