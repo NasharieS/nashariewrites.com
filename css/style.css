@@ -364,6 +364,36 @@ body {
   transform: rotateY(160deg);
 }
 
+.book-container:hover .middle-pages {
+  transform: rotateY(-5deg);
+  transition: transform 0.8s ease-in-out;
+}
+
+.book.hovered,
+.book-container:hover .book {
+  transform: rotateY(-15deg);
+}
+
+.book.hovered .book-cover,
+.book-container:hover .book-cover {
+  transform: rotateY(-35deg);
+}
+
+.book.hovered .left-page,
+.book-container:hover .left-page {
+  transform: rotateY(-10deg);
+}
+
+.book.hovered .right-page,
+.book-container:hover .right-page {
+  transform: rotateY(160deg);
+}
+
+.book.hovered .middle-pages,
+.book-container:hover .middle-pages {
+  transform: rotateY(-5deg);
+}
+
 #sneak-peek-button:hover ~ .book-container .book,
 .book-container:hover .book {
   transform: rotateY(-15deg);
