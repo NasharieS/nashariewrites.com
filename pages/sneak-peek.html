@@ -52,7 +52,108 @@
   <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
 </footer>
 
-<script src="../js/sneakpeek.js"></script>
+  <!-- Flip Logic -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+const introSpread = [
+    `<div class="title-spread">
+      <h1>Part I: <span>The Awakening</span></h1>
+      <h2>Chapter 1</h2>
+      <p class="indent">The barricades weren’t meant to protect us, they were meant to trap us. The way they were lined up created a path for us to walk through to get to our new school. However, the pale faces on the other side made it very clear that they wanted us anywhere but here.</p>
+      <p class="indent">Us vs them– that was how it had always been, and as I stepped forward with my books held tightly to my chest, I wondered if that</p>
+    </div>`,
+    `</p>was how it would always be. Police officers were facing the crowd, facing the protestors, trying to calm them down. Or at least that’s what they would say on the 5:00 news. From where I was standing, there was very little effort coming from them to remedy the situation. Other students who looked like me walked ahead, and I recognized a few of their faces from my neighborhood, an hour away.</p> 
+      <p class="indent">But there was one student in particular who walked with her head held high. A girl around my age, with brown glasses and her hair up in a fro. Despite the shouting, despite the slurs and balls</p>`
+  ];
 
+  const rawParagraphs = [
+  `<p>of spit being javelined at us, she walked as if she belonged here. I took slow, unsure, and unsteady steps a few paces behind her, trying to muster the courage to walk as she was.</p>
+   <p class="indent">The world around me felt like the inside of a tornado– grey and unforgiving, uprooting with all its strength everything on the ground. As the voices in the crowd grew louder, my spirit grew smaller. With their venomous screams of “Get out of here” and “We don’t want your kind,” I knew it was only a matter of seconds before things became physical.</p>`,
+  
+  `<p class="indent">As if on cue, my world shifted from ash-grey to a hot, burning red. The kind of red that begs to be seen. Like a stop sign at the edge of disaster– a warning bell that has rung too late. I could see the red clear as day, and in its path, I saw a brick hit the head of the girl in front of me. I watched as it knocked her over, stealing her courage and hijacking her pride.</p>
+   <p class="indent">I gasped as her blood began to spill, splattering across the sidewalk– some of it hitting the school’s golden crest just inches away. Screams erupted all over as some of my peers rushed to her</p>`,
+     
+  `<p>side while others began yelling back at the protestors. There were about 20 Black students and more than 100 protestors. But because the protestors were mostly made up of White families, when the police whipped out their batons, they weren’t the ones that got hit.</p>
+   <p class="indent">“You’re hitting us for no reason,” one boy huffed as he held his arms up to cover his face.</p> 
+   <p class="indent">“They were the ones who threw a brick. A girl is bleeding out here; help us!” Another girl pleaded.</p>`, 
+   
+   `<p class="indent">“Back up, back up,” was all an officer said in a voice so harsh the flowers around him wilted.</p> 
+    <p class="indent">More police left their posts in front of the barricades to force us away from them, as if we were the threat. I thought of how moments before the girl got hit with that brick, she was walking so confidently. How moments before, I wanted to be her. But now, she was lying on the cold, hard concrete, her body limp and lifeless. How ironic that in a twisted way, I now was her. Nothing had hit me, and yet there was no observable difference between myself, as I stood frozen in place, and</p>`,
+    
+    `<p>her as she lay mummified on the ground.
+     <p class="indent">“That one has his fists up,” I heard another officer holler as his dog bucked his chest forward, urging him towards the boy who was only protecting his face.</p> 
+     <p class="indent">No adult seemed to care that a girl was hurt. They didn’t see us. These protestors, these parents, they weren’t looking at us. Not really, not enough to see that we too were children like theirs. Perhaps if these people in the crowd were capable of looking at me rather than through me, they would see</p>`,
+     
+    `<p>that I didn’t choose this. I didn’t choose to desegregate schools. I didn’t choose to be here today, yet here I was.</p>
+     <p class="indent">I wiped the tears off of my face and craned my neck back and forth, summoning the courage to do something that I knew in my core the girl on the ground would have done for me in a heartbeat if I had been the one hit.</p>
+     <p class="indent">“She needs medical help,” I croaked out rather timidly.</p>
+     <p class="indent">I balled my fists down by my side before</p>`, 
+     
+    `<p>realizing I shouldn’t do that, and so I wiggled my fingers instead. I found my voice and yelled “Stop for one damn second and look at the girl who’s bleeding on the ground. It’s your job to help her!”</p> 
+     <p class="indent">An officer quickly whipped around as if he was shocked I could speak. His eyes narrowed as he moved towards me, his hand on his hip. There it was again. The looking through me instead of at me.</p>
+     <p class="indent">His eyes were brown, like mine. Yet, when he looked at me, they were cold, and I couldn’t read his expression. A riot gear helmet sat on top of his</p>`, 
+     
+    `<p>head, and engraved on the side was a V with a line through it.</p> 
+     <p class="indent">“Put your hands where I can see them”, he all but spit at me.</p> 
+     <p class="indent">I inhaled a deep breath and took a step towards him. He quickly unholstered his gun, and before my right foot could even hit the ground in front of me, he aimed the pistol directly at my face. We were only about 3 feet apart, and I knew taking another step could cost me my life.</p>`, 
+      
+     `<p class="indent">“I mean you no harm,” I said as I raised both my hands up in front of me and took another slow step forward. “She needs help, or she is going to die here. She’s going to die before she’s even had the chance to go to homeroom,” I cried out.</p>
+      <p>My words had no effect on him. His grip on the gun only tightened, and dare I say, I saw him smile. “Nigger I will kill you right here if you don’t back up.”</p>
+      <p class="indent">This time, it was him who moved towards me so that the tip of the gun was touching my forehead. I glanced behind the police officer and saw the girl</p>`, 
+    
+     `<p>still lying on the ground, as a student tried their best to stop the bleeding with both of their hands on top of her head.</p>
+      <p class="indent">Although I felt exposed to the cold chill of the bottom of his barrel, I decided I would keep my head up. I would stare into his eyes. I would make him see me. “Do it. Pull the trigger.”</p> 
+     <p class="indent">“Nooooo!” a boy yelled as he ran over and stood in between the officer and me.</p> 
+     <p class="indent">I woke up gasping, my breath uneven.</p>`,
+  ];
+
+const contentSpreads = rawParagraphs.reduce((acc, para, i, arr) => {
+  const isHtml = para.trim().startsWith("<p");
+  const left = isHtml ? para : `<p>${para}</p>`;
+  const next = arr[i + 1] || "";
+  const isNextHtml = next.trim().startsWith("<p");
+  const right = isNextHtml ? next : `<p>${next}</p>`;
+  if (i % 2 === 0) acc.push([left, right]);
+  return acc;
+}, []);
+
+  const spreads = [introSpread, ...contentSpreads];
+
+  const leftEl = document.getElementById("left-content");
+  const rightEl = document.getElementById("right-content");
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
+  const leftNumber = document.getElementById("left-number");
+  const rightNumber = document.getElementById("right-number");
+
+  let current = 0;
+
+  function renderSpread(index) {
+    const [left, right] = spreads[index] || ["", ""];
+    leftEl.innerHTML = left;
+    rightEl.innerHTML = right;
+    leftNumber.textContent = index * 2 + 1;
+    rightNumber.textContent = index * 2 + 2;
+    prevBtn.style.display = index === 0 ? "none" : "block";
+    nextBtn.style.display = index === spreads.length - 1 ? "none" : "block";
+  }
+
+  prevBtn.onclick = () => {
+    if (current > 0) {
+      current--;
+      renderSpread(current);
+    }
+  };
+
+  nextBtn.onclick = () => {
+    if (current < spreads.length - 1) {
+      current++;
+      renderSpread(current);
+    }
+  };
+
+  renderSpread(current);
+});
+</script>
 </body>
 </html>
