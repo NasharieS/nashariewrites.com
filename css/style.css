@@ -139,6 +139,12 @@ body {
   transform: translateY(0);
 }
 
+/* Fix arrow rotation */
+.dropdown:hover .arrow {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
 .dropdown-menu li { padding: 10px 20px; }
 .dropdown-menu li a {
   color: #5C4033;
