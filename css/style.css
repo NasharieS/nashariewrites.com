@@ -17,24 +17,26 @@ body {
   overflow-x: hidden;
 }
 
+/* Colors */
 .yellow-background {
-    background: #FFF9E5;
+  background: #FFF9E5;
 }
 
 .white-background {
-    background: #fff;
+  background: #fff;
 }
 
+/* Hero Section */
 .hero-section {
-    background: #FFF9E5;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: visible; 
+  background: #FFF9E5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: visible;
 }
 
 .hero-logo-container {
@@ -45,7 +47,7 @@ body {
 }
 
 .hero-logo {
-  height: 110px; 
+  height: 110px;
   width: auto;
 }
 
@@ -117,7 +119,6 @@ body {
   position: absolute;
   width: 0%;
   height: 2px;
-  display: block;
   background: #ffffff;
   transition: width 0.3s;
   bottom: -5px;
@@ -130,7 +131,7 @@ body {
 
 .hero-nav ul li a:hover {
   color: #0077FF;
-  text-shadow: 0 0 6px rgba(0, 119, 255, 0.5);
+  text-shadow: 0 0 6px rgba(0,119,255,0.5);
 }
 
 /* Dropdown Menu */
@@ -151,7 +152,7 @@ body {
   padding: 10px 0;
   flex-direction: column;
   min-width: 200px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
   border-radius: 8px;
   z-index: 100;
   list-style: none;
@@ -180,7 +181,7 @@ body {
 
 .dropdown-menu li a:hover {
   color: #ffffff;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
 }
 
 /* About Book Section */
@@ -188,7 +189,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px 80px; /* 🛠 top padding 40px instead of 80px */
+  padding: 40px 20px 80px;
   background: #fff;
 }
 
@@ -203,7 +204,6 @@ body {
   margin: auto;
 }
 
-/* Responsive behavior */
 @media (min-width: 900px) {
   .about-book-section {
     justify-content: center;
@@ -221,7 +221,7 @@ body {
   margin-bottom: 10px;
 }
 
-/* Left: Synopsis Text */
+/* Synopsis */
 .synopsis-text {
   flex: 1 1 400px;
   max-width: 500px;
@@ -236,12 +236,11 @@ body {
   color: #333;
 }
 
-/* Button under the text */
+/* Call to Action Button */
 .button-container {
   margin-top: 30px;
 }
 
-/* Normal button styling */
 .cta-button {
   background: #0077FF;
   color: white;
@@ -251,39 +250,89 @@ body {
   border-radius: 8px;
   text-decoration: none;
   transition: background 0.3s ease, transform 0.2s ease;
+  display: inline-block;
 }
 
-/* Normal hover */
-.cta-button:hover {
-  background: #005FCC;
-  transform: scale(1.05);
-}
-
-/* Hovering on book also darkens the button */
+.cta-button:hover,
 .book-container:hover ~ .synopsis-text .cta-button {
   background: #005FCC;
   transform: scale(1.05);
 }
 
+/* Book Section */
 .book-container {
-  flex: 1 1 500px;
-  max-width: 500px;
-  perspective: 1500px;
+  flex: 1 1 470px;
+  max-width: 470px;
+  perspective: 1800px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* 🛠 New */
+  overflow: hidden;
+  position: relative;
 }
 
 .book {
-  width: 470px; /* ⬅️ slightly wider */
+  width: 470px;
   height: 630px;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.9s ease-in-out;
-  overflow: hidden;
+  transition: transform 0.8s ease-in-out;
 }
 
+/* Realistic Back Cover */
+.book-back {
+  width: 100%;
+  height: 100%;
+  background: #3e2723;
+  border-radius: 8px;
+  position: absolute;
+  left: 0;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  box-shadow: inset -5px 0px 10px rgba(0,0,0,0.4);
+  z-index: 0;
+}
+
+/* Inside Pages */
+.book-pages {
+  width: 98%;
+  height: 96%;
+  background: #faf8f0;
+  position: absolute;
+  top: 2%;
+  left: 1%;
+  z-index: 1;
+  box-shadow: inset -2px 0px 8px rgba(0,0,0,0.3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Left and Right Pages */
+.left-page,
+.right-page {
+  width: 95%;
+  height: 90%;
+  position: absolute;
+  background: linear-gradient(to right, #fdfdfd 0%, #f5f5f5 100%);
+  box-shadow: inset -1px 0px 3px rgba(0,0,0,0.1);
+  transition: transform 1s ease-in-out;
+  border-radius: 6px;
+}
+
+.left-page {
+  left: 5px;
+  transform: rotateY(0deg);
+}
+
+.right-page {
+  right: 5px;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+/* Book Cover */
 .book-cover {
   width: 100%;
   height: 100%;
@@ -294,10 +343,7 @@ body {
   border-radius: 8px;
   overflow: hidden;
   backface-visibility: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform-origin: left center; /* 🛠 NEW: make the rotation feel like it’s opening */
+  transform-origin: left center;
   transition: transform 0.8s ease-in-out;
 }
 
@@ -308,95 +354,24 @@ body {
   border-radius: 8px;
 }
 
-/* Pages inside book */
-.book-pages {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  pointer-events: none; /* 🛠 Let middle pages show through */
-}
-
-.left-page,
-.right-page {
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, #fdfdfd 0%, #f5f5f5 100%);
-  position: absolute;
-  top: 0;
-  transition: transform 0.8s ease-in-out;
-  border-radius: 0;
-  z-index: 1; /* 🛠 keep them at base layer */
-}
-
-.left-page {
-  left: 0;
-  transform-origin: left center;
-}
-
-.right-page {
-  right: 0;
-  transform-origin: right center;
-}
-
-.middle-pages {
-  position: absolute;
-  top: 10%;
-  left: 45%;
-  width: 10%;
-  height: 80%;
-  background: linear-gradient(to right, #ffffff 0%, #eeeeee 100%); /* Slightly off-white paper */
-  box-shadow: 0 0 10px rgba(0,0,0,0.2); /* a little stronger shadow */
-  z-index: 2;
-  transform: translateZ(10px);
-  border-radius: 2px;
-  transition: transform 0.8s ease-in-out;
-}
-
-.back-page {
-  width: 100%;
-  height: 100%;
-  background: #fdf0c2; /* 🟡 Soft yellow like an old book backing */
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0; /* Behind everything */
-  border-radius: 8px;
-}
-
-/* Animate on hover */
-.book.hovered,
-.book-container:hover .book,
-#sneak-peek-button:hover ~ .book-container .book {
+/* Hover Animations */
+.book-container:hover .book {
   transform: rotateY(-15deg);
 }
 
-.book.hovered .book-cover,
-.book-container:hover .book-cover,
-#sneak-peek-button:hover ~ .book-container .book-cover {
+.book-container:hover .book-cover {
   transform: rotateY(-35deg);
 }
 
-.book.hovered .left-page,
-.book-container:hover .left-page,
-#sneak-peek-button:hover ~ .book-container .left-page {
-  transform: rotateY(-10deg);
+.book-container:hover .left-page {
+  transform: rotateY(-20deg);
 }
 
-.book.hovered .right-page,
-.book-container:hover .right-page,
-#sneak-peek-button:hover ~ .book-container .right-page {
+.book-container:hover .right-page {
   transform: rotateY(160deg);
 }
 
-.book.hovered .middle-pages,
-.book-container:hover .middle-pages,
-#sneak-peek-button:hover ~ .book-container .middle-pages {
-  transform: rotateY(-5deg);
-}
-
+/* Soft section title */
 .section-title {
   font-family: 'Playfair Display', serif;
   font-size: 48px;
@@ -407,63 +382,48 @@ body {
 
 /* Logo Meaning Section */
 .logo-meaning {
-    padding: 50px 20px; /* ✅ Was 80px before, shrink top and bottom */
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
+  padding: 50px 20px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
 .logo-meaning-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .logo-meaning-icon {
-    width: 60px;
-    height: auto;
+  width: 60px;
+  height: auto;
 }
 
 .logo-quote {
-    font-family: 'Dancing Script', cursive;
-    font-size: 28px;
-    color: #5C4033;
-    max-width: 600px;
-    text-align: center;
-    padding: 0 20px;
-}
-
-.logo-meaning-section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 28px;
   color: #5C4033;
+  max-width: 600px;
+  text-align: center;
+  padding: 0 20px;
 }
 
-.logo-meaning-section p {
-  max-width: 700px;
-  margin: 0 auto;
-  font-size: 18px;
-  line-height: 1.8;
-  color: #333;
-}
-
-/* About Me Section */
+/* About Me */
 .about-me-section {
-    padding: 80px 20px;
-    text-align: center;
+  padding: 80px 20px;
+  text-align: center;
 }
 
 .headshot {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
 }
 
 .about-me-section h2 {
@@ -483,9 +443,8 @@ body {
 
 /* Stay Connected */
 .stay-connected {
-    padding: 50px 20px 30px;
-    text-align: center;
-    margin-bottom: 0; /* ✅ Force no extra space */
+  padding: 50px 20px 30px;
+  text-align: center;
 }
 
 .stay-connected h2 {
