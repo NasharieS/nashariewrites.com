@@ -138,10 +138,10 @@ body {
   transform: translateY(0);
 }
 
-/* Fix arrow rotation */
-.dropdown:hover .arrow {
+/* Real fix for arrow rotation */
+.dropdown > a:hover .arrow,
+.dropdown:hover > a .arrow {
   transform: rotate(180deg);
-  transition: transform 0.3s ease;
 }
 
 .dropdown-menu li { padding: 10px 20px; }
