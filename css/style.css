@@ -259,23 +259,6 @@ body {
 }
 
 .book-container {
-  flex: 1 1 500px; /* 🛠 not huge */
-  max-width: 500px;
-  perspective: 1200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.book {
-  width: 450px; /* 🛠 Just a little more width */
-  height: 630px; /* Keep the nice height */
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.8s ease-in-out;
-}
-
-.book-container {
   flex: 1 1 500px;
   max-width: 500px;
   perspective: 1500px;
