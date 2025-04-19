@@ -276,12 +276,12 @@ body {
 }
 
 .book {
-  width: 450px;
+  width: 470px; /* ⬅️ slightly wider */
   height: 630px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.9s ease-in-out;
-  overflow: hidden; /* 🛠 New */
+  overflow: hidden;
 }
 
 .book-cover {
@@ -344,15 +344,26 @@ body {
 .middle-pages {
   position: absolute;
   top: 10%;
-  left: 47%;
-  width: 6%;
+  left: 45%;
+  width: 10%;
   height: 80%;
-  background: linear-gradient(to right, #ffffff 0%, #eeeeee 100%);
-  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  background: linear-gradient(to right, #ffffff 0%, #eeeeee 100%); /* Slightly off-white paper */
+  box-shadow: 0 0 10px rgba(0,0,0,0.2); /* a little stronger shadow */
   z-index: 2;
-  transform: translateZ(10px); /* 🛠 push it slightly forward */
+  transform: translateZ(10px);
   border-radius: 2px;
   transition: transform 0.8s ease-in-out;
+}
+
+.back-page {
+  width: 100%;
+  height: 100%;
+  background: #fdf0c2; /* 🟡 Soft yellow like an old book backing */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0; /* Behind everything */
+  border-radius: 8px;
 }
 
 /* Animate on hover */
