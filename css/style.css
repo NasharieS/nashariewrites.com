@@ -131,6 +131,7 @@ body {
   z-index: 100;
 }
 
+/* Dropdown hover behavior */
 .dropdown:hover .dropdown-menu {
   display: flex;
   opacity: 1;
@@ -138,9 +139,15 @@ body {
   transform: translateY(0);
 }
 
-/* Arrow rotation */
-.dropdown:hover > a .arrow {
+/* Correct arrow rotation when dropdown hovered */
+.dropdown:hover .arrow {
   transform: rotate(180deg);
+}
+
+/* Ensure smooth transition on the arrow */
+.hero-nav ul li a .arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
 }
 
 .dropdown-menu li { padding: 10px 20px; }
