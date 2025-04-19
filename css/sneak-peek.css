@@ -1,0 +1,269 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Sneak Peek Specific */
+body.sneakpeek {
+  overflow: hidden;
+  background: url('vintage_bookshelf.png') no-repeat center center;
+  background-size: cover;
+  color: #0D1B2A;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body.sneakpeek::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255,255,255,0.4); /* Soft overlay */
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Top Header */
+body.sneakpeek .top-header {
+  background: #5C4033;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Navigation Bar */
+body.sneakpeek .nav-container {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+body.sneakpeek .nav-container ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+body.sneakpeek .nav-container ul li a {
+  text-decoration: none;
+  color: #D3D3D3;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 18px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+body.sneakpeek .nav-container ul li:hover a {
+  background: rgba(0, 84, 204, 1);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0,84,204,0.8);
+}
+
+/* Dropdown Menu */
+body.sneakpeek .nav-container ul li {
+  position: relative;
+}
+
+body.sneakpeek .nav-container ul li ul {
+  display: none;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  background: rgba(92, 64, 51, 0.95);
+  border-radius: 8px;
+  padding: 10px 0;
+  min-width: 200px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  flex-direction: column;
+}
+
+body.sneakpeek .nav-container ul li:hover > ul {
+  display: flex;
+}
+
+body.sneakpeek .nav-container ul li ul li a {
+  padding: 12px 18px;
+  text-align: center;
+}
+
+/* Rotate Arrow on Hover */
+body.sneakpeek .dropdown:hover .arrow {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+/* Search Bar */
+body.sneakpeek .search-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.2);
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+body.sneakpeek .search-bar input {
+  background: white;
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-size: 16px;
+  color: #0D1B2A;
+  border-radius: 3px;
+}
+
+body.sneakpeek .search-bar button {
+  background: none;
+  border: none;
+  color: #D3D3D3;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Contact Icons */
+body.sneakpeek .contact-icons {
+  display: flex;
+  gap: 12px;
+}
+
+body.sneakpeek .contact-icons a {
+  color: #D3D3D3;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+/* Book Pages Layout */
+.book-container {
+  display: flex;
+  justify-content: center;
+  gap: 0px;
+  perspective: 1000px;
+  width: 100%;
+  max-width: 1000px;
+  height: calc(100vh - 180px);
+  margin: 110px auto 70px auto; /* Room for header & footer */
+}
+
+.book-page {
+  width: 480px;
+  height: 100%;
+  background-color: #faf8f0;
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  padding: 30px;
+  position: relative;
+  overflow-y: auto;
+  transform-origin: center center;
+  transition: transform 0.6s ease;
+}
+
+.left-page { margin-right: -5px; }
+.right-page { margin-left: -5px; }
+
+/* Content inside pages */
+.page-content {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+p.indent {
+  text-indent: 2em;
+  margin-top: 1em;
+}
+
+/* Navigation buttons inside pages */
+.book-page .nav-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 18px;
+  background-color: #5C4033;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  z-index: 10;
+}
+
+.book-page.right-page .nav-btn {
+  left: auto;
+  right: 20px;
+}
+
+.book-page .nav-btn:hover {
+  background-color: #0077FF;
+}
+
+/* Title Spread */
+.title-spread {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.title-spread h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.title-spread h2 {
+  font-size: 20px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.title-spread p {
+  margin-top: 20px;
+  max-width: 90%;
+  line-height: 1.8;
+  text-align: left;
+}
+
+/* Footer */
+body.sneakpeek footer {
+  background: #5C4033;
+  color: #D3D3D3;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+/* Remove Fade Animations */
+body.sneakpeek .nav-container,
+body.sneakpeek footer {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
