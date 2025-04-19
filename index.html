@@ -108,7 +108,21 @@
     <input type="email" placeholder="Enter your email">
     <button>Subscribe</button>
   </div>
+  
 </section>
+
+  <script>
+  const sneakPeekButton = document.getElementById('sneak-peek-button');
+  const book = document.querySelector('.book');
+
+  sneakPeekButton.addEventListener('mouseover', () => {
+    book.classList.add('hovered');
+  });
+
+  sneakPeekButton.addEventListener('mouseout', () => {
+    book.classList.remove('hovered');
+  });
+</script>
 
 </main>
 
