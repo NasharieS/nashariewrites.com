@@ -131,7 +131,6 @@ body {
   z-index: 100;
 }
 
-.dropdown:hover .arrow { transform: rotate(180deg); }
 .dropdown:hover .dropdown-menu {
   display: flex;
   opacity: 1;
