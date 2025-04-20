@@ -112,13 +112,12 @@ body {
 }
 
 /* When Hovered */
-.dropdown > a:hover + .dropdown-menu {
+.dropdown:hover .dropdown-menu {
   display: flex;
   opacity: 1;
 }
 
-/* Arrow Rotation */
-.dropdown > a:hover .arrow {
+.dropdown:hover .arrow {
   transform: rotate(180deg);
 }
 
