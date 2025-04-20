@@ -15,10 +15,9 @@ body.sneakpeek {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  height: 100vh; 
   overflow-x: hidden;
-  overflow-y: scroll; 
-  overscroll-behavior: contain; 
+  overflow-y: auto;
+  overscroll-behavior-y: none; /* Key line */
 }
 
 /* Soft overlay over background */
@@ -30,6 +29,13 @@ body.sneakpeek::before {
   background: rgba(255, 255, 255, 0.4);
   z-index: -1;
   pointer-events: none;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior: none; /* Completely disables the "pull" bounce */
+  touch-action: pan-x pan-y;
 }
 
 /* Header */
