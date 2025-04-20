@@ -84,18 +84,20 @@
   <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
 </footer>
 
- <script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
   const header = document.querySelector('.header');
 
-  let headerShown = false; // Track if header has been shown
-
-  window.addEventListener('scroll', function () {
-    if (!headerShown && window.scrollY > 1) {
-      header.classList.add('visible'); // Add the .visible class!
-      headerShown = true; // Lock it so it stays forever
+  function toggleHeader() {
+    if (window.scrollY > 10) {
+      header.classList.add('visible');
+    } else {
+      header.classList.remove('visible');
     }
-  });
+  }
+
+  window.addEventListener('scroll', toggleHeader);
+  toggleHeader(); // Check on page load
 });
 </script>
 
