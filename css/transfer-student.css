@@ -16,8 +16,6 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-}
-
 /* Header */
 .header {
     display: flex;
@@ -32,7 +30,7 @@ body {
     left: 0;
     z-index: 1000;
     opacity: 0; /* Start hidden */
-    transition: opacity 0.6s ease, background-color 0.6s ease;
+    transition: opacity 0.6s ease;
 }
 
 /* Logo */
@@ -145,19 +143,18 @@ body {
 
 /* Hero Section */
 .hero {
-    background: url('../images/hallway1.png') no-repeat center center/cover;
-    min-height: 130vh; /* Cover tall screens */
-    width: 110vw; /* Cover wide screens */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #FFF;
-    padding-top: 110px; /* Push down to match header */
-    position: relative;
-    animation: heroZoomOut 3s ease-out forwards, smoothImageTransition 12s infinite linear 3s;
-    overflow: hidden;
+  background: url('../images/hallway1.png') no-repeat center center/cover;
+  height: 100vh; /* Always 100% of viewport */
+  width: 100vw; /* Always 100% wide */
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 110px; /* so content is pushed below the fixed header */
+  animation: heroZoomOut 3s ease-out forwards, smoothImageTransition 12s infinite linear 3s;
 }
 
 /* Hero Zoom Out */
@@ -351,6 +348,18 @@ body {
   background: #005FCC;
   transform: scale(1.05);
 }
+
+<script>
+const header = document.querySelector('.header');
+
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 50) {
+    header.style.opacity = '1'; // Show header when scrolling down
+  } else {
+    header.style.opacity = '0'; // Hide header when at top
+  }
+});
+</script>
 
 /* Footer */
 footer {
