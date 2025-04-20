@@ -229,12 +229,12 @@ body {
 
 /* ================= Synopsis Section ================= */
 .synopsis-container {
-  max-width: 1200px;
-  margin: 50px auto 0; /* 🔥 Bring the whole block up */
-  padding: 60px 20px;
-  background: #ffffff; /* 🔥 Make the block background white */
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* (Optional) soft shadow to make it pop */
+  max-width: 1100px;
+  margin: 120px auto 0;
+  padding: 60px 40px;
+  background: #ffffff; 
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
 }
 
 .page-title {
@@ -243,8 +243,8 @@ body {
   font-weight: 900;
   color: #5C4033;
   text-align: center;
-  margin-top: 0;
-  margin-bottom: 30px; /* 🔥 Less bottom space to tighten layout */
+  margin-bottom: 50px;
+  margin-top: -20px;
 }
 
 .synopsis-content {
@@ -290,48 +290,56 @@ body {
   overflow: hidden;
   backface-visibility: hidden;
   position: absolute;
+  top: 0;
+  left: 0;
   z-index: 3;
-  background: url('../images/bookcover.png') center/cover no-repeat;
+  background: url('../images/bookcover.png') center center / cover no-repeat;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .book-pages {
-  width: 96%;
-  height: 96%;
+  width: 92%; /* Slightly smaller inside */
+  height: 92%;
   background: #faf8f0;
   position: absolute;
-  left: 2%;
-  top: 2%;
-  z-index: 1;
-  box-shadow: inset -3px 0 8px rgba(0,0,0,0.2);
+  top: 4%;
+  left: 4%;
+  z-index: 2;
+  box-shadow: inset -2px 0 6px rgba(0,0,0,0.15);
+  border-radius: 6px;
 }
 
 .left-page, .right-page {
-  width: 95%;
+  width: 90%;
   height: 90%;
-  background: linear-gradient(to right, #fdfdfd, #f5f5f5);
+  background: linear-gradient(to right, #ffffff, #f5f5f5);
   position: absolute;
+  top: 5%;
   transition: transform 1s ease;
+  border-radius: 4px;
 }
 
-.left-page { left: 5px; }
+.left-page {
+  left: 5%;
+}
 
 .right-page {
-  right: 5px;
+  right: 5%;
   transform: rotateY(180deg);
   backface-visibility: hidden;
 }
 
 .book-container:hover .book-cover {
-  transform: rotateY(-30deg);
-  box-shadow: 10px 10px 20px rgba(0,0,0,0.5);
+  transform: rotateY(-25deg);
+  box-shadow: 8px 8px 20px rgba(0,0,0,0.4);
 }
 
 .book-container:hover .left-page {
-  transform: rotateY(-20deg);
+  transform: rotateY(-15deg);
 }
 
 .book-container:hover .right-page {
-  transform: rotateY(150deg);
+  transform: rotateY(160deg);
 }
 
 /* ================= CTA Button ================= */
