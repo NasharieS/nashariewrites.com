@@ -85,19 +85,20 @@
 </footer>
 
 <!-- JavaScript for Header Fade In -->
-<script>
 document.addEventListener("DOMContentLoaded", function () {
   const header = document.querySelector('.header');
 
-  window.addEventListener('scroll', function() {
+  function checkScroll() {
     if (window.scrollY > 10) {
-      header.style.opacity = '1'; // Show header when scrolling down
+      header.style.opacity = '1';
     } else {
-      header.style.opacity = '0'; // Hide header when at top
+      header.style.opacity = '0';
     }
-  });
+  }
+
+  window.addEventListener('scroll', checkScroll);
+  checkScroll(); // ✅ run once immediately in case user reloads already scrolled
 });
-</script>
 
 </body>
 </html>
