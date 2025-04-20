@@ -71,7 +71,6 @@
             <div class="right-page"></div>
           </div>
           <div class="book-cover">
-            <img src="../images/bookcover.png" alt="The Transfer Student Cover">
           </div>
         </div>
       </a>
@@ -87,44 +86,31 @@
 
 <!-- JavaScript for Header Fade In -->
 <script>
+// Header fade in
 const header = document.querySelector('.header');
-
 window.addEventListener('scroll', function() {
   if (window.scrollY > 50) {
-    header.style.opacity = '1'; // Show header when scrolling down
+    header.style.opacity = '1';
   } else {
-    header.style.opacity = '0'; // Hide header when at top
+    header.style.opacity = '0';
   }
 });
-</script>
-  
-<script>
-  const header = document.querySelector('.header');
-  
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 50) {
-      header.style.opacity = '1';
-    } else {
-      header.style.opacity = '0';
-    }
-  });
-</script>
 
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const bookLink = document.getElementById("book-link");
-    const sneakPeekButton = document.getElementById("sneak-peek-button");
+// Delayed navigation for book and button
+document.addEventListener("DOMContentLoaded", function () {
+  const bookLink = document.getElementById("book-link");
+  const sneakPeekButton = document.getElementById("sneak-peek-button");
 
-    function delayNavigation(event) {
-      event.preventDefault();
-      setTimeout(() => {
-        window.location.href = event.currentTarget.getAttribute('href');
-      }, 600);
-    }
+  function delayNavigation(event) {
+    event.preventDefault();
+    setTimeout(() => {
+      window.location.href = event.currentTarget.getAttribute('href');
+    }, 600);
+  }
 
-    bookLink.addEventListener("click", delayNavigation);
-    sneakPeekButton.addEventListener("click", delayNavigation);
-  });
+  bookLink.addEventListener("click", delayNavigation);
+  sneakPeekButton.addEventListener("click", delayNavigation);
+});
 </script>
 
 </body>
