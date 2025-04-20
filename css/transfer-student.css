@@ -304,15 +304,16 @@ body {
 }
 
 .book-pages {
-  width: 95%;
-  height: 95%;
+  width: 90%;
+  height: 90%;
   background: #faf8f0;
   position: absolute;
-  top: 2.5%;
-  left: 2.5%;
+  top: 5%;
+  left: 5%;
   z-index: 2;
   border-radius: 6px;
   box-shadow: inset -2px 0 6px rgba(0,0,0,0.2);
+  overflow: hidden; /* <<< this prevents pages from sticking out! */
 }
 
 .left-page, .right-page {
