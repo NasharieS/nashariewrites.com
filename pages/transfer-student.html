@@ -86,30 +86,16 @@
 
 <!-- JavaScript for Header Fade In -->
 <script>
-// Header fade in
-const header = document.querySelector('.header');
-window.addEventListener('scroll', function() {
-  if (window.scrollY > 50) {
-    header.style.opacity = '1';
-  } else {
-    header.style.opacity = '0';
-  }
-});
+document.addEventListener('DOMContentLoaded', function() {
+  const header = document.querySelector('.header');
 
-// Delayed navigation for book and button
-document.addEventListener("DOMContentLoaded", function () {
-  const bookLink = document.getElementById("book-link");
-  const sneakPeekButton = document.getElementById("sneak-peek-button");
-
-  function delayNavigation(event) {
-    event.preventDefault();
-    setTimeout(() => {
-      window.location.href = event.currentTarget.getAttribute('href');
-    }, 600);
-  }
-
-  bookLink.addEventListener("click", delayNavigation);
-  sneakPeekButton.addEventListener("click", delayNavigation);
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+      header.style.opacity = '1'; // Show header when scrolled
+    } else {
+      header.style.opacity = '0'; // Hide header at top
+    }
+  });
 });
 </script>
 
