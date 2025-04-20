@@ -97,23 +97,25 @@ body.sneakpeek::before {
 .dropdown-menu {
   display: none;
   opacity: 0;
+  visibility: hidden;
   position: absolute;
   top: 100%;
   left: 0;
   background: #FFF9E5;
   flex-direction: column;
   border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
   margin-top: 5px;
   padding: 10px 0;
   min-width: 200px;
   z-index: 1001;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.dropdown:hover .dropdown-menu {
+.dropdown:hover > .dropdown-menu {
   display: flex;
   opacity: 1;
+  visibility: visible;
 }
 
 .dropdown-menu li {
@@ -137,7 +139,7 @@ body.sneakpeek::before {
   transition: transform 0.3s ease;
 }
 
-.dropdown:hover .arrow {
+.dropdown > a:hover .arrow {
   transform: rotate(180deg);
 }
 
@@ -265,12 +267,17 @@ p.indent {
   text-align: center;
   opacity: 0;
   animation: fadeInFinal 1.5s ease forwards;
-  animation-delay: 0.3s;
 }
 
 @keyframes fadeInFinal {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .final-message h2 {
@@ -284,13 +291,14 @@ p.indent {
   display: inline-block;
   background: #0077FF;
   color: #fff;
-  padding: 12px 24px;
+  padding: 14px 32px;
   font-size: 18px;
   font-weight: bold;
   border-radius: 6px;
   text-decoration: none;
   text-align: center;
   width: auto;
+  margin-top: 20px;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
