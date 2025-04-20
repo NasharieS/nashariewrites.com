@@ -86,14 +86,14 @@
 
 <!-- JavaScript for Header Fade In -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   const header = document.querySelector('.header');
 
   window.addEventListener('scroll', function() {
     if (window.scrollY > 50) {
-      header.style.opacity = '1'; // Show header when scrolled
+      header.style.opacity = '1'; // Show header when scrolling down
     } else {
-      header.style.opacity = '0'; // Hide header at top
+      header.style.opacity = '0'; // Hide header when at top
     }
   });
 });
