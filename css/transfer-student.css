@@ -406,6 +406,36 @@ body {
   font-style: italic;
 }
 
+/* ================= Writing Process Section ================= */
+.writing-process-section {
+  background: #ffffff; /* pure white */
+  padding: 100px 40px;
+  width: 100%;
+}
+
+.writing-process-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.writing-intro {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.writing-elements {
+  border: 2px dashed #ccc;
+  padding: 60px 20px;
+  border-radius: 10px;
+  background: #fafafa;
+  color: #777;
+  font-style: italic;
+}
+
 /* ================= Footer ================= */
 footer {
   background: #FFF9E5;
