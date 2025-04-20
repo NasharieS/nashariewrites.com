@@ -192,6 +192,8 @@ main {
   font-size: 18px;
   line-height: 1.8;
   color: #333;
+  opacity: 1;
+  transition: opacity 0.4s ease;
 }
 
 .page-title {
@@ -237,7 +239,7 @@ p.indent {
   right: 20px;
   font-size: 14px;
   font-weight: bold;
-  color: #5C4033;
+  color: rgba(92, 64, 51, 0.7); /* 70% opacity */
 }
 
 /* Title Spread */
