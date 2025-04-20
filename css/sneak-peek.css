@@ -6,6 +6,13 @@
   font-family: 'Poppins', sans-serif;
 }
 
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior: none; /* Completely disables pull bouncing */
+  touch-action: pan-x pan-y;
+}
+
 /* Sneak Peek Specific */
 body.sneakpeek {
   background: url('../images/vintage_bookshelf.png') no-repeat center center;
@@ -16,8 +23,8 @@ body.sneakpeek {
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior-y: none; /* Key line */
+  overflow-y: auto; /* allow vertical scroll */
+  overscroll-behavior: none; /* prevent pull stretching */
 }
 
 /* Soft overlay over background */
@@ -29,13 +36,6 @@ body.sneakpeek::before {
   background: rgba(255, 255, 255, 0.4);
   z-index: -1;
   pointer-events: none;
-}
-
-html, body {
-  height: 100%;
-  overflow-x: hidden;
-  overscroll-behavior: none; /* Completely disables the "pull" bounce */
-  touch-action: pan-x pan-y;
 }
 
 /* Header */
