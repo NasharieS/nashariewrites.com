@@ -230,11 +230,17 @@ body {
 /* ================= Synopsis Section ================= */
 .synopsis-container {
   max-width: 1100px;
-  margin: 120px auto 0;
-  padding: 60px 40px;
-  background: #ffffff; 
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-section {
+  width: 100%;
+  background: #ffffff; /* <<< True white block for section */
+  padding: 100px 0; /* top and bottom breathing room */
 }
 
 .page-title {
