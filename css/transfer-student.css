@@ -360,6 +360,11 @@ body {
   transform: scale(1.05);
 }
 
+.book-container:hover .cta-button {
+  background: #005FCC;
+  transform: scale(1.05);
+}
+
 /* ================= Footer ================= */
 footer {
   background: #FFF9E5;
