@@ -342,20 +342,23 @@ body {
 }
 
 /* ================= CTA Button ================= */
-.cta-button {
-  background: #0077FF;
-  color: #fff;
-  padding: 14px 30px;
-  font-size: 18px;
-  border-radius: 6px;
-  font-weight: bold;
-  margin-top: 30px;
-  text-decoration: none; /* <<< Remove underline */
-  cursor: pointer; /* <<< Make mouse pointer */
-  transition: background 0.3s ease, transform 0.2s ease;
+.book-link {
+  text-decoration: none; /* <<< prevent underline */
 }
 
-.cta-button:hover {
+.cta-button {
+  display: inline-block;
+  background: #0077FF;
+  color: white;
+  padding: 14px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  margin-top: 30px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.book-link:hover .cta-button {
   background: #005FCC;
   transform: scale(1.05);
 }
