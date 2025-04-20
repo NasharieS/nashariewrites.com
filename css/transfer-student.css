@@ -342,9 +342,6 @@ body {
 }
 
 /* ================= CTA Button ================= */
-.book-link {
-  text-decoration: none; /* <<< prevent underline */
-}
 
 .cta-button {
   display: inline-block;
@@ -358,12 +355,15 @@ body {
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.book-link:hover .cta-button {
-  background: #005FCC;
-  transform: scale(1.05);
+.book-link {
+  text-decoration: none; /* prevent underline on link */
 }
 
-.book-container:hover .cta-button {
+.book-link:hover .book-cover {
+  transform: rotateY(-25deg);
+}
+
+.book-link:hover .cta-button {
   background: #005FCC;
   transform: scale(1.05);
 }
