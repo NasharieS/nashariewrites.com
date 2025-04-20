@@ -343,7 +343,6 @@ body {
 
 /* ================= CTA Button ================= */
 .cta-button {
-  display: inline-block;
   background: #0077FF;
   color: #fff;
   padding: 14px 30px;
@@ -351,8 +350,9 @@ body {
   border-radius: 6px;
   font-weight: bold;
   margin-top: 30px;
+  text-decoration: none; /* <<< Remove underline */
+  cursor: pointer; /* <<< Make mouse pointer */
   transition: background 0.3s ease, transform 0.2s ease;
-  cursor: pointer;
 }
 
 .cta-button:hover {
