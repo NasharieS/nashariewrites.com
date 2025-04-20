@@ -118,7 +118,7 @@ body {
 }
 
 /* Arrow Rotation */
-.dropdown:hover .arrow {
+.dropdown > a:hover .arrow {
   transform: rotate(180deg);
 }
 
