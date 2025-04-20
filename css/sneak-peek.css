@@ -111,7 +111,7 @@ body.sneakpeek::before {
   transition: opacity 0.3s ease;
 }
 
-.dropdown:hover .dropdown-menu {
+.dropdown > a:hover + .dropdown-menu {
   display: flex;
   opacity: 1;
 }
