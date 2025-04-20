@@ -279,6 +279,7 @@ body {
   flex-direction: column;
   align-items: center;
   perspective: 1800px;
+  position: relative;
 }
 
 .book {
@@ -290,59 +291,36 @@ body {
 }
 
 .book-pages {
-  width: 98%;
-  height: 96%;
+  width: 96%;
+  height: 94%;
   background: #faf8f0;
   position: absolute;
-  top: 2%;
-  left: 1%;
+  top: 3%;
+  left: 2%;
   z-index: 1;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: inset -2px 0px 8px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .middle-page {
-  width: 96%;
-  height: 92%;
+  width: 94%;
+  height: 90%;
   background: linear-gradient(to right, #ffffff 0%, #f0f0f0 100%);
   position: absolute;
-  top: 4%;
-  left: 2%;
+  top: 5%;
+  left: 3%;
   border-radius: 6px;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  transform: translateZ(2px);
   opacity: 0.8;
 }
 
-.left-page, .right-page {
-  width: 95%;
-  height: 90%;
-  position: absolute;
-  background: linear-gradient(to right, #fdfdfd 0%, #f5f5f5 100%);
-  box-shadow: inset -1px 0px 3px rgba(0,0,0,0.1);
-  border-radius: 6px;
-  transition: transform 1s ease-in-out;
-}
-
-.left-page {
-  left: 5px;
-  transform: rotateY(0deg);
-}
-
-.right-page {
-  right: 5px;
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
-}
-
-/* Stack middle pages nicely */
+/* Stack them */
 .book-pages .middle-page:nth-child(1) { transform: translateZ(1px); }
 .book-pages .middle-page:nth-child(2) { transform: translateZ(2px); }
 .book-pages .middle-page:nth-child(3) { transform: translateZ(3px); }
+.book-pages .middle-page:nth-child(4) { transform: translateZ(4px); }
+.book-pages .middle-page:nth-child(5) { transform: translateZ(5px); }
 
 .book-cover {
   width: 100%;
@@ -350,17 +328,17 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 3;
-  border-radius: 8px;
-  overflow: hidden;
   background: url('../images/bookcover.png') center center / cover no-repeat;
+  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  backface-visibility: hidden;
+  z-index: 3;
+  transform-origin: left center;
+  transition: transform 0.8s ease-in-out;
 }
 
-/* Hover effect */
+/* Hover Effects */
 .book-container:hover .book-cover {
-  transform: rotateY(-25deg); /* only rotate, don't shrink */
+  transform: rotateY(-25deg);
 }
 
 /* ================= CTA Button ================= */
