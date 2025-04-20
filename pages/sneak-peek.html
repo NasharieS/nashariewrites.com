@@ -132,29 +132,32 @@ const contentSpreads = rawParagraphs.reduce((acc, para, i, arr) => {
 
   let current = 0;
 
- function renderSpread(index) {
-  const [left, right] = spreads[index] || ["", ""];
-  leftEl.innerHTML = left;
+function renderSpread(index) {
+  leftEl.style.opacity = 0;
+  rightEl.style.opacity = 0;
 
-  if (index === spreads.length - 1) {
-    // Special case: Last spread = "More Coming Soon"
-    rightEl.innerHTML = `
-      <div class="final-message">
-        <h2>More Coming Soon...</h2>
-        <a href="../pages/transfer-student.html" class="explore-button">Explore the World</a>
-      </div>`;
+  setTimeout(() => {
+    const [left, right] = spreads[index] || ["", ""];
+    leftEl.innerHTML = left;
 
-    // 🛑 Hide page numbers for final page
-    rightNumber.textContent = "";
-    leftNumber.textContent = "";
-  } else {
-    rightEl.innerHTML = right;
+    if (index === spreads.length - 1) {
+      rightEl.innerHTML = `
+        <div class="final-message">
+          <h2>More Coming Soon...</h2>
+          <a href="../pages/transfer-student.html" class="explore-button">Explore the World</a>
+        </div>`;
+    } else {
+      rightEl.innerHTML = right;
+    }
+
     leftNumber.textContent = index * 2 + 1;
     rightNumber.textContent = index * 2 + 2;
-  }
+    prevBtn.style.display = index === 0 ? "none" : "block";
+    nextBtn.style.display = index === spreads.length - 1 ? "none" : "block";
 
-  prevBtn.style.display = index === 0 ? "none" : "block";
-  nextBtn.style.display = index === spreads.length - 1 ? "none" : "block";
+    leftEl.style.opacity = 1;
+    rightEl.style.opacity = 1;
+  }, 200); // 200ms pause for smoother fade
 }
 
   prevBtn.onclick = () => {
