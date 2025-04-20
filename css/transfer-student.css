@@ -147,6 +147,17 @@ body {
   animation: heroZoomOut 2s ease-out forwards, smoothImageTransition 12s infinite linear 3s; /* ← this part was missing */
 }
 
+@keyframes heroZoomOut {
+  0% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 @keyframes smoothImageTransition {
   0%, 100% { background-image: url('../images/hallway1.png'); }
   25% { background-image: url('../images/hallway2.png'); }
