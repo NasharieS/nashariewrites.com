@@ -1,97 +1,89 @@
-/* General Reset */
+/* ================= General Reset ================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Body */
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
 body {
-    background: #FFF9E5;
-    color: #0D1B2A;
-    min-height: 100vh;
-    overflow-x: hidden;
-    overscroll-behavior: none; /* Disable pull to refresh / rubber band */
-    overflow-x: hidden; /* Prevent horizontal scroll */
+  background: #FFF9E5;
+  color: #0D1B2A;
+  min-height: 100vh;
 }
 
-/* Header */
+/* ================= Header ================= */
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #FFF9E5;
-    padding: 10px 30px;
-    height: 110px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    opacity: 0; /* Start hidden */
-    transition: opacity 0.6s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FFF9E5;
+  padding: 10px 30px;
+  height: 110px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
 
-/* Logo */
 .header-logo {
-    height: 110px;
-    width: auto;
+  height: 110px;
+  width: auto;
 }
 
-/* Fade in Header */
-@keyframes fadeInHeader {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Nav */
 .nav-container ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    align-items: center;
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
 }
 
 .nav-container ul li a {
-    position: relative;
-    text-decoration: none;
-    color: #5C4033;
-    font-weight: bold;
-    font-size: 18px;
-    padding: 12px 0;
-    text-align: center;
-    transition: color 0.3s, text-shadow 0.3s;
+  position: relative;
+  text-decoration: none;
+  color: #5C4033;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 12px 0;
+  text-align: center;
+  transition: color 0.3s, text-shadow 0.3s;
 }
 
 .nav-container ul li a::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background: #ffffff;
-    bottom: 0;
-    left: 0;
-    transition: width 0.3s ease;
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #ffffff;
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s ease;
 }
 
 .nav-container ul li a:hover::after {
-    width: 100%;
+  width: 100%;
 }
 
 .nav-container ul li a:hover {
-    color: #0077FF;
-    text-shadow: 0 0 6px rgba(0, 119, 255, 0.5);
+  color: #0077FF;
+  text-shadow: 0 0 6px rgba(0,119,255,0.5);
 }
 
 .arrow {
-    display: inline-block;
-    margin-left: 5px;
-    transition: transform 0.3s ease;
+  display: inline-block;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
 }
 
-/* Dropdown */
-/* Dropdown Setup */
 .dropdown {
   position: relative;
 }
@@ -114,7 +106,6 @@ body {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* When Hovered */
 .dropdown:hover > .dropdown-menu {
   display: flex;
   opacity: 1;
@@ -125,7 +116,6 @@ body {
   transform: rotate(180deg);
 }
 
-/* Dropdown Links */
 .dropdown-menu li {
   padding: 10px 20px;
   text-align: center;
@@ -141,12 +131,12 @@ body {
   color: #0077FF;
 }
 
-/* Hero Section */
+/* ================= Hero Section ================= */
 .hero {
   background: url('../images/hallway1.png') no-repeat center center/cover;
   min-height: 100vh;
   width: 100%;
-  background-attachment: fixed; 
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -154,78 +144,68 @@ body {
   padding-top: 110px;
   text-align: center;
   overflow: hidden;
-  animation: smoothImageTransition 12s infinite linear 3s; 
+  animation: smoothImageTransition 12s infinite linear 3s;
+  position: relative;
 }
 
-/* Hero Zoom Out */
-@keyframes heroZoomOut {
-    0% { height: 130vh; width: 110vw; opacity: 1; }
-    100% { height: 90vh; width: 100%; }
-}
-
-/* Background Morphing */
 @keyframes smoothImageTransition {
-    0%, 100% { background-image: url('../images/hallway1.png'); }
-    25% { background-image: url('../images/hallway2.png'); }
-    50% { background-image: url('../images/hallway3.png'); }
-    75% { background-image: url('../images/hallway4.png'); }
+  0%, 100% { background-image: url('../images/hallway1.png'); }
+  25% { background-image: url('../images/hallway2.png'); }
+  50% { background-image: url('../images/hallway3.png'); }
+  75% { background-image: url('../images/hallway4.png'); }
 }
 
-/* Crack overlay */
 .hero::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('../images/crack-overlay.png') repeat center center;
-    opacity: 0.08;
-    mix-blend-mode: screen;
-    z-index: 2;
-    animation: crackGlitch 8s linear infinite;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../images/crack-overlay.png') repeat center center;
+  opacity: 0.08;
+  mix-blend-mode: screen;
+  z-index: 2;
+  animation: crackGlitch 8s linear infinite;
 }
 
 @keyframes crackGlitch {
-    0% { opacity: 0.06; transform: scale(1); }
-    50% { opacity: 0.1; transform: scale(1.01) rotate(0.2deg); }
-    100% { opacity: 0.06; transform: scale(1); }
+  0% { opacity: 0.06; transform: scale(1); }
+  50% { opacity: 0.1; transform: scale(1.01) rotate(0.2deg); }
+  100% { opacity: 0.06; transform: scale(1); }
 }
 
-/* Title and One-Liner */
 .title {
   font-size: 60px;
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: 3px;
-  text-shadow: 5px 5px 15px rgba(0, 0, 0, 1), -5px -5px 15px rgba(255, 255, 255, 0.8);
-  margin-bottom: 20px;
+  text-shadow: 5px 5px 15px rgba(0,0,0,1), -5px -5px 15px rgba(255,255,255,0.8);
+  color: #ffffff;
   opacity: 0;
   animation: fadeInText 1.5s ease-in 1s forwards;
-  color: #ffffff; 
+  margin-bottom: 20px;
 }
 
 .one-liner {
   font-size: 28px;
   font-weight: bold;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  color: #ffffff;
   opacity: 0;
   max-width: 900px;
   line-height: 1.5;
   animation: fadeInText 2s ease-in 1.8s forwards;
-  color: #ffffff;
 }
 
-.one-liner span {
-    display: block;
-}
+.one-liner span { display: block; }
 
 @keyframes fadeInText {
-    0% { opacity: 0; transform: translateY(-20px); }
-    100% { opacity: 1; transform: translateY(0); }
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-/* 📚 Synopsis Section */
+/* ================= Synopsis Section ================= */
 .synopsis-container {
   max-width: 1200px;
   margin: 100px auto 0;
@@ -239,7 +219,6 @@ body {
   color: #5C4033;
   text-align: center;
   margin-bottom: 50px;
-  position: relative;
 }
 
 .synopsis-content {
@@ -255,13 +234,13 @@ body {
   font-size: 18px;
   line-height: 1.8;
   color: #333;
-  text-align: left;
 }
 
 .synopsis-text p {
   margin-bottom: 40px;
 }
 
+/* ================= Book Hover Animation ================= */
 .book-container {
   flex: 1 1 300px;
   display: flex;
@@ -308,9 +287,7 @@ body {
   transition: transform 1s ease;
 }
 
-.left-page {
-  left: 5px;
-}
+.left-page { left: 5px; }
 
 .right-page {
   right: 5px;
@@ -318,7 +295,6 @@ body {
   backface-visibility: hidden;
 }
 
-/* 🎯 Hover Opens the Book */
 .book-container:hover .book-cover {
   transform: rotateY(-30deg);
   box-shadow: 10px 10px 20px rgba(0,0,0,0.5);
@@ -332,7 +308,7 @@ body {
   transform: rotateY(150deg);
 }
 
-/* 📖 Sneak Peek Button */
+/* ================= CTA Button ================= */
 .cta-button {
   display: inline-block;
   background: #0077FF;
@@ -351,13 +327,13 @@ body {
   transform: scale(1.05);
 }
 
-/* Footer */
+/* ================= Footer ================= */
 footer {
-    background: #FFF9E5;
-    color: #5C4033;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 14px;
-    width: 100%;
-    position: relative;
+  background: #FFF9E5;
+  color: #5C4033;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+  width: 100%;
+  position: relative;
 }
