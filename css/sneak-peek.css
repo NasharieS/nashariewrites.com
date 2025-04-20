@@ -111,7 +111,7 @@ body.sneakpeek::before {
   transition: opacity 0.3s ease;
 }
 
-.dropdown > a:hover + .dropdown-menu {
+.dropdown:hover .dropdown-menu {
   display: flex;
   opacity: 1;
 }
@@ -137,7 +137,7 @@ body.sneakpeek::before {
   transition: transform 0.3s ease;
 }
 
-.dropdown > a:hover .arrow {
+.dropdown:hover .arrow {
   transform: rotate(180deg);
 }
 
@@ -289,7 +289,14 @@ p.indent {
   font-weight: bold;
   border-radius: 6px;
   text-decoration: none;
+  text-align: center;
+  width: auto;
   transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.final-message a.explore-button {
+  width: fit-content;
+  padding: 14px 32px;
 }
 
 .explore-button:hover {
