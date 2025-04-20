@@ -137,7 +137,7 @@ body.sneakpeek::before {
   transition: transform 0.3s ease;
 }
 
-.dropdown:hover .arrow {
+.dropdown > a:hover .arrow {
   transform: rotate(180deg);
 }
 
