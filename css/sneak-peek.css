@@ -221,6 +221,15 @@ p.indent {
   background-color: #0077FF;
 }
 
+.page-number {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #5C4033;
+}
+
 /* Title Spread */
 .title-spread {
   display: flex;
