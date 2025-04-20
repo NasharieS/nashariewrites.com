@@ -342,14 +342,6 @@ body {
   transform: rotateY(-25deg); /* only rotate, don't shrink */
 }
 
-.book-container:hover .left-page {
-  transform: rotateY(-15deg);
-}
-
-.book-container:hover .right-page {
-  transform: rotateY(165deg);
-}
-
 /* ================= CTA Button ================= */
 .cta-button {
   display: inline-block;
