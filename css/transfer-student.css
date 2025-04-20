@@ -351,18 +351,6 @@ body {
   transform: scale(1.05);
 }
 
-<script>
-const header = document.querySelector('.header');
-
-window.addEventListener('scroll', function() {
-  if (window.scrollY > 50) {
-    header.style.opacity = '1'; // Show header when scrolling down
-  } else {
-    header.style.opacity = '0'; // Hide header when at top
-  }
-});
-</script>
-
 /* Footer */
 footer {
     background: #FFF9E5;
