@@ -286,7 +286,7 @@ body {
   height: 420px;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.8s ease-in-out;
+  transition: transform 1s ease;
 }
 
 .book-cover {
@@ -300,19 +300,19 @@ body {
   left: 0;
   z-index: 3;
   background: url('../images/bookcover.png') center center / cover no-repeat;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
 
 .book-pages {
-  width: 92%; /* Slightly smaller inside */
-  height: 92%;
+  width: 95%;
+  height: 95%;
   background: #faf8f0;
   position: absolute;
-  top: 4%;
-  left: 4%;
+  top: 2.5%;
+  left: 2.5%;
   z-index: 2;
-  box-shadow: inset -2px 0 6px rgba(0,0,0,0.15);
   border-radius: 6px;
+  box-shadow: inset -2px 0 6px rgba(0,0,0,0.2);
 }
 
 .left-page, .right-page {
@@ -321,8 +321,8 @@ body {
   background: linear-gradient(to right, #ffffff, #f5f5f5);
   position: absolute;
   top: 5%;
-  transition: transform 1s ease;
   border-radius: 4px;
+  transition: transform 1s ease;
 }
 
 .left-page {
@@ -335,9 +335,9 @@ body {
   backface-visibility: hidden;
 }
 
+/* Hover effect */
 .book-container:hover .book-cover {
-  transform: rotateY(-25deg);
-  box-shadow: 8px 8px 20px rgba(0,0,0,0.4);
+  transform: rotateY(-25deg); /* only rotate, don't shrink */
 }
 
 .book-container:hover .left-page {
@@ -345,7 +345,7 @@ body {
 }
 
 .book-container:hover .right-page {
-  transform: rotateY(160deg);
+  transform: rotateY(165deg);
 }
 
 /* ================= CTA Button ================= */
