@@ -406,6 +406,49 @@ body {
   font-style: italic;
 }
 
+/* ================= Quote Section ================= */
+.quote-section {
+  background: #ffffff; /* pure white */
+  padding: 80px 20px;
+  width: 100%;
+}
+
+.quote-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.featured-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 600;
+  color: #5C4033;
+  position: relative;
+  padding: 20px 30px;
+  line-height: 1.6;
+}
+
+.featured-quote::before,
+.featured-quote::after {
+  content: '“';
+  font-size: 48px;
+  color: #E0C097;
+  position: absolute;
+}
+
+.featured-quote::before {
+  top: -20px;
+  left: 20px;
+}
+
+.featured-quote::after {
+  content: '”';
+  bottom: -20px;
+  right: 20px;
+}
+
 /* ================= Writing Process Section ================= */
 .writing-process-section {
   background: #ffffff; /* pure white */
