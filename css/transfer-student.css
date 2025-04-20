@@ -36,12 +36,12 @@ body {
   animation-delay: 3s; /* <<< Delay the header animation by 3 seconds */
 }
 
-@keyframes fadeInHeader {
-  0% {
+@keyframes headerFadeIn {
+  from {
     opacity: 0;
     transform: translateY(-20px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
@@ -148,7 +148,6 @@ body {
   background: url('../images/hallway1.png') no-repeat center center/cover;
   min-height: 100vh;
   width: 100%;
-  background-attachment: fixed; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -156,7 +155,8 @@ body {
   padding-top: 110px;
   text-align: center;
   overflow: hidden;
-  animation: heroZoomOut 2s ease-out forwards, smoothImageTransition 12s infinite linear 3s; /* ← this part was missing */
+  animation: heroZoomOut 2s ease-out forwards, smoothImageTransition 12s infinite linear 3s;
+  position: relative;
 }
 
 @keyframes heroZoomOut {
