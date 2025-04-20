@@ -36,11 +36,6 @@ body {
   transition: opacity 0.6s ease;
 }
 
-.header.visible {
-  opacity: 1;
-  pointer-events: auto; /* <--- Allow clicking when visible */
-}
-
 .header-logo {
   height: 110px;
   width: auto;
