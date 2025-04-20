@@ -32,7 +32,7 @@ body {
   left: 0;
   z-index: 1000;
   opacity: 0; /* Start invisible */
-  animation: fadeInHeader 2s ease forwards;
+  animation: headerFadeIn 2s ease forwards; /* <<< Fix THIS line */
   animation-delay: 3s; /* <<< Delay the header animation by 3 seconds */
 }
 
