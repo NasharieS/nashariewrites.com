@@ -112,7 +112,7 @@ body {
 }
 
 /* When Hovered */
-.dropdown:hover .dropdown-menu {
+.dropdown > a:hover + .dropdown-menu {
   display: flex;
   opacity: 1;
 }
