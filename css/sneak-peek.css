@@ -256,6 +256,39 @@ p.indent {
   text-align: left;
 }
 
+.final-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+.final-message h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: #5C4033;
+  margin-bottom: 20px;
+}
+
+.explore-button {
+  display: inline-block;
+  background: #0077FF;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.explore-button:hover {
+  background: #005FCC;
+  transform: scale(1.05);
+}
+
 /* Footer */
 footer {
   background: #FFF9E5;
