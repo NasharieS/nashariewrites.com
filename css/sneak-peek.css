@@ -17,6 +17,7 @@ html, body {
 body.sneakpeek {
   background: url('../images/vintage_bookshelf.png') no-repeat center center;
   background-size: cover;
+  background-attachment: fixed;
   color: #0D1B2A;
   line-height: 1.6;
   display: flex;
@@ -183,6 +184,12 @@ main {
   transition: transform 0.6s ease;
 }
 
+.book-page:hover {
+  transform: scale(1.01) rotateZ(0.3deg);
+  box-shadow: 0px 0px 12px rgba(0,0,0,0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
 .left-page { margin-right: -5px; }
 .right-page { margin-left: -5px; }
 
@@ -300,6 +307,7 @@ p.indent {
   display: inline-block;
   background: #0077FF;
   color: #fff;
+  box-shadow: 0px 4px 12px rgba(0, 119, 255, 0.4);
   padding: 14px 32px;
   font-size: 18px;
   font-weight: bold;
