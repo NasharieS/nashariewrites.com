@@ -31,9 +31,14 @@ body {
   top: 0;
   left: 0;
   z-index: 1000;
-  opacity: 1; /* <<< Set to 1! */
-  pointer-events: auto; /* <<< Allow clicking */
+  opacity: 0; /* start hidden */
+  pointer-events: none; /* can't click until shown */
   transition: opacity 0.6s ease;
+}
+
+.header.visible {
+  opacity: 1;
+  pointer-events: auto; /* clickable after shown */
 }
 
 .header-logo {
