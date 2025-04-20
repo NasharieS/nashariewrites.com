@@ -230,8 +230,11 @@ body {
 /* ================= Synopsis Section ================= */
 .synopsis-container {
   max-width: 1200px;
-  margin: 100px auto 0;
+  margin: 50px auto 0; /* 🔥 Bring the whole block up */
   padding: 60px 20px;
+  background: #ffffff; /* 🔥 Make the block background white */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* (Optional) soft shadow to make it pop */
 }
 
 .page-title {
@@ -240,7 +243,8 @@ body {
   font-weight: 900;
   color: #5C4033;
   text-align: center;
-  margin-bottom: 50px;
+  margin-top: 0;
+  margin-bottom: 30px; /* 🔥 Less bottom space to tighten layout */
 }
 
 .synopsis-content {
