@@ -110,38 +110,81 @@
 </section>
 
 <!-- Writing Process Section -->
-<section class="writing-process-section yellow-section">
+<section class="yellow-section">
   <div class="writing-process-container">
     <h2 class="section-title">Writing Process</h2>
 
+    <!-- Writing Blurb -->
+    <div class="writing-intro">
+      <p><strong>Writing <em>The Transfer Student</em></strong> has been a way to creatively share everything I’ve learned from studying education systems around the world.<br><br>
+      As an Obama-Chesky Voyager Scholar, I had the opportunity to travel to Boston, Dubai, Helsinki, and Tokyo—conducting interviews, visiting schools, and witnessing firsthand the global dimensions of education.<br><br>
+      I wanted to make these insights accessible, especially to young students who might see themselves in Amara’s journey, in <em>The Transfer Student</em>.<br><br>
+      I am currently revising my manuscript and preparing to query literary agents in Summer 2025.<br><br>
+      <strong>The views expressed are my own and do not reflect the views of the Obama Foundation or its affiliates.</strong></p>
+    </div>
+
+    <!-- Writing Timeline and Media -->
     <div class="writing-process-content">
-      <!-- Left: Blurb -->
+
+      <!-- Timeline Left -->
       <div class="writing-left">
-        <p class="writing-intro">
-          <em>The Transfer Student</em> was born from a desire to reimagine how we talk about education inequities.
-          After traveling internationally and conducting interviews on education systems around the world,
-          I realized there needed to be a more creative, accessible way to share what I had learned—especially with
-          young students who might see themselves in Amara’s journey. I wanted to capture both the heartbreak and hope
-          in these systems through a story that felt real, emotional, and urgent especially at a time when public education and equity efforts are increasingly under pressure.<br><br>
-          I am currently in the revision stage of my manuscript and plan to begin querying literary agents this summer.
-        </p>
+        <div class="timeline">
+          <div class="timeline-item" data-img="../images/education-trust.jpg">February 2024: Internship at the Education Trust in D.C.</div>
+          <div class="timeline-item" data-img="../images/department-education.jpg">March 2024: Internship at the Department of Education (WHI-Hispanics)</div>
+          <div class="timeline-item" data-img="../images/boston.jpg">May 30, 2024: Landed in Boston</div>
+          <div class="timeline-item" data-img="../images/dubai.jpg">June 8, 2024: Landed in Dubai</div>
+          <div class="timeline-item" data-img="../images/helsinki.jpg">June 16, 2024: Landed in Helsinki</div>
+          <div class="timeline-item" data-img="../images/tokyo.jpg">June 23, 2024: Landed in Tokyo</div>
+          <div class="timeline-item" data-img="../images/writing.jpg">July 3, 2024: Started writing manuscript</div>
+          <div class="timeline-item" data-img="../images/draft-complete.jpg">January 2025: Completed first draft</div>
+          <div class="timeline-item" data-img="../images/revising.jpg">February 2025: Revising manuscript</div>
+          <div class="timeline-item" data-img="../images/query.jpg">Summer 2025: Preparing to query agents</div>
+        </div>
       </div>
 
-      <!-- Right: Timeline -->
+      <!-- Audio and Quotes Right -->
       <div class="writing-right">
-        <div class="timeline">
-          <div class="timeline-item">✨ Internships in D.C.</div>
-          <div class="timeline-item">🌍 Research abroad on global education systems</div>
-          <div class="timeline-item">🗣️ Interviews with students and teachers worldwide</div>
-          <div class="timeline-item">📝 First draft completed</div>
-          <div class="timeline-item">🔎 Revising manuscript</div>
-          <div class="timeline-item">📬 Preparing to query agents (Summer 2025)</div>
+        <div class="writing-elements">
+          <p>[Audio clips and excerpts from interviews coming soon!]</p>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
+<!-- Timeline Hover Popup (Image Viewer) -->
+<div id="timeline-popup" style="display:none; position:fixed; top:10%; left:50%; transform:translateX(-50%); background:#fff; padding:20px; border-radius:10px; box-shadow:0px 4px 12px rgba(0,0,0,0.3); z-index:5000; text-align:center;">
+  <img id="popup-img" src="" alt="Timeline Image" style="max-width:90%; border-radius:8px; margin-bottom:10px;">
+  <div id="popup-caption" style="font-size:16px; color:#555;"></div>
+  <button onclick="closePopup()" style="margin-top:10px; background:#0077FF; color:white; border:none; padding:10px 20px; border-radius:6px; cursor:pointer;">Close</button>
+</div>
+
+<script>
+// Timeline hover effect for popup
+const timelineItems = document.querySelectorAll('.timeline-item');
+const popup = document.getElementById('timeline-popup');
+const popupImg = document.getElementById('popup-img');
+const popupCaption = document.getElementById('popup-caption');
+
+timelineItems.forEach(item => {
+  item.addEventListener('mouseover', () => {
+    const imgSrc = item.getAttribute('data-img');
+    popupImg.src = imgSrc;
+    popupCaption.innerText = item.innerText;
+    popup.style.display = 'block';
+  });
+
+  item.addEventListener('mouseout', () => {
+    popup.style.display = 'none';
+  });
+});
+
+function closePopup() {
+  popup.style.display = 'none';
+}
+</script>
+
 
 <!-- Footer -->
 <footer>
