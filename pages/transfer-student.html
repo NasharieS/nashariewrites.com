@@ -169,23 +169,29 @@ const popupImg = document.getElementById('popup-img');
 const popupCaption = document.getElementById('popup-caption');
 
 timelineItems.forEach(item => {
-  item.addEventListener('mouseover', () => {
+  const dot = document.createElement('div'); // create clickable dot overlay
+  dot.style.position = 'absolute';
+  dot.style.left = '-30px';
+  dot.style.top = '12px';
+  dot.style.width = '20px';
+  dot.style.height = '20px';
+  dot.style.cursor = 'pointer';
+  dot.style.zIndex = '3'; // above blue dot
+  dot.style.background = 'transparent';
+  item.appendChild(dot);
+
+  dot.addEventListener('mouseenter', () => {
     const imgSrc = item.getAttribute('data-img');
     popupImg.src = imgSrc;
     popupCaption.innerText = item.innerText;
     popup.style.display = 'block';
   });
 
-  item.addEventListener('mouseout', () => {
+  dot.addEventListener('mouseleave', () => {
     popup.style.display = 'none';
   });
 });
-
-function closePopup() {
-  popup.style.display = 'none';
-}
 </script>
-
 
 <!-- Footer -->
 <footer>
