@@ -547,33 +547,39 @@ body {
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  background: white;
-  padding: 20px 15px;
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  background: #fff;
+  padding: 15px 10px 25px 10px; /* polaroid padding */
+  border-radius: 6px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.25);
   z-index: 5000;
   text-align: center;
-  max-width: 320px;
+  max-width: 300px;
   border: 1px solid #ddd;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+#timeline-popup.active {
+  opacity: 1;
 }
 
 #popup-img {
   width: 100%;
   height: auto;
   display: block;
-  background: #fff;
+  margin: 0 auto;
+  background: white;
   padding: 10px;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border: 1px solid #ccc;
 }
 
 #popup-caption {
-  font-size: 16px;
+  font-size: 15px;
   color: #555;
+  margin-top: 10px;
   font-family: 'Playfair Display', serif;
   font-style: italic;
-  margin-top: 8px;
 }
 
 /* Remove blue tape bar */
