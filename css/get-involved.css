@@ -35,6 +35,7 @@ body {
   display: flex;
   gap: 30px;
   align-items: center;
+  flex-wrap: wrap; /* <<< ADD THIS */
 }
 
 .nav-container ul li a {
@@ -125,7 +126,7 @@ body {
 .blurb-section {
   background: #ffffff;
   width: 100%;
-  padding: 210px 20px 100px; /* top padding increased to account for header */
+  padding: 160px 20px 100px; /* Top, sides, bottom */
 }
 
 .intro-container {
