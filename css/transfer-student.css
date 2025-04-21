@@ -475,77 +475,61 @@ body {
 
 .writing-process-content {
   display: flex;
-  flex-wrap: wrap;
   gap: 80px;
+  align-items: flex-start;
   margin-top: 60px;
 }
 
-.writing-left, .writing-right {
-  flex: 1 1 500px;
-}
-
-.writing-left {
-  font-size: 18px;
-  color: #333;
-  line-height: 1.8;
-}
-
-/* ================= Timeline Updated Styling ================= */
+/* Timeline Column */
 .timeline {
+  flex: 1;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 50px;
-  margin-top: 40px;
-  padding-left: 80px; /* still leave some padding for the dates */
 }
 
+/* Vertical Line */
 .timeline::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0; /* stick the timeline line fully to the left */
+  left: 20px;
   width: 4px;
   height: 100%;
   background-color: #5C4033;
   border-radius: 2px;
 }
 
+/* Each timeline item */
 .timeline-item {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 30px;
+  padding-left: 50px;
 }
 
-.timeline-date {
-  flex: 0 0 120px;
-  text-align: right;
-  font-size: 16px;
-  font-weight: bold;
-  color: #5C4033;
-  margin-right: 10px; /* little space between date and dot */
-}
-
+/* The dot */
 .timeline-dot {
+  position: absolute;
+  left: 20px;
+  top: 10px;
   width: 16px;
   height: 16px;
   background-color: #0077FF;
   border: 3px solid white;
   border-radius: 50%;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
-  position: absolute;
-  left: 0px; 
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
+  transform: translate(-50%, 0); /* align horizontally on the line */
 }
 
+/* Text next to dot */
 .timeline-content {
-  flex: 1;
   font-size: 18px;
   color: #555;
-  padding-left: 80px; /* to push the text far from the dot */
+}
+
+/* Audio/Right Column */
+.writing-right {
+  flex: 1;
 }
 
 /* Hover effect on dot */
