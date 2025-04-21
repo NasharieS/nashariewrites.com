@@ -1,4 +1,65 @@
-/* ================= Get Involved Page ================= */
+/* ================= Header ================= */
+body {
+  padding-top: 110px; /* height of header */
+}
+
+/* ================= Header ================= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FFF9E5;
+  padding: 10px 30px;
+  height: 110px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.header-logo {
+  height: 110px;
+  width: auto;
+}
+
+.nav-container ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-container ul li a {
+  position: relative;
+  text-decoration: none;
+  color: #5C4033;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 12px 0;
+  text-align: center;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-container ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #ffffff;
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.nav-container ul li a:hover::after {
+  width: 100%;
+}
+
+.nav-container ul li a:hover {
+  color: #0077FF;
+  text-shadow: 0 0 6px rgba(0,119,255,0.5);
+}
 
 .get-involved-page {
   background: #FFF9E5; /* Light background to match the site */
