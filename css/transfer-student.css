@@ -535,7 +535,7 @@ body {
   border-radius: 50%;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
   position: absolute;
-  left: 0;
+  left: 30;
   top: 50%;
   transform: translate(-50%, -50%); /* perfectly center the dot on the line */
   z-index: 2;
@@ -545,7 +545,7 @@ body {
   flex: 1;
   font-size: 18px;
   color: #555;
-  padding-left: 60px; /* to push the text far from the dot */
+  padding-left: 80px; /* to push the text far from the dot */
 }
 
 /* Hover effect on dot */
