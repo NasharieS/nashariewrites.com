@@ -490,106 +490,106 @@ body {
   line-height: 1.8;
 }
 
+/* ================= Updated Timeline Styling ================= */
 .timeline {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   position: relative;
-  padding-left: 30px;
+  padding-left: 50px; /* push text away from line */
 }
 
 .timeline::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 10px;
-  width: 2px;
+  left: 20px; /* solid line closer to blue dots */
+  width: 4px;
   height: 100%;
-  background-color: #5C4033;
+  background-color: #5C4033; /* solid brown line */
+  border-radius: 2px;
 }
 
 .timeline-item {
   position: relative;
-  padding: 20px 0 20px 20px;
+  padding: 20px 0 20px 30px;
   font-size: 18px;
   color: #555;
+  cursor: default; /* text stays normal */
 }
 
+/* Blue dot "button" */
 .timeline-item::before {
-  content: '•';
+  content: '';
   position: absolute;
-  left: -5px;
-  top: 15px;
-  font-size: 24px;
-  color: #0077FF;
+  left: -30px;
+  top: 12px;
+  width: 20px;
+  height: 20px;
+  background: #0077FF;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, transform 0.3s;
+  z-index: 2;
 }
 
-@media (max-width: 768px) {
-  .writing-process-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .timeline::before {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .timeline-item {
-    padding-left: 0;
-    text-align: center;
-  }
-
-  .timeline-item::before {
-    left: 50%;
-    transform: translateX(-50%);
-  }
+/* Hover over blue dot to trigger effect */
+.timeline-item:hover::before {
+  background: #005FCC;
+  transform: scale(1.2);
 }
 
-/* ===== Timeline Popup Updated for Polaroid Style ===== */
+/* ================= Updated Timeline Popup (Polaroid style) ================= */
 #timeline-popup {
   display: none;
   position: fixed;
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+  background: white;
+  padding: 20px 15px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   z-index: 5000;
   text-align: center;
-  max-width: 400px;
-  border: 2px solid #eee;
+  max-width: 320px;
+  border: 1px solid #ddd;
 }
 
 #popup-img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   display: block;
-  border-radius: 4px;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   margin-bottom: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 #popup-caption {
   font-size: 16px;
   color: #555;
-  margin-top: 10px;
   font-family: 'Playfair Display', serif;
   font-style: italic;
+  margin-top: 8px;
 }
 
+/* Remove blue tape bar */
 #timeline-popup::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-3deg);
-  width: 120px;
-  height: 10px;
-  background: #0077FF;
-  border-radius: 50px;
+  display: none;
+}
+
+/* ================= Mobile-Friendly Adjustments ================= */
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 20px;
+  }
+
+  .timeline-item::before {
+    left: -15px;
+  }
 }
 
 .writing-intro {
