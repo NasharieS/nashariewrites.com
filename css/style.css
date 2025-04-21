@@ -482,3 +482,18 @@ footer, .soft-footer {
   margin-top: 100px;
   box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
 }
+
+.back-to-top {
+  display: inline-block;
+  margin-top: 15px;
+  color: #5C4033;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.back-to-top:hover {
+  color: #0077FF;
+  text-shadow: 0 0 5px rgba(0,119,255,0.4);
+}
