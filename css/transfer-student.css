@@ -519,11 +519,32 @@ body {
   content: '•';
   position: absolute;
   left: -5px;
-  top: 20px;
+  top: 15px;
   font-size: 24px;
   color: #0077FF;
 }
 
+@media (max-width: 768px) {
+  .writing-process-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .timeline-item::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
 
 .writing-intro {
   font-size: 18px;
