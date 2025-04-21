@@ -179,16 +179,20 @@ timelineItems.forEach(item => {
   dot.style.background = 'transparent';
   item.appendChild(dot);
 
-  dot.addEventListener('mouseenter', () => {
-    const imgSrc = item.getAttribute('data-img');
-    popupImg.src = imgSrc;
-    popupCaption.innerText = item.innerText;
-    popup.style.display = 'block';
-  });
+dot.addEventListener('mouseenter', () => {
+  const imgSrc = item.getAttribute('data-img');
+  popupImg.src = imgSrc;
+  popupCaption.innerText = item.innerText;
+  popup.classList.add('active');
+  popup.style.display = 'block';
+});
 
-  dot.addEventListener('mouseleave', () => {
+dot.addEventListener('mouseleave', () => {
+  popup.classList.remove('active');
+  setTimeout(() => {
     popup.style.display = 'none';
-  });
+  }, 300); // wait for fade-out animation
+});
 });
 </script>
 
