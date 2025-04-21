@@ -208,37 +208,29 @@
 
 <script>
 // Timeline hover effect for popup
-const timelineItems = document.querySelectorAll('.timeline-item');
+const timelineDots = document.querySelectorAll('.timeline-marker');
 const popup = document.getElementById('timeline-popup');
 const popupImg = document.getElementById('popup-img');
 const popupCaption = document.getElementById('popup-caption');
 
-timelineItems.forEach(item => {
-  const dot = document.createElement('div'); // create clickable dot overlay
-  dot.style.position = 'absolute';
-  dot.style.left = '-30px';
-  dot.style.top = '12px';
-  dot.style.width = '20px';
-  dot.style.height = '20px';
-  dot.style.cursor = 'pointer';
-  dot.style.zIndex = '3'; // above blue dot
-  dot.style.background = 'transparent';
-  item.appendChild(dot);
+timelineDots.forEach(dot => {
+  const timelineItem = dot.parentElement; // get the full timeline-item container
 
-dot.addEventListener('mouseenter', () => {
-  const imgSrc = item.getAttribute('data-img');
-  popupImg.src = imgSrc;
-  popupCaption.innerText = item.innerText;
-  popup.classList.add('active');
-  popup.style.display = 'block';
-});
+  dot.addEventListener('mouseenter', () => {
+    const imgSrc = timelineItem.querySelector('.timeline-content').getAttribute('data-img');
+    const captionText = timelineItem.querySelector('.timeline-content').innerText;
+    popupImg.src = imgSrc;
+    popupCaption.innerText = captionText;
+    popup.classList.add('active');
+    popup.style.display = 'block';
+  });
 
-dot.addEventListener('mouseleave', () => {
-  popup.classList.remove('active');
-  setTimeout(() => {
-    popup.style.display = 'none';
-  }, 300); // wait for fade-out animation
-});
+  dot.addEventListener('mouseleave', () => {
+    popup.classList.remove('active');
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 300); // allows fade-out
+  });
 });
 </script>
 
