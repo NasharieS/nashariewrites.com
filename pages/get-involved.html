@@ -68,50 +68,6 @@
     </form>
   </div>
 
-  <div id="map" class="map-container"></div>
-</section>
-
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script>
-// Basic soft-themed Leaflet map
-const map = L.map('map').setView([39.5, -98.35], 4); // Centered on USA
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
-
-const form = document.getElementById('thank-form');
-
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const locationInput = document.getElementById('location').value.trim();
-  const messageInput = document.getElementById('message').value.trim();
-
-  if (!locationInput || !messageInput) return;
-
-  fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(locationInput)}`)
-    .then(response => response.json())
-    .then(data => {
-      if (data && data.length > 0) {
-        const lat = data[0].lat;
-        const lon = data[0].lon;
-
-        const marker = L.marker([lat, lon]).addTo(map);
-        marker.bindPopup(`<strong>${locationInput}</strong><br>${messageInput}`);
-
-        form.reset();
-        alert('Thank you for sharing your gratitude!');
-      } else {
-        alert('Location not found. Please check and try again.');
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching location:', error);
-      alert('An error occurred. Please try again.');
-    });
-});
-</script>
-
 <footer>
   <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
 </footer>
