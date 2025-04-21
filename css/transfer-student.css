@@ -509,16 +509,25 @@ body {
 
 /* The dot */
 .timeline-dot {
-  position: absolute;
-  left: 20px;
-  top: 10px;
-  width: 16px;
-  height: 16px;
+  width: 24px; /* Bigger */
+  height: 24px; /* Bigger */
   background-color: #0077FF;
   border: 3px solid white;
   border-radius: 50%;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
-  transform: translate(-50%, 0); /* align horizontally on the line */
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  transform: translate(-50%, 0);
+  z-index: 2;
+  cursor: pointer; /* Pointer cursor */
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.timeline-dot:hover {
+  background-color: #005FCC;
+  transform: translate(-50%, 0) scale(1.2);
 }
 
 /* Text next to dot */
@@ -530,13 +539,6 @@ body {
 /* Audio/Right Column */
 .writing-right {
   flex: 1;
-}
-
-/* Hover effect on dot */
-.timeline-dot:hover {
-  background-color: #005FCC;
-  transform: translate(-50%, -50%) scale(1.2);
-  transition: all 0.3s ease;
 }
 
 /* ================= Timeline Popup (Polaroid) ================= */
