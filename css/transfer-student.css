@@ -474,12 +474,56 @@ body {
 }
 
 .writing-process-content {
-  font-size: 18px;
-  line-height: 1.8;
-  color: #333;
-  text-align: center;
-  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px;
+  margin-top: 60px;
 }
+
+.writing-left, .writing-right {
+  flex: 1 1 500px;
+}
+
+.writing-left {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.8;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 2px;
+  height: 100%;
+  background-color: #5C4033;
+}
+
+.timeline-item {
+  position: relative;
+  padding: 20px 0 20px 20px;
+  font-size: 18px;
+  color: #555;
+}
+
+.timeline-item::before {
+  content: '•';
+  position: absolute;
+  left: -5px;
+  top: 20px;
+  font-size: 24px;
+  color: #0077FF;
+}
+
 
 .writing-intro {
   font-size: 18px;
