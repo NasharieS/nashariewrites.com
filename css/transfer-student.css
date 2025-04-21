@@ -475,10 +475,18 @@ body {
   overflow: hidden;
 }
 
+.writing-intro-block {
+  position: relative;
+  width: 100%;
+  padding: 80px 40px;
+  overflow: hidden;
+}
+
 .writing-slideshow {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   z-index: 1;
+  display: flex;
 }
 
 .slide-group {
@@ -486,7 +494,7 @@ body {
   top: 0; left: 0; right: 0; bottom: 0;
   display: flex;
   opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+  transition: opacity 2s ease-in-out;
 }
 
 .slide {
@@ -495,19 +503,19 @@ body {
   background-position: center;
 }
 
-/* Dark overlay to dim background for text */
+/* Dark overlay to dim */
 .writing-slideshow::after {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.4); /* <-- Adjust if needed */
+  background: rgba(0, 0, 0, 0.4);
   z-index: 2;
 }
 
 .section-title,
 .writing-intro {
   position: relative;
-  z-index: 3; /* Bring text above the slideshow */
+  z-index: 3;
 }
 
 /* Animation */
