@@ -208,24 +208,22 @@
 
 <script>
 // Timeline hover effect for popup
-const timelineDots = document.querySelectorAll('.timeline-dot');
+const timelineItems = document.querySelectorAll('.timeline-item');
 const popup = document.getElementById('timeline-popup');
 const popupImg = document.getElementById('popup-img');
 const popupCaption = document.getElementById('popup-caption');
 
-timelineDots.forEach(dot => {
-  const timelineItem = dot.parentElement;
-
-  dot.addEventListener('mouseenter', () => {
-    const imgSrc = timelineItem.querySelector('.timeline-content').getAttribute('data-img');
-    const captionText = timelineItem.querySelector('.timeline-content').innerText;
+timelineItems.forEach(item => {
+  item.addEventListener('mouseenter', () => {
+    const imgSrc = item.querySelector('.timeline-content').getAttribute('data-img');
+    const captionText = item.querySelector('.timeline-content').innerText;
     popupImg.src = imgSrc;
     popupCaption.innerText = captionText;
     popup.classList.add('active');
     popup.style.display = 'block';
   });
 
-  dot.addEventListener('mouseleave', () => {
+  item.addEventListener('mouseleave', () => {
     popup.classList.remove('active');
     setTimeout(() => {
       popup.style.display = 'none';
