@@ -67,6 +67,59 @@ body {
   text-shadow: 0 0 6px rgba(0,119,255,0.5);
 }
 
+.arrow {
+  display: inline-block;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #FFF9E5;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  margin-top: 5px;
+  padding: 10px 0;
+  min-width: 200px;
+  z-index: 1001;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dropdown:hover > .dropdown-menu {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown > a:hover .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu li {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.dropdown-menu li a {
+  color: #5C4033;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+  color: #0077FF;
+}
+
 /* ================= Intro Section ================= */
 .intro-section {
   width: 100%;
