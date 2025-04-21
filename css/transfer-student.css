@@ -490,13 +490,13 @@ body {
   line-height: 1.8;
 }
 
-/* ================= Updated Timeline Styling ================= */
+/* ================= Timeline Updated Styling ================= */
 .timeline {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 50px;
-  padding-left: 30px;
+  padding-left: 50px;
   margin-top: 30px;
 }
 
@@ -504,63 +504,53 @@ body {
   content: '';
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6px;
+  left: 20px;
+  width: 4px;
   height: 100%;
-  background-color: #5C4033; /* Thick brown vertical center line */
-  border-radius: 3px;
+  background-color: #5C4033; /* brown line */
+  border-radius: 2px;
 }
 
 .timeline-item {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+  gap: 20px;
 }
 
 .timeline-date {
-  flex: 0 0 30%;
+  flex: 0 0 100px; /* fixed width for dates */
   text-align: right;
-  padding-right: 20px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   color: #5C4033;
 }
 
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  background-color: #0077FF;
+  border: 3px solid white;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
 .timeline-content {
-  flex: 0 0 60%;
-  text-align: left;
-  padding-left: 20px;
+  flex: 1;
   font-size: 18px;
   color: #555;
-  position: relative;
 }
 
-/* Blue mini horizontal line connecting date -> content */
-.timeline-content::before {
-  content: '';
-  position: absolute;
-  left: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 4px;
-  background-color: #0077FF;
-  border-radius: 2px;
-}
-
-/* ================= Updated Polaroid Popup ================= */
+/* ================= Timeline Popup (Polaroid) ================= */
 #timeline-popup {
   display: none;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-2deg);
-  background: #fff;
+  background: #ffffff;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
@@ -592,7 +582,6 @@ body {
   font-style: italic;
 }
 
-/* Remove blue tape from old style */
 #timeline-popup::before {
   display: none;
 }
@@ -602,21 +591,16 @@ body {
   .timeline {
     padding-left: 20px;
   }
+
   .timeline-item {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
+
   .timeline-date {
     text-align: center;
-    padding-right: 0;
-    margin-bottom: 10px;
-  }
-  .timeline-content {
-    padding-left: 0;
-  }
-  .timeline-content::before {
-    display: none;
+    margin-bottom: 8px;
   }
 }
 
