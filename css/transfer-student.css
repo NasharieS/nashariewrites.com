@@ -557,6 +557,7 @@ body {
   opacity: 0;
   transition: opacity 0.3s ease;
   border: 1px solid #eee;
+  transform: translateX(-50%) rotate(-1deg);
 }
 
 #timeline-popup.active {
