@@ -1,6 +1,12 @@
-/* ================= Header ================= */
+/* ================= General Page Styles ================= */
 body {
-  padding-top: 110px; /* height of header */
+  background: #FFF9E5; /* Light yellow background */
+  color: #0D1B2A;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* ================= Header ================= */
@@ -61,56 +67,79 @@ body {
   text-shadow: 0 0 6px rgba(0,119,255,0.5);
 }
 
-.get-involved-page {
-  background: #FFF9E5; /* Light background to match the site */
-  padding-top: 140px; /* push down under the fixed header */
+/* ================= Intro Section ================= */
+.intro-section {
+  width: 100%;
+  padding: 180px 20px 80px; /* extra padding on top to clear header */
+  background: #FFF9E5;
 }
 
-.get-involved-container {
-  max-width: 1100px;
+.intro-container {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 60px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
 }
 
-.get-involved-blurb {
+.intro-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: #5C4033;
+  margin-bottom: 30px;
+}
+
+.intro-text {
   font-size: 20px;
   color: #333;
   line-height: 1.8;
-  max-width: 800px;
-  margin-bottom: 50px;
 }
 
-.get-involved-form {
+/* ================= Form and Map Section ================= */
+.submission-section {
+  width: 100%;
+  background: #ffffff; /* clean white background */
+  padding: 100px 20px;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto 60px;
   background: #fafafa;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 600px;
-  margin-bottom: 60px;
 }
 
-.get-involved-form input,
-.get-involved-form textarea {
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: left;
+  color: #5C4033;
+}
+
+.form-container input,
+.form-container textarea {
   width: 100%;
   padding: 12px 15px;
-  margin: 10px 0;
+  margin: 10px 0 20px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 16px;
 }
 
-.get-involved-form textarea {
+.form-container textarea {
   resize: vertical;
   min-height: 120px;
   max-height: 300px;
 }
 
-.get-involved-form button {
+.form-container button {
   background: #0077FF;
   color: white;
   padding: 14px 30px;
@@ -118,32 +147,27 @@ body {
   font-weight: bold;
   border: none;
   border-radius: 6px;
-  margin-top: 10px;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.get-involved-form button:hover {
+.form-container button:hover {
   background: #005FCC;
   transform: scale(1.05);
 }
 
-/* ================= Map Section ================= */
-.get-involved-map-container {
+/* Map container */
+.map-container {
   width: 100%;
   max-width: 1100px;
-  margin-top: 40px;
+  height: 500px;
+  margin: 0 auto;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.get-involved-map {
-  width: 100%;
-  height: 500px;
-}
-
-/* ================= Map Marker Popup ================= */
+/* ================= Map Popup Style ================= */
 .leaflet-popup-content-wrapper {
   background: #FFF9E5;
   border-radius: 8px;
@@ -158,13 +182,32 @@ body {
   padding: 10px;
 }
 
+/* ================= Footer ================= */
+footer {
+  background: #FFF9E5;
+  color: #5C4033;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 60px;
+}
+
 /* ================= Responsive ================= */
 @media (max-width: 768px) {
-  .get-involved-form {
+  .intro-title {
+    font-size: 36px;
+  }
+
+  .intro-text {
+    font-size: 18px;
+  }
+
+  .form-container {
     padding: 20px;
   }
 
-  .get-involved-map {
+  .map-container {
     height: 400px;
   }
 }
