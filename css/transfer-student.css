@@ -535,9 +535,9 @@ body {
   border-radius: 50%;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
   position: absolute;
-  left: 30;
+  left: 0px; 
   top: 50%;
-  transform: translate(-50%, -50%); /* perfectly center the dot on the line */
+  transform: translate(-50%, -50%);
   z-index: 2;
 }
 
