@@ -495,16 +495,16 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 50px;
   margin-top: 40px;
-  padding-left: 80px; /* more breathing room */
+  padding-left: 80px; /* still leave some padding for the dates */
 }
 
 .timeline::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 30px; /* push timeline line left */
+  left: 0; /* stick the timeline line fully to the left */
   width: 4px;
   height: 100%;
   background-color: #5C4033;
@@ -515,7 +515,7 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .timeline-date {
@@ -524,17 +524,20 @@ body {
   font-size: 16px;
   font-weight: bold;
   color: #5C4033;
+  margin-right: 10px; /* little space between date and dot */
 }
 
 .timeline-dot {
-  flex: 0 0 20px;
   width: 16px;
   height: 16px;
   background-color: #0077FF;
   border: 3px solid white;
   border-radius: 50%;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%); /* perfectly center the dot on the line */
   z-index: 2;
 }
 
@@ -542,13 +545,13 @@ body {
   flex: 1;
   font-size: 18px;
   color: #555;
-  padding-left: 10px;
+  padding-left: 60px; /* to push the text far from the dot */
 }
 
-/* Correct the new dot hover behavior */
+/* Hover effect on dot */
 .timeline-dot:hover {
   background-color: #005FCC;
-  transform: scale(1.2);
+  transform: translate(-50%, -50%) scale(1.2);
   transition: all 0.3s ease;
 }
 
