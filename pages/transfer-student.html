@@ -213,27 +213,67 @@ const popup = document.getElementById('timeline-popup');
 const popupImg = document.getElementById('popup-img');
 const popupCaption = document.getElementById('popup-caption');
 
+// New variables to track hover state
+let activeDot = null;
+
+// Function to show popup
+function showPopup(dot) {
+  const timelineItem = dot.parentElement;
+  const content = timelineItem.querySelector('.timeline-content');
+  const imgSrc = content.getAttribute('data-img');
+
+  // Only show popup if the data-img is valid
+  if (imgSrc && imgSrc !== "none") {
+    popupImg.src = imgSrc;
+    popupCaption.innerText = content.innerText;
+    popup.classList.add('active');
+    popup.style.display = 'block';
+  }
+}
+
+// Function to hide popup
+function hidePopup() {
+  popup.classList.remove('active');
+  setTimeout(() => {
+    popup.style.display = 'none';
+  }, 300);
+}
+
+// Listen for mouseenter and mouseleave
 timelineDots.forEach(dot => {
   dot.addEventListener('mouseenter', () => {
-    const timelineItem = dot.parentElement;
-    const content = timelineItem.querySelector('.timeline-content');
+    const content = dot.parentElement.querySelector('.timeline-content');
     const imgSrc = content.getAttribute('data-img');
-    const captionText = content.innerText;
-
     if (imgSrc && imgSrc !== "none") {
-      popupImg.src = imgSrc;
-      popupCaption.innerText = captionText;
-      popup.classList.add('active');
-      popup.style.display = 'block';
+      activeDot = dot;
+      showPopup(dot);
     }
   });
 
   dot.addEventListener('mouseleave', () => {
-    popup.classList.remove('active');
-    setTimeout(() => {
-      popup.style.display = 'none';
-    }, 300); // Allow fade out animation
+    activeDot = null;
+    hidePopup();
   });
+});
+
+// New: Listen for mousemove on document
+document.addEventListener('mousemove', (e) => {
+  if (!activeDot) return; // Only care if hovering over valid dot
+
+  const rect = activeDot.getBoundingClientRect();
+  const inDot = (
+    e.clientX >= rect.left &&
+    e.clientX <= rect.right &&
+    e.clientY >= rect.top &&
+    e.clientY <= rect.bottom
+  );
+
+  if (inDot) {
+    showPopup(activeDot);
+  } else {
+    activeDot = null;
+    hidePopup();
+  }
 });
 </script>
 
