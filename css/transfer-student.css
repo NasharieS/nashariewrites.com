@@ -530,6 +530,13 @@ body {
   transform: translate(-50%, 0) scale(1.2);
 }
 
+/* Dim the disabled timeline dots */
+.timeline-dot.disabled {
+  opacity: 0.4;
+  background-color: gray;
+  pointer-events: none; /* prevent hover effects */
+}
+
 /* Text next to dot */
 .timeline-content {
   font-size: 18px;
