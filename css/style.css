@@ -124,7 +124,7 @@ body {
   width: calc(100% - 100px); /* ~50px on each side (adjust as needed) */
   max-width: 1200px;
   margin: 0 auto;
-  height: 400px;
+  height: 550px;
   position: absolute;
   top: 150px;
   left: 0;
