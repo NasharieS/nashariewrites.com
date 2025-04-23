@@ -17,9 +17,6 @@ html, body {
   top: 0;
   left: 0;
   z-index: 1000;
-  opacity: 0; /* Start invisible */
-  animation: headerFadeIn 4s ease forwards;
-  animation-delay: 5s; 
 }
 
 .header-logo {
