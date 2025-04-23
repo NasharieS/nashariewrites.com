@@ -11,17 +11,19 @@ body {
 }
 
 html, body {
-  height: 100%;
+  overflow-y: hidden;
 }
 
 /* ================= Header ================= */
 .header {
   display: flex;
+  flex-wrap: wrap; 
   align-items: center;
   justify-content: space-between;
+  gap: 20px; 
   background: #FFF9E5;
   padding: 10px 30px;
-  min-height: 110px; /* <<< MIN height instead of fixed */
+  min-height: 110px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -128,11 +130,10 @@ html, body {
 
 /* ================= Blurb Section (White Background) ================= */
 .blurb-section {
-  background: #ffffff;
-  width: 100%;
-  min-height: calc(100vh - 110px); /* <<< New */
+  height: calc(100vh - 110px); /* Use height instead of min-height */
   padding: 160px 20px 100px;
-  box-sizing: border-box; /* <<< add this too */
+  overflow: hidden; /* Prevents scroll-up gap */
+  box-sizing: border-box;
 }
 
 .intro-container {
