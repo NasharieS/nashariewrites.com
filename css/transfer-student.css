@@ -329,7 +329,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background: url('../images/bookcover.png') center center / cover no-repeat;
+  background: url('../images/bookcover.webp') center center / cover no-repeat;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   z-index: 3;
