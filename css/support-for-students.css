@@ -1,4 +1,32 @@
 /* ================= Support for Students Page ================= */
+html, body {
+  scroll-padding-top: 120px; /* prevents anchor link hiding */
+  overflow-x: hidden;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #FFF9E5;
+  padding: 10px 30px;
+  height: 110px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.blurb-section {
+  background: #ffffff;
+  width: 100%;
+  padding: 160px 20px 100px; /* pushes below fixed header */
+  text-align: center;
+  box-sizing: border-box;
+}
 
 /* Blurb Section */
 .blurb-section {
@@ -76,6 +104,13 @@
   cursor: pointer;
 }
 
+.option-card:focus-within,
+.option-card:hover {
+  outline: none;
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
 .option-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
@@ -95,10 +130,11 @@
 }
 
 /* Section that appears after clicking */
-#form-area {
+  #form-area {
   margin-top: 60px;
   width: 100%;
   max-width: 700px;
+  transition: all 0.3s ease-in-out;
 }
 
 /* Rate Note */
@@ -149,4 +185,15 @@
     flex-direction: column;
     align-items: center;
   }
+}
+
+footer {
+  background: #FFF9E5;
+  color: #5C4033;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+  width: 100%;
+  position: relative; /* ensures safe spacing */
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05); /* optional for consistency */
 }
