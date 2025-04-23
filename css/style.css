@@ -121,16 +121,28 @@ body {
 }
 
 .hero-slideshow-frame {
+  width: 80vw; /* or 100% max-width with padding/margin */
+  max-width: 1200px;
+  height: 400px;
   position: absolute;
-  top: 150px; /* adjust as needed */
+  top: 150px;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;
-  height: 400px;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   z-index: 1;
+}
+
+.hero-slideshow-frame img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: fadeSlide 16s infinite;
+  filter: brightness(40%);
+  transition: opacity 0.5s ease;
 }
 
 .hero-overlay {
