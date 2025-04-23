@@ -1,7 +1,21 @@
-/* ================= Support for Students Page ================= */
+/* ================= General Reset ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
 html, body {
-  scroll-padding-top: 120px; /* prevents anchor link hiding */
+  height: 100%;
   overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  background: #FFF9E5;
+  color: #0D1B2A;
+  min-height: 100vh;
 }
 
 /* ================= Header ================= */
@@ -114,7 +128,6 @@ html, body {
 .dropdown-menu li a:hover {
   color: #0077FF;
 }
-
 
 .blurb-section {
   background: #ffffff;
