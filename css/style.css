@@ -121,7 +121,7 @@ body {
 }
 
 .hero-slideshow-frame {
-  width: calc(100% - 100px); /* ~50px on each side (adjust as needed) */
+  width: calc(100% - 100px);
   max-width: 1200px;
   margin: 0 auto;
   height: 500px;
@@ -139,12 +139,12 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   opacity: 0;
   animation: fadeSlide 16s infinite;
   filter: brightness(40%);
   transition: opacity 0.5s ease;
-  object-position: left center;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .hero-overlay {
