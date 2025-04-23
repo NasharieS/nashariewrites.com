@@ -4,12 +4,11 @@ html, body {
   overflow-x: hidden;
 }
 
+/* ================= Header ================= */
 .header {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
   background: #FFF9E5;
   padding: 10px 30px;
   height: 110px;
@@ -18,20 +17,14 @@ html, body {
   top: 0;
   left: 0;
   z-index: 1000;
+  opacity: 0; /* Start invisible */
+  animation: headerFadeIn 4s ease forwards;
+  animation-delay: 5s; 
 }
 
 .header-logo {
   height: 110px;
   width: auto;
-  max-width: 200px; /* ✅ Prevents overflow */
-  display: block;
-}
-
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 1;
 }
 
 .nav-container ul {
@@ -39,9 +32,6 @@ html, body {
   display: flex;
   gap: 30px;
   align-items: center;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
 }
 
 .nav-container ul li a {
@@ -81,7 +71,6 @@ html, body {
   transition: transform 0.3s ease;
 }
 
-/* Dropdown */
 .dropdown {
   position: relative;
 }
@@ -128,6 +117,7 @@ html, body {
 .dropdown-menu li a:hover {
   color: #0077FF;
 }
+
 
 .blurb-section {
   background: #ffffff;
