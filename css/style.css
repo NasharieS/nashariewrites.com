@@ -131,7 +131,7 @@ body {
   opacity: 0;
   animation: fadeSlide 16s infinite;
   filter: brightness(80%) sepia(0.2) saturate(1.2);
-  transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .hero-overlay {
@@ -156,11 +156,10 @@ body {
 }
 
 @keyframes fadeSlide {
-  0%, 100%   { opacity: 0; }
-  10%, 25%   { opacity: 1; }
-  30%, 90%   { opacity: 0; }
+  0%, 8%, 100% { opacity: 0; }
+  10%, 25%    { opacity: 1; }
+  27%, 98%    { opacity: 0; }
 }
-
 
 /* Dropdown Menu */
 .dropdown { position: relative; }
