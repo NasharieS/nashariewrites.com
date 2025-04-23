@@ -637,5 +637,6 @@ footer {
   padding: 20px 0;
   font-size: 14px;
   width: 100%;
-  position: relative;
+  position: relative; /* ensures safe spacing */
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05); /* optional for consistency */
 }
