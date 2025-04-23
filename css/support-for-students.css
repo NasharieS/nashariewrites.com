@@ -20,6 +20,30 @@ html, body {
   z-index: 1000;
 }
 
+.header-logo {
+  height: 110px;
+  width: auto;
+  max-width: 200px; /* ✅ Prevents overflow */
+  display: block;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.nav-container ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
 .blurb-section {
   background: #ffffff;
   width: 100%;
