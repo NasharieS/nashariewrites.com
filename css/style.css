@@ -124,7 +124,7 @@ body {
   width: calc(100% - 100px); /* ~50px on each side (adjust as needed) */
   max-width: 1200px;
   margin: 0 auto;
-  height: 550px;
+  height: 500px;
   position: absolute;
   top: 150px;
   left: 0;
@@ -144,6 +144,7 @@ body {
   animation: fadeSlide 16s infinite;
   filter: brightness(40%);
   transition: opacity 0.5s ease;
+  object-position: left center;
 }
 
 .hero-overlay {
