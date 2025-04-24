@@ -423,6 +423,10 @@ body {
   position: relative;
 }
 
+#globeViz canvas {
+  background: transparent !important;
+}
+
 #globeViz:active {
   cursor: grabbing;
 }
