@@ -7,16 +7,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
-html, body {
-  height: 100%;
-  overflow-x: hidden;
-  overscroll-behavior: none;
-}
-
 body {
   background: #FFF9E5;
   color: #0D1B2A;
   min-height: 100vh;
+  height: 100%;
 }
 
 /* ================= Header ================= */
@@ -413,11 +408,10 @@ body {
       height: 500px;
       margin: 0 auto;
       border-radius: 16px;
+      background: transparent !important;
+     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     }
 
-    #globeViz canvas {
-      background: transparent !important;
-    }
 
     .tooltip {
       position: absolute;
@@ -429,7 +423,13 @@ body {
       display: none;
       pointer-events: none;
       z-index: 10;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
+
+  .tooltip:hover {
+    transform: scale(1.05);
+    opacity: 1;
+}
 
 /* ================= Quote Section ================= */
 .quote-section {
