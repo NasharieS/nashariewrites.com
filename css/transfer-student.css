@@ -408,41 +408,28 @@ body {
 }
 
 #globeViz {
-  width: 100%;
-  max-width: 850px;
-  height: 500px;
-  margin: 0 auto;
-  border-radius: 14px;
-  background: #e6f2ff; /* soft blue sky */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-  cursor: grab;
-  position: relative;
-}
+      width: 100%;
+      max-width: 800px;
+      height: 500px;
+      margin: 0 auto;
+      border-radius: 16px;
+    }
 
-#globeViz canvas {
-  background: transparent !important;
-}
+    #globeViz canvas {
+      background: transparent !important;
+    }
 
-#globeViz:active {
-  cursor: grabbing;
-}
-
-.tooltip {
-  position: absolute;
-  padding: 10px 14px;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 14px;
-  display: none;
-  pointer-events: none;
-  z-index: 10;
-  transition: opacity 0.2s ease;
-}
+    .tooltip {
+      position: absolute;
+      padding: 10px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-size: 14px;
+      display: none;
+      pointer-events: none;
+      z-index: 10;
+    }
 
 /* ================= Quote Section ================= */
 .quote-section {
