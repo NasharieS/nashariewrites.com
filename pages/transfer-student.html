@@ -97,72 +97,73 @@
   </div>
 </section>
 
-  <script src="https://unpkg.com/three"></script>
-  <script src="https://unpkg.com/globe.gl"></script>
-  <script>
-    const worldData = [
-      {
-        city: "Philadelphia",
-        lat: 39.9526,
-        lng: -75.1652,
-        school: "Belmont High",
-        characters: ["Amara", "Kai", "Brandon"],
-        archive: "🟠 Under Observation"
-      },
-      {
-        city: "Dubai",
-        lat: 25.2048,
-        lng: 55.2708,
-        school: "The Academy at Dubai Crossing",
-        characters: ["Niko", "Layla"],
-        archive: "🔴 Experiment Site"
-      },
-      {
-        city: "Helsinki",
-        lat: 60.1699,
-        lng: 24.9384,
-        school: "Sisu Learning Center",
-        characters: ["Tia"],
-        archive: "🟢 Minimal Influence"
-      }
-    ];
-
-    const Globe = window.Globe;
-    const globeContainer = document.getElementById('globeViz');
-    const tooltip = document.getElementById('tooltip');
-
-    const globe = Globe({ rendererConfig: { alpha: true } })(globeContainer)
-      .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-      .pointsData(worldData)
-      .pointLat(d => d.lat)
-      .pointLng(d => d.lng)
-      .pointColor(() => '#ff5722')
-      .pointAltitude(0.06)
-      .pointRadius(0.5)
-      .onPointHover(handleHover)
-      .onPointClick(showDetails);
-      globe.scene().background = null;
-
-    function handleHover(point) {
-      if (point) {
-        tooltip.style.display = 'block';
-        tooltip.style.left = `${event.pageX + 10}px`;
-        tooltip.style.top = `${event.pageY + 10}px`;
-        tooltip.innerHTML = `
-          <strong>${point.city}</strong><br>
-          School: ${point.school}<br>
-          Characters: ${point.characters.join(', ')}<br>
-          Archive Status: ${point.archive}
-        `;
-      } else {
-        tooltip.style.display = 'none';
-      }
+<script src="https://unpkg.com/three"></script>
+<script src="https://unpkg.com/globe.gl"></script>
+<script>
+  const worldData = [
+    {
+      city: "Philadelphia",
+      lat: 39.9526,
+      lng: -75.1652,
+      school: "Belmont High",
+      characters: ["Amara", "Kai", "Brandon"],
+      archive: "🟠 Under Observation"
+    },
+    {
+      city: "Dubai",
+      lat: 25.2048,
+      lng: 55.2708,
+      school: "The Academy at Dubai Crossing",
+      characters: ["Niko", "Layla"],
+      archive: "🔴 Experiment Site"
+    },
+    {
+      city: "Helsinki",
+      lat: 60.1699,
+      lng: 24.9384,
+      school: "Sisu Learning Center",
+      characters: ["Tia"],
+      archive: "🟢 Minimal Influence"
     }
+  ];
 
-    function showDetails(point) {
-      alert(`${point.city} - ${point.school}\nCharacters: ${point.characters.join(', ')}\nArchive Status: ${point.archive}`);
+  const Globe = window.Globe;
+  const globeContainer = document.getElementById('globeViz');
+  const tooltip = document.getElementById('tooltip');
+
+  const globe = Globe({ rendererConfig: { alpha: true } })(globeContainer)
+    .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+    .pointsData(worldData)
+    .pointLat(d => d.lat)
+    .pointLng(d => d.lng)
+    .pointColor(() => '#ff5722')
+    .pointAltitude(0.06)
+    .pointRadius(0.5)
+    .onPointHover(handleHover)
+    .onPointClick(showDetails);
+
+  globe.scene().background = null;
+
+  function handleHover(point) {
+    if (point) {
+      tooltip.style.display = 'block';
+      tooltip.style.left = `${event.pageX + 10}px`;
+      tooltip.style.top = `${event.pageY + 10}px`;
+      tooltip.innerHTML = `
+        <strong>${point.city}</strong><br>
+        School: ${point.school}<br>
+        Characters: ${point.characters.join(', ')}<br>
+        Archive Status: ${point.archive}
+      `;
+    } else {
+      tooltip.style.display = 'none';
     }
-  </script>
+  }
+
+  function showDetails(point) {
+    alert(`${point.city} - ${point.school}\nCharacters: ${point.characters.join(', ')}\nArchive Status: ${point.archive}`);
+  }
+</script>
   
     <div class="world-elements">
       <p>[Interactive map or city highlights will go here soon!]</p>
