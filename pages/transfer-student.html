@@ -98,41 +98,44 @@
 </section>
 
 <script>
-  mapboxgl.accessToken = 'pk.eyJ1IjoibmFzaGFyaWUiLCJhIjoiY2xnbXAxNGttMDMwbjNwcG52d2ptcHJhOCJ9.LlhEp9ZqPiy4CEuC5kQUFA';
-  const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/light-v11',
-    center: [0, 20],
-    zoom: 1.4,
-    projection: 'globe'
-  });
+  window.addEventListener('load', function () {
+    mapboxgl.accessToken = 'pk.eyJ1IjoibmFzaGFyaWUiLCJhIjoiY2xnbXAxNGttMDMwbjNwcG52d2ptcHJhOCJ9.LlhEp9ZqPiy4CEuC5kQUFA';
 
-  map.on('style.load', () => {
-    map.setFog({}); // default atmosphere
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/light-v11',
+      center: [0, 20],
+      zoom: 1.4,
+      projection: 'globe'
+    });
 
-    const markers = [
-      {
-        coords: [-75.1652, 39.9526],
-        city: "Philadelphia",
-        text: "Belmont High\nCharacters: Amara, Kai, Brandon"
-      },
-      {
-        coords: [55.2708, 25.2048],
-        city: "Dubai",
-        text: "The Academy at Dubai Crossing\nCharacters: Niko, Layla"
-      },
-      {
-        coords: [24.9384, 60.1699],
-        city: "Helsinki",
-        text: "Sisu Learning Center\nCharacters: Tia"
-      }
-    ];
+    map.on('style.load', () => {
+      map.setFog({}); // default atmosphere
 
-    markers.forEach(marker => {
-      new mapboxgl.Marker()
-        .setLngLat(marker.coords)
-        .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(marker.text))
-        .addTo(map);
+      const markers = [
+        {
+          coords: [-75.1652, 39.9526],
+          city: "Philadelphia",
+          text: "Belmont High\nCharacters: Amara, Kai, Brandon"
+        },
+        {
+          coords: [55.2708, 25.2048],
+          city: "Dubai",
+          text: "The Academy at Dubai Crossing\nCharacters: Niko, Layla"
+        },
+        {
+          coords: [24.9384, 60.1699],
+          city: "Helsinki",
+          text: "Sisu Learning Center\nCharacters: Tia"
+        }
+      ];
+
+      markers.forEach(marker => {
+        new mapboxgl.Marker()
+          .setLngLat(marker.coords)
+          .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(marker.text))
+          .addTo(map);
+      });
     });
   });
 </script>
