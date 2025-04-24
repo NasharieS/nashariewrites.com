@@ -407,15 +407,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 0;
+  padding: 20px 0;
+  background: none;
 }
 
 #globeViz {
   width: 100%;
-  max-width: 800px;
-  height: 500px;
-  border-radius: 16px;
+  max-width: 400px;
+  height: 400px;
   background: transparent !important;
+  position: relative;
 }
 
 #globeViz canvas {
