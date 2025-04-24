@@ -131,7 +131,7 @@
     const globeContainer = document.getElementById('globeViz');
     const tooltip = document.getElementById('tooltip');
 
-    const globe = Globe()(globeContainer)
+    const globe = Globe({ rendererConfig: { alpha: true } })(globeContainer)
       .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
       .pointsData(worldData)
       .pointLat(d => d.lat)
