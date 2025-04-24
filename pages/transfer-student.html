@@ -131,8 +131,7 @@
   const globeContainer = document.getElementById('globeViz');
   const tooltip = document.getElementById('tooltip');
 
-const globe = Globe()(globeContainer)
-  .rendererConfig({ alpha: true, antialias: true })  // Make canvas transparent
+const globe = Globe({ rendererConfig: { alpha: true, antialias: true } })(globeContainer)
   .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
   .pointsData(worldData)
   .pointLat(d => d.lat)
