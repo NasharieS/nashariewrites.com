@@ -149,6 +149,13 @@ const globe = Globe({
 // ✅ Remove black scene background
 globe.scene().background = null;
 
+  // Fix initial camera position
+globe.controls().enableZoom = false;
+globe.controls().autoRotate = true;
+globe.controls().autoRotateSpeed = 0.5;
+globe.controls().minPolarAngle = Math.PI / 3;
+globe.controls().maxPolarAngle = Math.PI - Math.PI / 3;
+
   function handleHover(point) {
     if (point) {
       tooltip.style.display = 'block';
