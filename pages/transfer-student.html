@@ -141,6 +141,7 @@
       .pointRadius(0.5)
       .onPointHover(handleHover)
       .onPointClick(showDetails);
+      globe.scene().background = null;
 
     function handleHover(point) {
       if (point) {
