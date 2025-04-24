@@ -131,18 +131,19 @@
   const globeContainer = document.getElementById('globeViz');
   const tooltip = document.getElementById('tooltip');
 
-  const globe = Globe({ rendererConfig: { alpha: true } })(globeContainer)
-    .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-    .pointsData(worldData)
-    .pointLat(d => d.lat)
-    .pointLng(d => d.lng)
-    .pointColor(() => '#ff5722')
-    .pointAltitude(0.06)
-    .pointRadius(0.5)
-    .onPointHover(handleHover)
-    .onPointClick(showDetails);
+const globe = Globe()(globeContainer)
+  .rendererConfig({ alpha: true, antialias: true })  // Make canvas transparent
+  .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+  .pointsData(worldData)
+  .pointLat(d => d.lat)
+  .pointLng(d => d.lng)
+  .pointColor(() => '#ff5722')
+  .pointAltitude(0.06)
+  .pointRadius(0.5)
+  .onPointHover(handleHover)
+  .onPointClick(showDetails);
 
-  globe.scene().background = null;
+globe.scene().background = null;
 
   function handleHover(point) {
     if (point) {
