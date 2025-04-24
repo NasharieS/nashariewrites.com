@@ -131,7 +131,9 @@
   const globeContainer = document.getElementById('globeViz');
   const tooltip = document.getElementById('tooltip');
 
-const globe = Globe({ rendererConfig: { alpha: true, antialias: true } })(globeContainer)
+const globe = Globe({
+  rendererConfig: { alpha: true }  // ✅ Make WebGL canvas transparent
+})(globeContainer)
   .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
   .pointsData(worldData)
   .pointLat(d => d.lat)
@@ -142,6 +144,7 @@ const globe = Globe({ rendererConfig: { alpha: true, antialias: true } })(globeC
   .onPointHover(handleHover)
   .onPointClick(showDetails);
 
+// ✅ Remove black scene background
 globe.scene().background = null;
 
   function handleHover(point) {
