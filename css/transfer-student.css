@@ -413,13 +413,14 @@ body {
   height: 500px;
   margin: 0 auto;
   border-radius: 14px;
-  background: #FFF9E5; /* no black background */
+  background: #e6f2ff; /* soft blue sky */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
   cursor: grab;
+  position: relative;
 }
 
 #globeViz:active {
