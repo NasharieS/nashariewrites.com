@@ -403,13 +403,20 @@ body {
   font-style: italic;
 }
 
+#globe-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  padding: 40px 0;
+}
+
 #globeViz {
-  width: 100%;
-  max-width: 800px;
-  height: 500px;
-  margin: 0 auto;
+  width: 600px;      /* smaller width */
+  height: 400px;     /* smaller height */
   border-radius: 16px;
-  background: none !important;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 #globeViz canvas {
