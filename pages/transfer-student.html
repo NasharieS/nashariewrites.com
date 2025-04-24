@@ -8,8 +8,6 @@
   <link rel="stylesheet" href="../css/transfer-student.css" />
   <link rel="icon" type="image/png" href="../images/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script&display=swap" rel="stylesheet">
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body>
@@ -93,49 +91,37 @@
       Education systems shape futures—and Amara is about to learn just how different those futures can be. 
       Dive into the global journey of <em>The Transfer Student</em> and explore the cities, schools, and secrets that make up its world.
     </p>
-    <div id="map"></div>
+    <div id="earth" style="width: 100%; max-width: 700px; height: 450px; margin: 0 auto; border-radius: 10px;"></div>
   </div>
 </section>
 
+<script src="https://www.webglearth.com/v2/api.js"></script>
 <script>
   window.addEventListener('load', function () {
-    mapboxgl.accessToken = 'pk.eyJ1IjoibmFzaGFyaWUiLCJhIjoiY2xnbXAxNGttMDMwbjNwcG52d2ptcHJhOCJ9.LlhEp9ZqPiy4CEuC5kQUFA';
+    var earth = new WE.map('earth');
+    WE.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(earth);
+    earth.setView([20, 0], 2);
 
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/light-v11',
-      center: [0, 20],
-      zoom: 1.4,
-      projection: 'globe'
-    });
+    const markers = [
+      {
+        coords: [39.9526, -75.1652],
+        popup: '<b>Philadelphia</b><br>Belmont High<br>Characters: Amara, Kai, Brandon'
+      },
+      {
+        coords: [25.2048, 55.2708],
+        popup: '<b>Dubai</b><br>The Academy at Dubai Crossing<br>Characters: Niko, Layla'
+      },
+      {
+        coords: [60.1699, 24.9384],
+        popup: '<b>Helsinki</b><br>Sisu Learning Center<br>Characters: Tia'
+      }
+    ];
 
-    map.on('style.load', () => {
-      map.setFog({}); // default atmosphere
-
-      const markers = [
-        {
-          coords: [-75.1652, 39.9526],
-          city: "Philadelphia",
-          text: "Belmont High\nCharacters: Amara, Kai, Brandon"
-        },
-        {
-          coords: [55.2708, 25.2048],
-          city: "Dubai",
-          text: "The Academy at Dubai Crossing\nCharacters: Niko, Layla"
-        },
-        {
-          coords: [24.9384, 60.1699],
-          city: "Helsinki",
-          text: "Sisu Learning Center\nCharacters: Tia"
-        }
-      ];
-
-      markers.forEach(marker => {
-        new mapboxgl.Marker()
-          .setLngLat(marker.coords)
-          .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(marker.text))
-          .addTo(map);
-      });
+    markers.forEach(marker => {
+      const m = WE.marker(marker.coords).addTo(earth);
+      m.bindPopup(marker.popup).openPopup();
     });
   });
 </script>
