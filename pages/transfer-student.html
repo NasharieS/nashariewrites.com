@@ -92,37 +92,76 @@
       Education systems shape futures—and Amara is about to learn just how different those futures can be. 
       Dive into the global journey of <em>The Transfer Student</em> and explore the cities, schools, and secrets that make up its world.
     </p>
-    <div id="earth" style="width: 100%; max-width: 700px; height: 450px; margin: 0 auto; border-radius: 10px;"></div>
+    <div id="earth" style="width: 100%; max-width: 700px; height: 500px; margin: 0 auto; border-radius: 10px;"></div>
   </div>
 </section>
 
-<script src="https://www.webglearth.com/v2/api.js"></script>
+<script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
+<script src="https://unpkg.com/three-globe"></script>
 <script>
-  window.addEventListener('load', function () {
-    var earth = new WE.map('earth');
-    WE.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(earth);
-    earth.setView([20, 0], 1.5);
+  window.addEventListener('load', () => {
+    const container = document.getElementById('earth');
 
-    const markers = [
-      {
-        coords: [39.9526, -75.1652],
-        popup: '<b>Philadelphia</b><br>Belmont High<br>Characters: Amara, Kai, Brandon'
-      },
-      {
-        coords: [25.2048, 55.2708],
-        popup: '<b>Dubai</b><br>The Academy at Dubai Crossing<br>Characters: Niko, Layla'
-      },
-      {
-        coords: [60.1699, 24.9384],
-        popup: '<b>Helsinki</b><br>Sisu Learning Center<br>Characters: Tia'
-      }
-    ];
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.offsetWidth, container.offsetHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
 
-    markers.forEach(marker => {
-      const m = WE.marker(marker.coords).addTo(earth);
-      m.bindPopup(marker.popup); // <-- remove .openPopup()
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+    camera.position.z = 250;
+
+    const globe = new ThreeGlobe()
+      .globeImageUrl('//unpkg.com/three-globe/example/img/earth-dark.jpg')
+      .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
+      .pointsData([
+        {
+          lat: 39.9526, lng: -75.1652,
+          city: "Philadelphia",
+          school: "Belmont High",
+          characters: ["Amara", "Kai", "Brandon"]
+        },
+        {
+          lat: 25.2048, lng: 55.2708,
+          city: "Dubai",
+          school: "The Academy at Dubai Crossing",
+          characters: ["Niko", "Layla"]
+        },
+        {
+          lat: 60.1699, lng: 24.9384,
+          city: "Helsinki",
+          school: "Sisu Learning Center",
+          characters: ["Tia"]
+        }
+      ])
+      .pointAltitude(0.05)
+      .pointRadius(0.6)
+      .pointColor(() => '#FF5722')
+      .onPointClick(d => alert(`${d.city}\n${d.school}\nCharacters: ${d.characters.join(", ")}`));
+
+    scene.add(globe);
+
+    const ambientLight = new THREE.AmbientLight(0xbbbbbb);
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    directionalLight.position.set(100, 10, 50);
+    scene.add(directionalLight);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      globe.rotation.y += 0.0015;
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      const width = container.offsetWidth;
+      const height = container.offsetHeight;
+      renderer.setSize(width, height);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
     });
   });
 </script>
