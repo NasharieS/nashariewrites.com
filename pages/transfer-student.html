@@ -97,13 +97,11 @@
 
 <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
 <script src="https://unpkg.com/three-globe"></script>
-<script src="https://unpkg.com/three/examples/js/controls/OrbitControls.js"></script> 
-
+<script src="https://unpkg.com/three/examples/js/controls/OrbitControls.js"></script>
 
 <script>
 window.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('earth');
-  const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(container.clientWidth, container.clientHeight);
@@ -114,6 +112,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 2000);
   camera.position.z = 400;
+
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableZoom = false;
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 0.5;
 
   // Starry Background
   const starGeometry = new THREE.SphereGeometry(1000, 64, 64);
@@ -138,21 +141,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
   scene.add(globe);
 
-  // Lighting
   scene.add(new THREE.AmbientLight(0xbbbbbb));
   const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
   directionalLight.position.set(50, 50, 50);
   scene.add(directionalLight);
 
-  // Animate
   function animate() {
     requestAnimationFrame(animate);
-    globe.rotation.y += 0.0015;
+    controls.update();  // important!
     renderer.render(scene, camera);
   }
   animate();
 
-  // Responsive
   window.addEventListener('resize', () => {
     const width = container.clientWidth;
     const height = container.clientHeight;
