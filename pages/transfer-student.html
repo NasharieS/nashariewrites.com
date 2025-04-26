@@ -113,6 +113,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 2000);
   camera.position.z = 400;
 
+  // 🛠 Create controls AFTER camera and renderer
   const controls = new THREE.OrbitControls(camera, renderer.domElement);
   controls.enableZoom = false;
   controls.autoRotate = true;
@@ -148,7 +149,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function animate() {
     requestAnimationFrame(animate);
-    controls.update();  // important!
+    controls.update();  // <- now this will work
     renderer.render(scene, camera);
   }
   animate();
@@ -162,6 +163,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+
 
 <!-- Quote Section -->
 <section class="quote-section">
