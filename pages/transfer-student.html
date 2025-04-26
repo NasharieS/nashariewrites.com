@@ -97,10 +97,13 @@
 
 <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
 <script src="https://unpkg.com/three-globe"></script>
+<script src="https://unpkg.com/three/examples/js/controls/OrbitControls.js"></script> 
+
 
 <script>
 window.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('earth');
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(container.clientWidth, container.clientHeight);
