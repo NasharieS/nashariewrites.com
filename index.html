@@ -146,7 +146,14 @@ submitEmail.addEventListener('click', () => {
     popupMessage.innerText = "Please enter a valid email.";
     popupMessage.style.color = 'red';
   }
-});
+  
+  document.querySelector('.email-signup button').addEventListener('click', () => {
+    const emailInput = document.querySelector('.email-signup input');
+    if (emailInput.value.trim()) {
+      localStorage.setItem('subscribed', 'true');
+      window.location.href = 'pages/sneak-peek.html';
+    }
+  });
 </script>
 
 </main>
