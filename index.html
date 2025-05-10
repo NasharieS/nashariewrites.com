@@ -33,6 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const sneakPeekButton = document.getElementById('sneak-peek-button');
   const bookCoverLink = document.querySelector('.book-link');
   const book = document.querySelector('.book');
+  const bottomInput = document.querySelector('.email-signup input');
+  const bottomButton = document.querySelector('.email-signup button');
   const subscribed = localStorage.getItem('subscribed');
 
   function showPopupIfNotSubscribed() {
@@ -73,27 +75,37 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const email = document.getElementById('popup-email').value;
+      subscribe(email);
+    });
+  }
 
-      fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams({ email })
-      })
-      .then(response => response.text())
-      .then(() => {
-        popupMessage.textContent = "Thank you! Here's your sneak peek.";
-        popupMessage.style.color = 'green';
-        localStorage.setItem('subscribed', 'true');
-        setTimeout(() => {
-          window.location.href = 'pages/sneak-peek.html';
-        }, 1500);
-      })
-      .catch(() => {
-        popupMessage.textContent = "Error. Please try again.";
-        popupMessage.style.color = 'red';
-      });
+  if (bottomButton) {
+    bottomButton.addEventListener('click', () => {
+      const email = bottomInput.value;
+      if (email && !subscribed) {
+        subscribe(email);
+      } else {
+        window.location.href = 'pages/sneak-peek.html';
+      }
+    });
+  }
+
+  function subscribe(email) {
+    fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({ email })
+    })
+    .then(response => response.text())
+    .then(() => {
+      localStorage.setItem('subscribed', 'true');
+      alert("Thank you for subscribing! Check out the sneak peek.");
+      window.location.href = 'pages/sneak-peek.html';
+    })
+    .catch(() => {
+      alert("Error. Please try again.");
     });
   }
 });
