@@ -35,10 +35,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const book = document.querySelector('.book');
   const subscribeInput = document.querySelector('.email-signup input');
   const subscribeBtn = document.querySelector('.email-signup button');
-  const subscribed = localStorage.getItem('subscribed');
+  const subscribedHash = localStorage.getItem('subscribed_hash');
+
+  async function hashEmail(email) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(email);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
 
   function showPopupIfNotSubscribed() {
-    if (!subscribed) {
+    if (!subscribedHash) {
       popup.style.display = 'flex';
     } else {
       window.location.href = 'pages/sneak-peek.html';
@@ -75,28 +82,30 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const email = document.getElementById('popup-email').value;
+      hashEmail(email).then(hash => {
+        localStorage.setItem('subscribed_hash', hash);
 
-      fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ email })
-      })
-      .then(response => response.text())
-      .then(responseText => {
-        if (responseText.includes('duplicate')) {
-          popupMessage.textContent = "Thank you, you've already subscribed.";
-        } else {
-          popupMessage.textContent = "Thank you! Here's your sneak peek.";
-          localStorage.setItem('subscribed', 'true');
-          setTimeout(() => {
-            window.location.href = 'pages/sneak-peek.html';
-          }, 1500);
-        }
-        popupMessage.style.color = 'green';
-      })
-      .catch(() => {
-        popupMessage.textContent = "Error. Please try again.";
-        popupMessage.style.color = 'red';
+        fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ email })
+        })
+        .then(response => response.text())
+        .then(responseText => {
+          if (responseText.includes('duplicate')) {
+            popupMessage.textContent = "Thank you, you've already subscribed.";
+          } else {
+            popupMessage.textContent = "Thank you! Here's your sneak peek.";
+            setTimeout(() => {
+              window.location.href = 'pages/sneak-peek.html';
+            }, 1500);
+          }
+          popupMessage.style.color = 'green';
+        })
+        .catch(() => {
+          popupMessage.textContent = "Error. Please try again.";
+          popupMessage.style.color = 'red';
+        });
       });
     });
   }
@@ -105,25 +114,27 @@ document.addEventListener('DOMContentLoaded', function () {
     subscribeBtn.addEventListener('click', () => {
       const email = subscribeInput.value;
       if (!email) return;
-      if (subscribed) {
-        alert("Thank you, you've already subscribed.");
-        return;
-      }
-      fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ email })
-      })
-      .then(response => response.text())
-      .then(responseText => {
-        if (responseText.includes('duplicate')) {
+      hashEmail(email).then(hash => {
+        if (subscribedHash && hash === subscribedHash) {
           alert("Thank you, you've already subscribed.");
-        } else {
-          localStorage.setItem('subscribed', 'true');
-          alert("Thank you for subscribing! Check out the sneak peek.");
+          return;
         }
-      })
-      .catch(() => alert("Something went wrong. Please try again."));
+        localStorage.setItem('subscribed_hash', hash);
+        fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ email })
+        })
+        .then(response => response.text())
+        .then(responseText => {
+          if (responseText.includes('duplicate')) {
+            alert("Thank you, you've already subscribed.");
+          } else {
+            alert("Thank you for subscribing! Check out the sneak peek.");
+          }
+        })
+        .catch(() => alert("Something went wrong. Please try again."));
+      });
     });
   }
 });
