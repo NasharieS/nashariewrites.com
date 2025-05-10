@@ -32,8 +32,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeBtn = document.querySelector('.close-popup');
   const sneakPeekButton = document.getElementById('sneak-peek-button');
   const bookCoverLink = document.querySelector('.book-link');
+  const book = document.querySelector('.book');
 
-  const subscribedHash = localStorage.getItem('subscribed_hash');
+  const subscribedEmailHash = localStorage.getItem('subscribed_hash');
 
   function hashEmail(email) {
     const encoder = new TextEncoder();
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function showPopupOrRedirect() {
-    if (!subscribedHash) {
+    if (!subscribedEmailHash) {
       popup.style.display = 'flex';
     } else {
       window.location.href = 'pages/sneak-peek.html';
@@ -55,6 +56,14 @@ document.addEventListener('DOMContentLoaded', function () {
     sneakPeekButton.addEventListener('click', function (e) {
       e.preventDefault();
       showPopupOrRedirect();
+    });
+
+    sneakPeekButton.addEventListener('mouseover', () => {
+      if (book) book.classList.add('hovered');
+    });
+
+    sneakPeekButton.addEventListener('mouseout', () => {
+      if (book) book.classList.remove('hovered');
     });
   }
 
@@ -75,36 +84,29 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const email = document.getElementById('popup-email').value;
-      hashEmail(email).then(hash => {
-        if (hash === subscribedHash) {
-          popupMessage.textContent = "You're already subscribed.";
-          popupMessage.style.color = 'gray';
-          setTimeout(() => {
-            window.location.href = 'pages/sneak-peek.html';
-          }, 1000);
-          return;
-        }
 
-        fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: new URLSearchParams({ email })
-        })
-        .then(response => response.text())
-        .then(() => {
-          popupMessage.textContent = "Thank you! Here's your sneak peek.";
-          popupMessage.style.color = 'green';
-          localStorage.setItem('subscribed_hash', hash);
+      fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({ email })
+      })
+      .then(response => response.text())
+      .then(() => {
+        popupMessage.textContent = "Thank you! Here's your sneak peek.";
+        popupMessage.style.color = 'green';
+
+        hashEmail(email).then(hashed => {
+          localStorage.setItem('subscribed_hash', hashed);
           setTimeout(() => {
             window.location.href = 'pages/sneak-peek.html';
           }, 1500);
-        })
-        .catch(() => {
-          popupMessage.textContent = "Error. Please try again.";
-          popupMessage.style.color = 'red';
         });
+      })
+      .catch(() => {
+        popupMessage.textContent = "Error. Please try again.";
+        popupMessage.style.color = 'red';
       });
     });
   }
