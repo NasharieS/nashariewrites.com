@@ -44,13 +44,14 @@ document.addEventListener('DOMContentLoaded', function () {
     return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
-  function showPopupIfNotSubscribed() {
-    if (!subscribedHash) {
-      popup.style.display = 'flex';
-    } else {
-      window.location.href = 'pages/sneak-peek.html';
-    }
+ function showPopupIfNotSubscribed() {
+  const currentHash = localStorage.getItem('subscribed_hash');
+  if (!currentHash) {
+    popup.style.display = 'flex';
+  } else {
+    window.location.href = 'pages/sneak-peek.html';
   }
+}
 
   if (sneakPeekButton) {
     sneakPeekButton.addEventListener('click', function (e) {
