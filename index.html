@@ -32,8 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeBtn = document.querySelector('.close-popup');
   const sneakPeekButton = document.getElementById('sneak-peek-button');
   const bookCoverLink = document.querySelector('.book-link');
-  const footerSubscribeButton = document.querySelector('.email-signup button');
-
+  const book = document.querySelector('.book');
   const subscribedEmailHash = localStorage.getItem('subscribed_hash');
 
   function hashEmail(email) {
@@ -52,25 +51,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  if (sneakPeekButton) {
-    sneakPeekButton.addEventListener('click', function (e) {
-      e.preventDefault();
-      showPopupIfNotSubscribed();
-    });
-  }
+  if (!subscribedEmailHash) {
+    if (sneakPeekButton) {
+      sneakPeekButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        showPopupIfNotSubscribed();
+      });
+    }
 
-  if (bookCoverLink) {
-    bookCoverLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      showPopupIfNotSubscribed();
-    });
-  }
+    if (bookCoverLink) {
+      bookCoverLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        showPopupIfNotSubscribed();
+      });
+    }
 
-  if (footerSubscribeButton) {
-    footerSubscribeButton.addEventListener('click', function (e) {
-      e.preventDefault();
-      showPopupIfNotSubscribed();
-    });
+    // ✅ Hover effect ONLY if not already subscribed
+    if (book && sneakPeekButton) {
+      sneakPeekButton.addEventListener('mouseover', () => {
+        book.classList.add('hovered');
+      });
+      sneakPeekButton.addEventListener('mouseout', () => {
+        book.classList.remove('hovered');
+      });
+    }
+  } else {
+    // If already subscribed, clicking jumps straight to sneak peek
+    if (sneakPeekButton) {
+      sneakPeekButton.setAttribute('href', 'pages/sneak-peek.html');
+    }
+    if (bookCoverLink) {
+      bookCoverLink.setAttribute('href', 'pages/sneak-peek.html');
+    }
   }
 
   if (closeBtn) {
@@ -86,9 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({ email })
       })
       .then(response => response.text())
@@ -107,16 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
         popupMessage.textContent = "Error. Please try again.";
         popupMessage.style.color = 'red';
       });
-    });
-  }
-
-  const book = document.querySelector('.book');
-  if (book && sneakPeekButton && !subscribedEmailHash) {
-    sneakPeekButton.addEventListener('mouseover', () => {
-      book.classList.add('hovered');
-    });
-    sneakPeekButton.addEventListener('mouseout', () => {
-      book.classList.remove('hovered');
     });
   }
 });
