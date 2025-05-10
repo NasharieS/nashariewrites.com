@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,37 +10,45 @@
 </head>
 <body class="home-page">
 
-  <script>
-const form = document.getElementById('email-form');
-const popup = document.getElementById('sneak-peek-popup');
-const popupMessage = document.getElementById('popup-message');
-const closeBtn = document.querySelector('.close-popup');
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const popup = document.getElementById('sneak-peek-popup');
+  const popupMessage = document.getElementById('popup-message');
+  const closeBtn = document.querySelector('.close-popup');
+  const form = document.getElementById('email-form');
 
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const email = document.getElementById('popup-email').value;
-
-  fetch('https://script.google.com/macros/s/AKfycbx4V1OXxsYHvqIkDpPsMNHZFQPrv0wwLEn7_9bMDhM/exec', {
-    method: 'POST',
-    body: new URLSearchParams({ email })
-  })
-  .then(res => res.text())
-  .then(() => {
-    popupMessage.textContent = "Thank you! Here's your sneak peek.";
-    popupMessage.style.color = 'green';
-    localStorage.setItem('subscribed', 'true');
-    setTimeout(() => {
-      window.location.href = 'pages/sneak-peek.html';
-    }, 2000);
-  })
-  .catch(() => {
-    popupMessage.textContent = "Error. Please try again.";
-    popupMessage.style.color = 'red';
+  document.getElementById('sneak-peek-button').addEventListener('click', e => {
+    e.preventDefault();
+    popup.style.display = 'flex';
   });
-});
 
-closeBtn.addEventListener('click', () => {
-  popup.style.display = 'none';
+  closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+    popupMessage.textContent = '';
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = document.getElementById('popup-email').value;
+
+    fetch('https://script.google.com/macros/s/AKfycbx4V1OXxsYHvqIkDpPsMNHZFQPrv0wwLEn7_9bMDhM/exec', {
+      method: 'POST',
+      body: new URLSearchParams({ email })
+    })
+    .then(res => res.text())
+    .then(() => {
+      popupMessage.textContent = "Thank you! Here's your sneak peek.";
+      popupMessage.style.color = 'green';
+      localStorage.setItem('subscribed', 'true');
+      setTimeout(() => {
+        window.location.href = 'pages/sneak-peek.html';
+      }, 2000);
+    })
+    .catch(() => {
+      popupMessage.textContent = "Error. Please try again.";
+      popupMessage.style.color = 'red';
+    });
+  });
 });
 </script>
 
@@ -83,44 +89,41 @@ closeBtn.addEventListener('click', () => {
   <h2 class="block-title">Coming Soon: The Transfer Student</h2>
 
   <div class="book-content">
- <!-- LEFT: Book -->
-<!-- Book Container -->
-<div class="book-container">
-  <a href="pages/sneak-peek.html" class="book-link">
-    <div class="book" id="book">
-      <div class="book-back"></div> <!-- Back hard cover (brownish) -->
-      <div class="back-page"></div> <!-- Optional yellowish backing -->
-      <div class="book-pages">
-        <div class="left-page"></div>
-        <div class="right-page"></div>
-      </div>
-      <div class="book-cover">
-        <img src="images/bookcover.webp" alt="The Transfer Student Cover">
-      </div>
-    </div> <!-- end .book -->
-  </a> <!-- end .book-link -->
-</div> <!-- end .book-container -->
-    
-    <!-- RIGHT: Text -->
-    <div class="synopsis-text">
-    <p>
-      Frustrated by the failing public school system around her, Amara longs for change but feels powerless to create it. 
-      At home, she struggles with grief over her father’s death and her mother's abandonment. To make matters worse, for weeks, 
-      she has been haunted by nightmares she doesn't understand. Then one morning, she wakes up in the body of a different student 
-      in a different country, with a new name, identity, and school awaiting her. Each education system challenges what she thought 
-      she knew about opportunity, privilege, and the future—a future she’s beginning to glimpse in terrifying flashes. 
-      What Amara does know now is this: the fight for education is bigger than her, and she may be the only one who can change it. 
-      But with every answer comes a harder question: What will it cost to make it back home?
-    </p>
+    <div class="book-container">
+      <a href="#" class="book-link" id="sneak-peek-button">
+        <div class="book" id="book">
+          <div class="book-back"></div>
+          <div class="back-page"></div>
+          <div class="book-pages">
+            <div class="left-page"></div>
+            <div class="right-page"></div>
+          </div>
+          <div class="book-cover">
+            <img src="images/bookcover.webp" alt="The Transfer Student Cover">
+          </div>
+        </div>
+      </a>
+    </div>
 
-       <div class="button-container">
-      <a href="pages/sneak-peek.html" class="cta-button" id="sneak-peek-button">Take a Sneak Peek</a>
+    <div class="synopsis-text">
+      <p>
+        Frustrated by the failing public school system around her, Amara longs for change but feels powerless to create it.
+        At home, she struggles with grief over her father’s death and her mother's abandonment. To make matters worse, for weeks,
+        she has been haunted by nightmares she doesn't understand. Then one morning, she wakes up in the body of a different student
+        in a different country, with a new name, identity, and school awaiting her. Each education system challenges what she thought
+        she knew about opportunity, privilege, and the future—a future she’s beginning to glimpse in terrifying flashes.
+        What Amara does know now is this: the fight for education is bigger than her, and she may be the only one who can change it.
+        But with every answer comes a harder question: What will it cost to make it back home?
+      </p>
+
+      <div class="button-container">
+        <a href="#" class="cta-button" id="sneak-peek-button">Take a Sneak Peek</a>
+      </div>
     </div>
   </div>
-    </div> <!-- end .book-content -->
 </section>
 
-  <!-- About Me Section -->
+<!-- About Me Section -->
 <section class="about-me-section yellow-background">
   <img src="images/headshot.png" alt="Nasharie Headshot" class="headshot">
   <h2>About Nasharie</h2>
@@ -147,33 +150,19 @@ closeBtn.addEventListener('click', () => {
   </div>
 
   <!-- Sneak Peek Email Popup -->
-<div id="sneak-peek-popup" class="popup-overlay">
-  <div class="popup-content">
-    <h3>Get a Sneak Peek</h3>
-    <p>Enter your email to unlock the first few pages of <em>The Transfer Student</em> and receive updates.</p>
-    <form id="email-form">
-      <input type="email" name="email" id="popup-email" placeholder="Enter your email" required>
-      <button type="submit">Submit</button>
-    </form>
-    <p id="popup-message"></p>
-    <span class="close-popup">&times;</span>
+  <div id="sneak-peek-popup" class="popup-overlay">
+    <div class="popup-content">
+      <h3>Get a Sneak Peek</h3>
+      <p>Enter your email to unlock the first few pages of <em>The Transfer Student</em> and receive updates.</p>
+      <form id="email-form">
+        <input type="email" name="email" id="popup-email" placeholder="Enter your email" required>
+        <button type="submit">Submit</button>
+      </form>
+      <p id="popup-message"></p>
+      <span class="close-popup">&times;</span>
+    </div>
   </div>
-</div>
-  
 </section>
-
-  <script>
-  const sneakPeekButton = document.getElementById('sneak-peek-button');
-  const book = document.querySelector('.book');
-
-  sneakPeekButton.addEventListener('mouseover', () => {
-    book.classList.add('hovered');
-  });
-
-  sneakPeekButton.addEventListener('mouseout', () => {
-    book.classList.remove('hovered');
-  });
-</script>
 
 </main>
 
