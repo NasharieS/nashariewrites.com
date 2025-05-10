@@ -33,8 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const sneakPeekButton = document.getElementById('sneak-peek-button');
   const bookCoverLink = document.querySelector('.book-link');
 
-  // Local check for prior subscription
-  const subscribedEmailHash = localStorage.getItem('subscribed_hash');
+  const subscribedHash = localStorage.getItem('subscribed_hash');
 
   function hashEmail(email) {
     const encoder = new TextEncoder();
@@ -44,8 +43,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  function showPopupIfNotSubscribed() {
-    if (!subscribedEmailHash) {
+  function showPopupOrRedirect() {
+    if (!subscribedHash) {
       popup.style.display = 'flex';
     } else {
       window.location.href = 'pages/sneak-peek.html';
@@ -55,14 +54,14 @@ document.addEventListener('DOMContentLoaded', function () {
   if (sneakPeekButton) {
     sneakPeekButton.addEventListener('click', function (e) {
       e.preventDefault();
-      showPopupIfNotSubscribed();
+      showPopupOrRedirect();
     });
   }
 
   if (bookCoverLink) {
     bookCoverLink.addEventListener('click', function (e) {
       e.preventDefault();
-      showPopupIfNotSubscribed();
+      showPopupOrRedirect();
     });
   }
 
@@ -76,43 +75,37 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const email = document.getElementById('popup-email').value;
+      hashEmail(email).then(hash => {
+        if (hash === subscribedHash) {
+          popupMessage.textContent = "You're already subscribed.";
+          popupMessage.style.color = 'gray';
+          setTimeout(() => {
+            window.location.href = 'pages/sneak-peek.html';
+          }, 1000);
+          return;
+        }
 
-      fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams({ email })
-      })
-      .then(response => response.text())
-      .then(() => {
-        popupMessage.textContent = "Thank you! Here's your sneak peek.";
-        popupMessage.style.color = 'green';
-
-        // Save email hash in localStorage to block future prompts
-        hashEmail(email).then(hashed => {
-          localStorage.setItem('subscribed_hash', hashed);
+        fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: new URLSearchParams({ email })
+        })
+        .then(response => response.text())
+        .then(() => {
+          popupMessage.textContent = "Thank you! Here's your sneak peek.";
+          popupMessage.style.color = 'green';
+          localStorage.setItem('subscribed_hash', hash);
           setTimeout(() => {
             window.location.href = 'pages/sneak-peek.html';
           }, 1500);
+        })
+        .catch(() => {
+          popupMessage.textContent = "Error. Please try again.";
+          popupMessage.style.color = 'red';
         });
-      })
-      .catch(() => {
-        popupMessage.textContent = "Error. Please try again.";
-        popupMessage.style.color = 'red';
       });
-    });
-  }
-});
-
-  // Hover animation
-  const book = document.querySelector('.book');
-  if (book && sneakPeekButton && !subscribed) {
-    sneakPeekButton.addEventListener('mouseover', () => {
-      book.classList.add('hovered');
-    });
-    sneakPeekButton.addEventListener('mouseout', () => {
-      book.classList.remove('hovered');
     });
   }
 });
@@ -125,12 +118,10 @@ document.addEventListener('DOMContentLoaded', function () {
       <img src="images/blanklogo.png" alt="Nasharie Logo" class="hero-logo">
     </a>
   </div>
-
   <div class="hero-content">
     <h1 class="hero-main-title">Welcome to</h1>
     <h1 class="hero-sub-title">Nasharie Writes</h1>
     <p class="subtitle">Aspiring Author | Advocate for Education Equity</p>
-
     <nav class="hero-nav">
       <ul>
         <li class="dropdown">
