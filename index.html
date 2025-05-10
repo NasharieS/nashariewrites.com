@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeBtn = document.querySelector('.close-popup');
   const sneakPeekButton = document.getElementById('sneak-peek-button');
   const bookCoverLink = document.querySelector('.book-link');
-  const book = document.querySelector('.book');
+  const footerSubscribeButton = document.querySelector('.email-signup button');
 
   const subscribedEmailHash = localStorage.getItem('subscribed_hash');
 
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  function showPopupOrRedirect() {
+  function showPopupIfNotSubscribed() {
     if (!subscribedEmailHash) {
       popup.style.display = 'flex';
     } else {
@@ -55,22 +55,21 @@ document.addEventListener('DOMContentLoaded', function () {
   if (sneakPeekButton) {
     sneakPeekButton.addEventListener('click', function (e) {
       e.preventDefault();
-      showPopupOrRedirect();
-    });
-
-    sneakPeekButton.addEventListener('mouseover', () => {
-      if (book) book.classList.add('hovered');
-    });
-
-    sneakPeekButton.addEventListener('mouseout', () => {
-      if (book) book.classList.remove('hovered');
+      showPopupIfNotSubscribed();
     });
   }
 
   if (bookCoverLink) {
     bookCoverLink.addEventListener('click', function (e) {
       e.preventDefault();
-      showPopupOrRedirect();
+      showPopupIfNotSubscribed();
+    });
+  }
+
+  if (footerSubscribeButton) {
+    footerSubscribeButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      showPopupIfNotSubscribed();
     });
   }
 
@@ -85,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
       e.preventDefault();
       const email = document.getElementById('popup-email').value;
 
-      fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
+      fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -110,6 +109,16 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
+
+  const book = document.querySelector('.book');
+  if (book && sneakPeekButton && !subscribedEmailHash) {
+    sneakPeekButton.addEventListener('mouseover', () => {
+      book.classList.add('hovered');
+    });
+    sneakPeekButton.addEventListener('mouseout', () => {
+      book.classList.remove('hovered');
+    });
+  }
 });
 </script>
 
@@ -120,10 +129,12 @@ document.addEventListener('DOMContentLoaded', function () {
       <img src="images/blanklogo.png" alt="Nasharie Logo" class="hero-logo">
     </a>
   </div>
+
   <div class="hero-content">
     <h1 class="hero-main-title">Welcome to</h1>
     <h1 class="hero-sub-title">Nasharie Writes</h1>
     <p class="subtitle">Aspiring Author | Advocate for Education Equity</p>
+
     <nav class="hero-nav">
       <ul>
         <li class="dropdown">
