@@ -32,27 +32,24 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeBtn = document.querySelector('.close-popup');
   const sneakPeekButton = document.getElementById('sneak-peek-button');
   const bookCoverLink = document.querySelector('.book-link');
+  const subscribed = localStorage.getItem('subscribed');
 
-  if (!localStorage.getItem('subscribed')) {
-    if (sneakPeekButton) {
-      sneakPeekButton.addEventListener('click', function (e) {
-        e.preventDefault();
-        popup.style.display = 'flex';
-      });
-    }
-
-    if (bookCoverLink) {
-      bookCoverLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        popup.style.display = 'flex';
-      });
-    }
+  // If already subscribed, go straight to sneak peek
+  if (subscribed) {
+    if (sneakPeekButton) sneakPeekButton.setAttribute('href', 'pages/sneak-peek.html');
+    if (bookCoverLink) bookCoverLink.setAttribute('href', 'pages/sneak-peek.html');
   } else {
     if (sneakPeekButton) {
-      sneakPeekButton.setAttribute('href', 'pages/sneak-peek.html');
+      sneakPeekButton.addEventListener('click', e => {
+        e.preventDefault();
+        popup.style.display = 'flex';
+      });
     }
     if (bookCoverLink) {
-      bookCoverLink.setAttribute('href', 'pages/sneak-peek.html');
+      bookCoverLink.addEventListener('click', e => {
+        e.preventDefault();
+        popup.style.display = 'flex';
+      });
     }
   }
 
@@ -90,12 +87,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Hover animation
   const book = document.querySelector('.book');
-  if (book && sneakPeekButton) {
+  if (book && sneakPeekButton && !subscribed) {
     sneakPeekButton.addEventListener('mouseover', () => {
       book.classList.add('hovered');
     });
-
     sneakPeekButton.addEventListener('mouseout', () => {
       book.classList.remove('hovered');
     });
@@ -134,10 +131,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <main>
-<!-- About Book Section -->
 <section class="about-book-section white-background">
   <h2 class="block-title">Coming Soon: The Transfer Student</h2>
-
   <div class="book-content">
     <div class="book-container">
       <a href="#" class="book-link">
@@ -194,7 +189,6 @@ document.addEventListener('DOMContentLoaded', function () {
     <button>Subscribe</button>
   </div>
 </section>
-
 </main>
 
 <footer class="soft-footer">
