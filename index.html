@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const sneakPeekButton = document.getElementById('sneak-peek-button');
   const bookCoverLink = document.querySelector('.book-link');
   const book = document.querySelector('.book');
+  const subscribeInput = document.querySelector('.email-signup input');
+  const subscribeBtn = document.querySelector('.email-signup button');
   const subscribed = localStorage.getItem('subscribed');
-  const bottomInput = document.querySelector('.email-signup input');
-  const bottomButton = document.querySelector('.email-signup button');
 
   function showPopupIfNotSubscribed() {
     if (!subscribed) {
@@ -78,19 +78,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
       fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({ email })
       })
       .then(response => response.text())
-      .then(() => {
-        popupMessage.textContent = "Thank you! Here's your sneak peek.";
+      .then(responseText => {
+        if (responseText.includes('duplicate')) {
+          popupMessage.textContent = "Thank you, you've already subscribed.";
+        } else {
+          popupMessage.textContent = "Thank you! Here's your sneak peek.";
+          localStorage.setItem('subscribed', 'true');
+          setTimeout(() => {
+            window.location.href = 'pages/sneak-peek.html';
+          }, 1500);
+        }
         popupMessage.style.color = 'green';
-        localStorage.setItem('subscribed', 'true');
-        setTimeout(() => {
-          window.location.href = 'pages/sneak-peek.html';
-        }, 1500);
       })
       .catch(() => {
         popupMessage.textContent = "Error. Please try again.";
@@ -99,34 +101,29 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  if (bottomInput && bottomButton) {
-    bottomButton.addEventListener('click', function () {
-      const email = bottomInput.value.trim();
+  if (subscribeBtn && subscribeInput) {
+    subscribeBtn.addEventListener('click', () => {
+      const email = subscribeInput.value;
       if (!email) return;
-
       if (subscribed) {
-        bottomButton.innerText = 'Already Subscribed. Thank you!';
-        bottomButton.disabled = true;
+        alert("Thank you, you've already subscribed.");
         return;
       }
-
       fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({ email })
       })
       .then(response => response.text())
-      .then(() => {
-        localStorage.setItem('subscribed', 'true');
-        bottomButton.innerText = 'Thank you! Check out the sneak peek →';
-        bottomButton.onclick = () => window.location.href = 'pages/sneak-peek.html';
+      .then(responseText => {
+        if (responseText.includes('duplicate')) {
+          alert("Thank you, you've already subscribed.");
+        } else {
+          localStorage.setItem('subscribed', 'true');
+          alert("Thank you for subscribing! Check out the sneak peek.");
+        }
       })
-      .catch(() => {
-        bottomButton.innerText = 'Error. Try again.';
-        bottomButton.disabled = false;
-      });
+      .catch(() => alert("Something went wrong. Please try again."));
     });
   }
 });
