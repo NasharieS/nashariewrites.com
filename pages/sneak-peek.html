@@ -173,13 +173,6 @@ function renderSpread(index) {
       renderSpread(current);
     }
   };
-
-  renderSpread(current);
-
-  if (localStorage.getItem('subscribed')) {
-    document.getElementById('thank-you-message').style.display = 'block';
-    localStorage.removeItem('subscribed');
-  }
 });
 </script>
 </body>
