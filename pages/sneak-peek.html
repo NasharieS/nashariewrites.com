@@ -10,7 +10,7 @@
 </head>
 
 <body class="sneakpeek">
-  
+
 <script>
 if (localStorage.getItem('subscribed')) {
   const msg = document.createElement('p');
@@ -35,7 +35,7 @@ if (localStorage.getItem('subscribed')) {
         <ul class="dropdown-menu">
           <li><a href="../pages/transfer-student.html">The Transfer Student</a></li>
           <li><a href="../pages/works.html#short-stories">Short Stories</a></li>
-          <li><a href="works.html#paper-trails">Paper Trails</a></li>
+          <li><a href="../pages/works.html#paper-trails">Paper Trails</a></li>
         </ul>
       </li>
       <li><a href="../pages/get-involved.html">Get Involved</a></li>
@@ -120,15 +120,15 @@ const introSpread = [
      <p class="indent">I woke up gasping, my breath uneven.</p>`,
   ];
 
-const contentSpreads = rawParagraphs.reduce((acc, para, i, arr) => {
-  const isHtml = para.trim().startsWith("<p");
-  const left = isHtml ? para : `<p>${para}</p>`;
-  const next = arr[i + 1] || "";
-  const isNextHtml = next.trim().startsWith("<p");
-  const right = isNextHtml ? next : `<p>${next}</p>`;
-  if (i % 2 === 0) acc.push([left, right]);
-  return acc;
-}, []);
+ const contentSpreads = rawParagraphs.reduce((acc, para, i, arr) => {
+    const isHtml = para.trim().startsWith("<p");
+    const left = isHtml ? para : `<p>${para}</p>`;
+    const next = arr[i + 1] || "";
+    const isNextHtml = next.trim().startsWith("<p");
+    const right = isNextHtml ? next : `<p>${next}</p>`;
+    if (i % 2 === 0) acc.push([left, right]);
+    return acc;
+  }, []);
 
   const spreads = [introSpread, ...contentSpreads];
 
@@ -141,7 +141,7 @@ const contentSpreads = rawParagraphs.reduce((acc, para, i, arr) => {
 
   let current = 0;
 
-function renderSpread(index) {
+  function renderSpread(index) {
     const [left, right] = spreads[index] || ["", ""];
     leftEl.innerHTML = left;
 
@@ -151,10 +151,10 @@ function renderSpread(index) {
           <h2>More Coming Soon...</h2>
           <a href="../pages/transfer-student.html" class="explore-button">Explore the World</a>
         </div>`;
-      rightNumber.style.display = "none"; // Hide number on last spread
+      rightNumber.style.display = "none";
     } else {
       rightEl.innerHTML = right;
-      rightNumber.style.display = "block"; // Restore otherwise
+      rightNumber.style.display = "block";
     }
 
     leftNumber.textContent = index * 2 + 1;
@@ -180,6 +180,8 @@ function renderSpread(index) {
       renderSpread(current);
     }
   };
+
+  renderSpread(current); // ✅ Renders the first spread on load
 });
 </script>
 </body>
