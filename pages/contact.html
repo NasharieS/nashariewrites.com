@@ -45,6 +45,17 @@
   </section>
 </main>
 
+  <script>
+  document.querySelector('.email-signup button').addEventListener('click', () => {
+    const emailInput = document.querySelector('.email-signup input');
+    if (emailInput.value.trim()) {
+      localStorage.setItem('subscribed', 'true');
+      window.location.href = 'pages/sneak-peek.html';
+    }
+  });
+</script>
+
+
 <!-- Footer -->
 <footer>
   <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
