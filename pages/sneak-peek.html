@@ -10,10 +10,17 @@
 </head>
 
 <body class="sneakpeek">
-
-  <div id="thank-you-message" style="display: none; background: #fff8dc; padding: 20px; text-align: center; font-size: 18px; font-weight: bold; color: #5C4033;">
-  Thank you for subscribing. Here's your sneak peek.
-</div>
+  
+<script>
+if (localStorage.getItem('subscribed')) {
+  const msg = document.createElement('p');
+  msg.innerText = "Thanks for subscribing! Here's your sneak peek.";
+  msg.style.fontWeight = 'bold';
+  msg.style.margin = '20px';
+  document.body.prepend(msg);
+  localStorage.removeItem('subscribed');
+}
+</script>
 
 <header class="header">
   <a href="../index.html">
