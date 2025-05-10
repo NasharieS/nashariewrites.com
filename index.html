@@ -57,17 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         showPopupIfNotSubscribed();
       });
-    }
-
-    if (bookCoverLink) {
-      bookCoverLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        showPopupIfNotSubscribed();
-      });
-    }
-
-    // ✅ Hover effect ONLY if not already subscribed
-    if (book && sneakPeekButton) {
       sneakPeekButton.addEventListener('mouseover', () => {
         book.classList.add('hovered');
       });
@@ -75,8 +64,13 @@ document.addEventListener('DOMContentLoaded', function () {
         book.classList.remove('hovered');
       });
     }
+    if (bookCoverLink) {
+      bookCoverLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        showPopupIfNotSubscribed();
+      });
+    }
   } else {
-    // If already subscribed, clicking jumps straight to sneak peek
     if (sneakPeekButton) {
       sneakPeekButton.setAttribute('href', 'pages/sneak-peek.html');
     }
