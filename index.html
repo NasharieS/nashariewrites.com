@@ -57,13 +57,16 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         showPopupIfNotSubscribed();
       });
+
       sneakPeekButton.addEventListener('mouseover', () => {
         book.classList.add('hovered');
       });
+
       sneakPeekButton.addEventListener('mouseout', () => {
         book.classList.remove('hovered');
       });
     }
+
     if (bookCoverLink) {
       bookCoverLink.addEventListener('click', function (e) {
         e.preventDefault();
