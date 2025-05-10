@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +8,21 @@
   <link rel="icon" type="image/png" href="../images/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
+<body>
+
+<!-- Sneak Peek Email Popup -->
+<div id="sneak-peek-popup" class="popup-overlay" style="display:none;">
+  <div class="popup-content">
+    <h3>Get a Sneak Peek</h3>
+    <p>Enter your email to unlock the first few pages of <em>The Transfer Student</em> and receive updates.</p>
+    <form id="email-form">
+      <input type="email" name="email" id="popup-email" placeholder="Enter your email" required>
+      <button type="submit">Submit</button>
+    </form>
+    <p id="popup-message"></p>
+    <span class="close-popup">&times;</span>
+  </div>
+</div>
 
 <body>
 
@@ -342,6 +356,86 @@ document.addEventListener('mousemove', (e) => {
 <footer>
   <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
 </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const sneakPeekButton = document.getElementById('sneak-peek-button');
+  const bookLink = document.getElementById('book-link');
+  const popup = document.getElementById('sneak-peek-popup');
+  const closeBtn = document.querySelector('.close-popup');
+  const form = document.getElementById('email-form');
+  const popupMessage = document.getElementById('popup-message');
+  const subscribedHash = localStorage.getItem('subscribed_hash');
+
+  function showPopupIfNotSubscribed() {
+    if (!subscribedHash) {
+      popup.style.display = 'flex';
+    } else {
+      window.location.href = '../pages/sneak-peek.html';
+    }
+  }
+
+  function hashEmail(email) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(email);
+    return crypto.subtle.digest('SHA-256', data).then(buffer => {
+      return [...new Uint8Array(buffer)].map(b => b.toString(16).padStart(2, '0')).join('');
+    });
+  }
+
+  if (sneakPeekButton) {
+    sneakPeekButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      showPopupIfNotSubscribed();
+    });
+  }
+
+  if (bookLink) {
+    bookLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      showPopupIfNotSubscribed();
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function () {
+      popup.style.display = 'none';
+    });
+  }
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('popup-email').value;
+      hashEmail(email).then(hash => {
+        localStorage.setItem('subscribed_hash', hash);
+
+        fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ email })
+        })
+        .then(response => response.text())
+        .then(responseText => {
+          if (responseText.includes('duplicate')) {
+            popupMessage.textContent = "Thank you, you've already subscribed.";
+          } else {
+            popupMessage.textContent = "Thank you! Here's your sneak peek.";
+            setTimeout(() => {
+              window.location.href = '../pages/sneak-peek.html';
+            }, 1500);
+          }
+          popupMessage.style.color = 'green';
+        })
+        .catch(() => {
+          popupMessage.textContent = "Error. Please try again.";
+          popupMessage.style.color = 'red';
+        });
+      });
+    });
+  }
+});
+</script>
 
 </body>
 </html>
