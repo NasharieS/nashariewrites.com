@@ -12,6 +12,40 @@
 </head>
 <body class="home-page">
 
+  <script>
+const form = document.getElementById('email-form');
+const popup = document.getElementById('sneak-peek-popup');
+const popupMessage = document.getElementById('popup-message');
+const closeBtn = document.querySelector('.close-popup');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const email = document.getElementById('popup-email').value;
+
+  fetch('https://script.google.com/macros/s/AKfycbx4V1OXxsYHvqIkDpPsMNHZFQPrv0wwLEn7_9bMDhM/exec', {
+    method: 'POST',
+    body: new URLSearchParams({ email })
+  })
+  .then(res => res.text())
+  .then(() => {
+    popupMessage.textContent = "Thank you! Here's your sneak peek.";
+    popupMessage.style.color = 'green';
+    localStorage.setItem('subscribed', 'true');
+    setTimeout(() => {
+      window.location.href = 'pages/sneak-peek.html';
+    }, 2000);
+  })
+  .catch(() => {
+    popupMessage.textContent = "Error. Please try again.";
+    popupMessage.style.color = 'red';
+  });
+});
+
+closeBtn.addEventListener('click', () => {
+  popup.style.display = 'none';
+});
+</script>
+
 <!-- Hero Section -->
 <section class="hero-section">
   <div class="hero-logo-container">
@@ -111,6 +145,20 @@
     <input type="email" placeholder="Enter your email">
     <button>Subscribe</button>
   </div>
+
+  <!-- Sneak Peek Email Popup -->
+<div id="sneak-peek-popup" class="popup-overlay">
+  <div class="popup-content">
+    <h3>Get a Sneak Peek</h3>
+    <p>Enter your email to unlock the first few pages of <em>The Transfer Student</em> and receive updates.</p>
+    <form id="email-form">
+      <input type="email" name="email" id="popup-email" placeholder="Enter your email" required>
+      <button type="submit">Submit</button>
+    </form>
+    <p id="popup-message"></p>
+    <span class="close-popup">&times;</span>
+  </div>
+</div>
   
 </section>
 
