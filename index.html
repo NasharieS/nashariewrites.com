@@ -33,53 +33,34 @@ document.addEventListener('DOMContentLoaded', function () {
   const sneakPeekButton = document.getElementById('sneak-peek-button');
   const bookCoverLink = document.querySelector('.book-link');
   const book = document.querySelector('.book');
-  const subscribedEmailHash = localStorage.getItem('subscribed_hash');
-
-  function hashEmail(email) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(email);
-    return crypto.subtle.digest('SHA-256', data).then(buffer => {
-      return [...new Uint8Array(buffer)].map(b => b.toString(16).padStart(2, '0')).join('');
-    });
-  }
+  const subscribed = localStorage.getItem('subscribed');
 
   function showPopupIfNotSubscribed() {
-    if (!subscribedEmailHash) {
+    if (!subscribed) {
       popup.style.display = 'flex';
     } else {
       window.location.href = 'pages/sneak-peek.html';
     }
   }
 
-  if (!subscribedEmailHash) {
-    if (sneakPeekButton) {
-      sneakPeekButton.addEventListener('click', function (e) {
-        e.preventDefault();
-        showPopupIfNotSubscribed();
-      });
+  if (sneakPeekButton) {
+    sneakPeekButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      showPopupIfNotSubscribed();
+    });
+    sneakPeekButton.addEventListener('mouseover', () => {
+      book.classList.add('hovered');
+    });
+    sneakPeekButton.addEventListener('mouseout', () => {
+      book.classList.remove('hovered');
+    });
+  }
 
-      sneakPeekButton.addEventListener('mouseover', () => {
-        book.classList.add('hovered');
-      });
-
-      sneakPeekButton.addEventListener('mouseout', () => {
-        book.classList.remove('hovered');
-      });
-    }
-
-    if (bookCoverLink) {
-      bookCoverLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        showPopupIfNotSubscribed();
-      });
-    }
-  } else {
-    if (sneakPeekButton) {
-      sneakPeekButton.setAttribute('href', 'pages/sneak-peek.html');
-    }
-    if (bookCoverLink) {
-      bookCoverLink.setAttribute('href', 'pages/sneak-peek.html');
-    }
+  if (bookCoverLink) {
+    bookCoverLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      showPopupIfNotSubscribed();
+    });
   }
 
   if (closeBtn) {
@@ -93,22 +74,21 @@ document.addEventListener('DOMContentLoaded', function () {
       e.preventDefault();
       const email = document.getElementById('popup-email').value;
 
-      fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
         body: new URLSearchParams({ email })
       })
       .then(response => response.text())
       .then(() => {
         popupMessage.textContent = "Thank you! Here's your sneak peek.";
         popupMessage.style.color = 'green';
-
-        hashEmail(email).then(hashed => {
-          localStorage.setItem('subscribed_hash', hashed);
-          setTimeout(() => {
-            window.location.href = 'pages/sneak-peek.html';
-          }, 1500);
-        });
+        localStorage.setItem('subscribed', 'true');
+        setTimeout(() => {
+          window.location.href = 'pages/sneak-peek.html';
+        }, 1500);
       })
       .catch(() => {
         popupMessage.textContent = "Error. Please try again.";
@@ -126,18 +106,16 @@ document.addEventListener('DOMContentLoaded', function () {
       <img src="images/blanklogo.png" alt="Nasharie Logo" class="hero-logo">
     </a>
   </div>
-
   <div class="hero-content">
     <h1 class="hero-main-title">Welcome to</h1>
     <h1 class="hero-sub-title">Nasharie Writes</h1>
     <p class="subtitle">Aspiring Author | Advocate for Education Equity</p>
-
     <nav class="hero-nav">
       <ul>
         <li class="dropdown">
-        <a href="#" onclick="return false;">Works <span class="arrow">▼</span></a>
+          <a href="#" onclick="return false;">Works <span class="arrow">▼</span></a>
           <ul class="dropdown-menu">
-           <li><a href="pages/transfer-student.html">The Transfer Student</a></li>
+            <li><a href="pages/transfer-student.html">The Transfer Student</a></li>
             <li><a href="works.html#short-stories">Short Stories</a></li>
             <li><a href="works.html#paper-trails">Paper Trails</a></li>
           </ul>
@@ -150,64 +128,64 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <main>
-<section class="about-book-section white-background">
-  <h2 class="block-title">Coming Soon: The Transfer Student</h2>
-  <div class="book-content">
-    <div class="book-container">
-      <a href="#" class="book-link">
-        <div class="book" id="book">
-          <div class="book-back"></div>
-          <div class="back-page"></div>
-          <div class="book-pages">
-            <div class="left-page"></div>
-            <div class="right-page"></div>
+  <section class="about-book-section white-background">
+    <h2 class="block-title">Coming Soon: The Transfer Student</h2>
+    <div class="book-content">
+      <div class="book-container">
+        <a href="#" class="book-link">
+          <div class="book" id="book">
+            <div class="book-back"></div>
+            <div class="back-page"></div>
+            <div class="book-pages">
+              <div class="left-page"></div>
+              <div class="right-page"></div>
+            </div>
+            <div class="book-cover">
+              <img src="images/bookcover.webp" alt="The Transfer Student Cover">
+            </div>
           </div>
-          <div class="book-cover">
-            <img src="images/bookcover.webp" alt="The Transfer Student Cover">
-          </div>
+        </a>
+      </div>
+      <div class="synopsis-text">
+        <p>
+          Frustrated by the failing public school system around her, Amara longs for change but feels powerless to create it.
+          At home, she struggles with grief over her father’s death and her mother's abandonment. To make matters worse, for weeks,
+          she has been haunted by nightmares she doesn't understand. Then one morning, she wakes up in the body of a different student
+          in a different country, with a new name, identity, and school awaiting her. Each education system challenges what she thought
+          she knew about opportunity, privilege, and the future—a future she’s beginning to glimpse in terrifying flashes.
+          What Amara does know now is this: the fight for education is bigger than her, and she may be the only one who can change it.
+          But with every answer comes a harder question: What will it cost to make it back home?
+        </p>
+        <div class="button-container">
+          <a href="#" class="cta-button" id="sneak-peek-button">Take a Sneak Peek</a>
         </div>
-      </a>
-    </div>
-    <div class="synopsis-text">
-      <p>
-        Frustrated by the failing public school system around her, Amara longs for change but feels powerless to create it.
-        At home, she struggles with grief over her father’s death and her mother's abandonment. To make matters worse, for weeks,
-        she has been haunted by nightmares she doesn't understand. Then one morning, she wakes up in the body of a different student
-        in a different country, with a new name, identity, and school awaiting her. Each education system challenges what she thought
-        she knew about opportunity, privilege, and the future—a future she’s beginning to glimpse in terrifying flashes.
-        What Amara does know now is this: the fight for education is bigger than her, and she may be the only one who can change it.
-        But with every answer comes a harder question: What will it cost to make it back home?
-      </p>
-      <div class="button-container">
-        <a href="#" class="cta-button" id="sneak-peek-button">Take a Sneak Peek</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="about-me-section yellow-background">
-  <img src="images/headshot.png" alt="Nasharie Headshot" class="headshot">
-  <h2>About Nasharie</h2>
-  <p>I am a writer, advocate, and pre-law student passionate about education equity and storytelling that sparks change.
-  Growing up in an underfunded school district shaped my drive to reimagine broken systems. Now, through my work, my studies, and my stories, I am committed to amplifying overlooked voices and building a more just world.</p>
-</section>
+  <section class="about-me-section yellow-background">
+    <img src="images/headshot.png" alt="Nasharie Headshot" class="headshot">
+    <h2>About Nasharie</h2>
+    <p>I am a writer, advocate, and pre-law student passionate about education equity and storytelling that sparks change.
+      Growing up in an underfunded school district shaped my drive to reimagine broken systems. Now, through my work, my studies, and my stories, I am committed to amplifying overlooked voices and building a more just world.</p>
+  </section>
 
-<section class="logo-meaning white-background">
-  <div class="logo-meaning-row">
-    <img src="images/blanklogo.png" alt="Logo Left" class="logo-meaning-icon">
-    <p class="logo-quote">An infinite loop of growth, creativity, and voices — that's what my writing, and this space, represents.</p>
-    <img src="images/blanklogo.png" alt="Logo Right" class="logo-meaning-icon">
-  </div>
-</section>
+  <section class="logo-meaning white-background">
+    <div class="logo-meaning-row">
+      <img src="images/blanklogo.png" alt="Logo Left" class="logo-meaning-icon">
+      <p class="logo-quote">An infinite loop of growth, creativity, and voices — that's what my writing, and this space, represents.</p>
+      <img src="images/blanklogo.png" alt="Logo Right" class="logo-meaning-icon">
+    </div>
+  </section>
 
-<section class="stay-connected yellow-background">
-  <h2>Stay Connected</h2>
-  <p>Get updates about new pages, blog posts, and my journey to publication.</p>
-  <div class="email-signup">
-    <input type="email" placeholder="Enter your email">
-    <button>Subscribe</button>
-  </div>
-</section>
+  <section class="stay-connected yellow-background">
+    <h2>Stay Connected</h2>
+    <p>Get updates about new pages, blog posts, and my journey to publication.</p>
+    <div class="email-signup">
+      <input type="email" placeholder="Enter your email">
+      <button>Subscribe</button>
+    </div>
+  </section>
 </main>
 
 <footer class="soft-footer">
