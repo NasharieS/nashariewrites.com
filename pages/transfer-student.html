@@ -24,6 +24,21 @@
   </div>
 </div>
 
+<!-- Book + Button Click Target -->
+<div class="book-link" id="book-link" style="cursor:pointer;">
+  <div class="book-container">
+    <div class="book">
+      <div class="book-pages">
+        <div class="middle-page"></div>
+        <div class="middle-page"></div>
+        <div class="middle-page"></div>
+      </div>
+      <div class="book-cover"></div>
+    </div>
+    <div class="cta-button">Take a Sneak Peek</div>
+  </div>
+</div>
+
 <body>
 
 <!-- Header Section -->
@@ -359,12 +374,11 @@ document.addEventListener('mousemove', (e) => {
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const sneakPeekButton = document.getElementById('sneak-peek-button');
-  const bookLink = document.getElementById('book-link');
   const popup = document.getElementById('sneak-peek-popup');
+  const popupMessage = document.getElementById('popup-message');
   const closeBtn = document.querySelector('.close-popup');
   const form = document.getElementById('email-form');
-  const popupMessage = document.getElementById('popup-message');
+  const bookLink = document.getElementById('book-link');
   const subscribedHash = localStorage.getItem('subscribed_hash');
 
   function showPopupIfNotSubscribed() {
@@ -380,13 +394,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const data = encoder.encode(email);
     return crypto.subtle.digest('SHA-256', data).then(buffer => {
       return [...new Uint8Array(buffer)].map(b => b.toString(16).padStart(2, '0')).join('');
-    });
-  }
-
-  if (sneakPeekButton) {
-    sneakPeekButton.addEventListener('click', function (e) {
-      e.preventDefault();
-      showPopupIfNotSubscribed();
     });
   }
 
@@ -436,6 +443,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
-
 </body>
 </html>
+
