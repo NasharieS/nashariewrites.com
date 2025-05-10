@@ -11,7 +11,7 @@
 <body class="home-page">
 
 <!-- Sneak Peek Email Popup -->
-<div id="sneak-peek-popup" class="popup-overlay" style="display:none;">
+<div id="sneak-peek-popup" class="popup-overlay">
   <div class="popup-content">
     <h3>Get a Sneak Peek</h3>
     <p>Enter your email to unlock the first few pages of <em>The Transfer Student</em> and receive updates.</p>
@@ -25,52 +25,48 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const sneakPeekButton = document.getElementById('sneak-peek-button');
-  const book = document.querySelector('.book');
-  const popup = document.getElementById('sneak-peek-popup');
-  const closeBtn = document.querySelector('.close-popup');
-  const popupMessage = document.getElementById('popup-message');
+document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('email-form');
+  const popup = document.getElementById('sneak-peek-popup');
+  const popupMessage = document.getElementById('popup-message');
+  const closeBtn = document.querySelector('.close-popup');
+  const sneakPeekButton = document.getElementById('sneak-peek-button');
+  const bookCoverLink = document.querySelector('.book-link');
 
-  // Book hover animation
-  sneakPeekButton.addEventListener('mouseover', () => {
-    book.classList.add('hovered');
-  });
-
-  sneakPeekButton.addEventListener('mouseout', () => {
-    book.classList.remove('hovered');
-  });
-
-  // Override default link and show popup
-  sneakPeekButton.addEventListener('click', (e) => {
+  // Prevent direct navigation to sneak-peek.html from homepage
+  sneakPeekButton.addEventListener('click', function (e) {
     e.preventDefault();
     popup.style.display = 'flex';
   });
 
-  // Close popup
+  bookCoverLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    popup.style.display = 'flex';
+  });
+
   closeBtn.addEventListener('click', () => {
     popup.style.display = 'none';
   });
 
-  // Form submission to Google Sheets
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
     const email = document.getElementById('popup-email').value;
 
-    fetch('https://script.google.com/macros/s/AKfycbx4V1OXxsYHvqIkDpPsMNHZFQPrv0wwLEn7_9bMDhM/exec', {
+    fetch('https://script.google.com/macros/s/1A4P1I4u1NMdLwNvozYRzcuZcIcPBh2Ctq-Jrc3R2xj7pW9DP8h7WWwrQ/exec', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
       body: new URLSearchParams({ email })
     })
-    .then(res => res.text())
+    .then(response => response.text())
     .then(() => {
       popupMessage.textContent = "Thank you! Here's your sneak peek.";
       popupMessage.style.color = 'green';
       localStorage.setItem('subscribed', 'true');
       setTimeout(() => {
         window.location.href = 'pages/sneak-peek.html';
-      }, 2000);
+      }, 1500);
     })
     .catch(() => {
       popupMessage.textContent = "Error. Please try again.";
@@ -114,39 +110,54 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- About Book Section -->
 <section class="about-book-section white-background">
   <h2 class="block-title">Coming Soon: The Transfer Student</h2>
+
   <div class="book-content">
-    <div class="book-container">
-      <a href="#" class="book-link">
-        <div class="book" id="book">
-          <div class="book-back"></div>
-          <div class="back-page"></div>
-          <div class="book-pages">
-            <div class="left-page"></div>
-            <div class="right-page"></div>
-          </div>
-          <div class="book-cover">
-            <img src="images/bookcover.webp" alt="The Transfer Student Cover">
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="synopsis-text">
-      <p>
-        Frustrated by the failing public school system around her, Amara longs for change but feels powerless to create it. At home, she struggles with grief over her father’s death and her mother's abandonment. To make matters worse, for weeks, she has been haunted by nightmares she doesn't understand. Then one morning, she wakes up in the body of a different student in a different country, with a new name, identity, and school awaiting her. Each education system challenges what she thought she knew about opportunity, privilege, and the future—a future she’s beginning to glimpse in terrifying flashes. What Amara does know now is this: the fight for education is bigger than her, and she may be the only one who can change it. But with every answer comes a harder question: What will it cost to make it back home?
-      </p>
-      <div class="button-container">
-        <a href="#" class="cta-button" id="sneak-peek-button">Take a Sneak Peek</a>
+ <!-- LEFT: Book -->
+<!-- Book Container -->
+<div class="book-container">
+  <a href="pages/sneak-peek.html" class="book-link">
+    <div class="book" id="book">
+      <div class="book-back"></div> <!-- Back hard cover (brownish) -->
+      <div class="back-page"></div> <!-- Optional yellowish backing -->
+      <div class="book-pages">
+        <div class="left-page"></div>
+        <div class="right-page"></div>
       </div>
+      <div class="book-cover">
+        <img src="images/bookcover.webp" alt="The Transfer Student Cover">
+      </div>
+    </div> <!-- end .book -->
+  </a> <!-- end .book-link -->
+</div> <!-- end .book-container -->
+    
+    <!-- RIGHT: Text -->
+    <div class="synopsis-text">
+    <p>
+      Frustrated by the failing public school system around her, Amara longs for change but feels powerless to create it. 
+      At home, she struggles with grief over her father’s death and her mother's abandonment. To make matters worse, for weeks, 
+      she has been haunted by nightmares she doesn't understand. Then one morning, she wakes up in the body of a different student 
+      in a different country, with a new name, identity, and school awaiting her. Each education system challenges what she thought 
+      she knew about opportunity, privilege, and the future—a future she’s beginning to glimpse in terrifying flashes. 
+      What Amara does know now is this: the fight for education is bigger than her, and she may be the only one who can change it. 
+      But with every answer comes a harder question: What will it cost to make it back home?
+    </p>
+
+       <div class="button-container">
+      <a href="pages/sneak-peek.html" class="cta-button" id="sneak-peek-button">Take a Sneak Peek</a>
     </div>
   </div>
+    </div> <!-- end .book-content -->
 </section>
 
+  <!-- About Me Section -->
 <section class="about-me-section yellow-background">
   <img src="images/headshot.png" alt="Nasharie Headshot" class="headshot">
   <h2>About Nasharie</h2>
-  <p>I am a writer, advocate, and pre-law student passionate about education equity and storytelling that sparks change. Growing up in an underfunded school district shaped my drive to reimagine broken systems. Now, through my work, my studies, and my stories, I am committed to amplifying overlooked voices and building a more just world.</p>
+  <p>I am a writer, advocate, and pre-law student passionate about education equity and storytelling that sparks change.  
+  Growing up in an underfunded school district shaped my drive to reimagine broken systems. Now, through my work, my studies, and my stories, I am committed to amplifying overlooked voices and building a more just world.</p>
 </section>
 
+<!-- Logo Meaning Section -->
 <section class="logo-meaning white-background">
   <div class="logo-meaning-row">
     <img src="images/blanklogo.png" alt="Logo Left" class="logo-meaning-icon">
@@ -155,6 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </section>
 
+<!-- Stay Connected Section -->
 <section class="stay-connected yellow-background">
   <h2>Stay Connected</h2>
   <p>Get updates about new pages, blog posts, and my journey to publication.</p>
@@ -162,10 +174,25 @@ document.addEventListener("DOMContentLoaded", () => {
     <input type="email" placeholder="Enter your email">
     <button>Subscribe</button>
   </div>
+  
 </section>
+
+  <script>
+  const sneakPeekButton = document.getElementById('sneak-peek-button');
+  const book = document.querySelector('.book');
+
+  sneakPeekButton.addEventListener('mouseover', () => {
+    book.classList.add('hovered');
+  });
+
+  sneakPeekButton.addEventListener('mouseout', () => {
+    book.classList.remove('hovered');
+  });
+</script>
 
 </main>
 
+<!-- Footer -->
 <footer class="soft-footer">
   <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
 </footer>
