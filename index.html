@@ -112,17 +112,41 @@
   
 </section>
 
-  <script>
-  const sneakPeekButton = document.getElementById('sneak-peek-button');
-  const book = document.querySelector('.book');
+<script>
+const sneakPeekButton = document.getElementById('sneak-peek-button');
+const popup = document.getElementById('sneak-peek-popup');
+const closePopup = document.querySelector('.close-popup');
+const submitEmail = document.getElementById('submit-email');
+const popupMessage = document.getElementById('popup-message');
 
-  sneakPeekButton.addEventListener('mouseover', () => {
-    book.classList.add('hovered');
-  });
+// Show popup
+sneakPeekButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  popup.style.display = 'flex';
+});
 
-  sneakPeekButton.addEventListener('mouseout', () => {
-    book.classList.remove('hovered');
-  });
+// Close popup
+closePopup.addEventListener('click', () => {
+  popup.style.display = 'none';
+  popupMessage.innerText = '';
+});
+
+// Submit email
+submitEmail.addEventListener('click', () => {
+  const email = document.getElementById('popup-email').value;
+  if (email && email.includes('@')) {
+    popupMessage.innerText = "Thank you! You'll receive a sneak peek shortly.";
+    popupMessage.style.color = 'green';
+    // TODO: store or send the email to your server or list
+    setTimeout(() => {
+      popup.style.display = 'none';
+      popupMessage.innerText = '';
+    }, 2000);
+  } else {
+    popupMessage.innerText = "Please enter a valid email.";
+    popupMessage.style.color = 'red';
+  }
+});
 </script>
 
 </main>
