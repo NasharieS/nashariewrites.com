@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(response => response.text())
     .then(() => {
       localStorage.setItem('subscribed', 'true');
-      alert("Thank you for subscribing! Check out the sneak peek.");
+      alert("Thank you for subscribing! You now have access to the sneak peek.");
       window.location.href = 'pages/sneak-peek.html';
     })
     .catch(() => {
