@@ -110,36 +110,37 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-if (subscribeBtn && subscribeInput) {
-  subscribeBtn.addEventListener('click', () => {
-    const email = subscribeInput.value;
-    if (!email) return;
+  if (subscribeBtn && subscribeInput) {
+    subscribeBtn.addEventListener('click', () => {
+      const email = subscribeInput.value;
+      if (!email) return;
 
-    // Check localStorage first
-    if (localStorage.getItem('subscribed')) {
-      alert("Thank you, you've already subscribed.");
-      return;
-    }
+      hashEmail(email).then(hash => {
+        if (localStorage.getItem('subscribed_hash') === hash) {
+          alert("Thank you, you've already subscribed.");
+          return;
+        }
 
-    fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({ email })
-    })
-    .then(response => response.text())
-    .then(responseText => {
-      if (responseText.includes('duplicate')) {
-        alert("Thank you, you've already subscribed.");
-        localStorage.setItem('subscribed', 'true'); // ✅ Still store so popup respects it
-      } else {
-        alert("Thank you for subscribing! You can now check out the sneak peek.");
-        localStorage.setItem('subscribed', 'true'); // ✅ Mark as subscribed
-      }
-    })
-    .catch(() => alert("Something went wrong. Please try again."));
-  });
-}
+        fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ email })
+        })
+        .then(response => response.text())
+        .then(responseText => {
+          if (responseText.includes('duplicate')) {
+            alert("Thank you, you've already subscribed.");
+            localStorage.setItem('subscribed_hash', hash);
+          } else {
+            alert("Thank you for subscribing! You can now check out the sneak peek.");
+            localStorage.setItem('subscribed_hash', hash);
+          }
+        })
+        .catch(() => alert("Something went wrong. Please try again."));
       });
+    });
+  }
+});
 </script>
 
 <!-- Hero Section -->
