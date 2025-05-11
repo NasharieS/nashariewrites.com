@@ -403,34 +403,65 @@ body {
   font-style: italic;
 }
 
-/* ================= Globe Styling ================= */
-#earth {
-  width: 100%;
-  max-width: 800px;
-  height: 500px;
-  margin: 0 auto 60px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+/* ================= Archive Files Carousel ================= */
+.folder-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 60px 0;
+  position: relative;
+}
+
+.folder {
+  width: 280px;
+  height: 360px;
+  background: #D2B48C;
+  border-radius: 8px;
+  box-shadow: 4px 6px 12px rgba(0,0,0,0.2);
   overflow: hidden;
-  position: relative; /* Added to help the canvas size inside */
-  z-index: 2;
-  background: transparent;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.4s ease;
 }
 
-#earth canvas {
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-  border-radius: 16px;
-  pointer-events: auto;
-  touch-action: none;
+.folder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background: #b89466;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
-.world-building-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
-  padding-bottom: 60px;
+.folder-content {
+  background: white;
+  padding: 20px;
+  margin-top: 60px;
+  height: calc(100% - 60px);
+  overflow-y: auto;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.folder-nav-btn {
+  background: #5C4033;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.folder-nav-btn:hover {
+  background: #3f2e23;
 }
 
 
