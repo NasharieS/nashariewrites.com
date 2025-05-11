@@ -798,7 +798,13 @@ footer, .soft-footer {
   letter-spacing: 0.5px;
   border-top: 3px solid #6B4F3F;
   box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
-  margin-top: 100px;
+  margin-top: auto;
   position: relative;
   z-index: 10;
+}
+  
+  .page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
