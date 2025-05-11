@@ -67,7 +67,7 @@
   </div>
 
   <div class="map-container">
-    <div id="map" style="height: 100%; width: 100%;"></div>
+    <div id="map" style="height: 100%; width: 100%; min-height: 400px;"></div>
   </div>
 </section>
 
@@ -85,11 +85,9 @@
   L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${MAPBOX_TOKEN}`, {
     attribution: '© Mapbox | © OpenStreetMap',
     tileSize: 512,
-    zoomOffset: -1,
-    accessToken: MAPBOX_TOKEN
+    zoomOffset: -1
   }).addTo(map);
 
-  // Submit Handler
   document.getElementById("thank-form").addEventListener("submit", async function (e) {
     e.preventDefault();
     const location = document.getElementById("location").value.trim();
@@ -108,37 +106,50 @@
       return;
     }
 
-    // Add to map
-    L.marker([coords[1], coords[0]]).addTo(map).bindPopup(`<strong>${location}</strong><br>${message}`).openPopup();
-    map.flyTo([coords[1], coords[0]], 4);
+    const lat = coords[1];
+    const lng = coords[0];
 
-    // Send to Google Sheet
-    await fetch(SHEETS_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ location, message, lat: coords[1], lng: coords[0] })
-    });
+    // Add marker to map
+    L.marker([lat, lng])
+      .addTo(map)
+      .bindPopup(`<strong>${location}</strong><br>${message}`)
+      .openPopup();
+    map.flyTo([lat, lng], 4);
 
-    confirmation.innerText = 'Thank you for your message!';
-    document.getElementById("thank-form").reset();
+    // Send to Google Sheets
+    try {
+      await fetch(SHEETS_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ location, message, lat, lng })
+      });
+
+      confirmation.innerText = 'Thank you for your message!';
+      document.getElementById("thank-form").reset();
+    } catch (err) {
+      alert("Submission error. Please try again.");
+      console.error(err);
+    }
   });
 
-  // Load markers from Google Sheets
   async function loadPins() {
-    const res = await fetch(SHEETS_ENDPOINT);
-    const data = await res.json();
-    if (!Array.isArray(data)) return;
-    data.forEach(entry => {
-      if (entry.lat && entry.lng && entry.location && entry.message) {
-        L.marker([parseFloat(entry.lat), parseFloat(entry.lng)])
-          .addTo(map)
-          .bindPopup(`<strong>${entry.location}</strong><br>${entry.message}`);
-      }
-    });
+    try {
+      const res = await fetch(SHEETS_ENDPOINT);
+      const data = await res.json();
+      if (!Array.isArray(data)) return;
+      data.forEach(entry => {
+        if (entry.lat && entry.lng && entry.location && entry.message) {
+          L.marker([parseFloat(entry.lat), parseFloat(entry.lng)])
+            .addTo(map)
+            .bindPopup(`<strong>${entry.location}</strong><br>${entry.message}`);
+        }
+      });
+    } catch (err) {
+      console.error("Error loading pins:", err);
+    }
   }
 
   loadPins();
 </script>
-
 </body>
 </html>
