@@ -82,18 +82,19 @@
   </main>
 </section>
 
-  <!-- World Building Section -->
+<!-- World Building / Archive Files Section -->
 <section class="world-building-section">
   <div class="world-building-container">
-    <h2 class="section-title">World Building</h2>
+    <h2 class="section-title">Archive Files</h2>
     <p class="world-intro">
-      Education systems shape futures—and Amara is about to learn just how different those futures can be. 
-      Dive into the global journey of <em>The Transfer Student</em> and explore the cities, schools, and secrets that make up its world.
+      What does the Archive know? Explore each file and decide for yourself.
     </p>
-    
-    <!-- Placeholder for interactive map or world content -->
-    <div class="world-elements">
-      <p>[Interactive map or city highlights will go here soon!]</p>
+    <div class="archive-carousel">
+      <button class="carousel-control prev">&#10094;</button>
+      <div class="archive-files">
+        <!-- Folder cards will be dynamically added here -->
+      </div>
+      <button class="carousel-control next">&#10095;</button>
     </div>
   </div>
 </section>
@@ -275,6 +276,96 @@ document.addEventListener('mousemove', (e) => {
   }
 });
 </script>
+
+  <script>
+const characters = [
+  { name: "Amara", info: "Subject Zero. Origin Unknown. Powers initiated during school collapse. Monitored since age 7." },
+  { name: "Kai", info: "Tech genius. Suspected surveillance breach. Strong moral compass. Not easily swayed." },
+  { name: "Andre", info: "Younger sibling. Record clean. Possible pressure point. Protective instinct toward Amara." },
+  { name: "Titi", info: "Guardian. Former activist. Declared uncooperative. Archive attempted recruitment." },
+  { name: "Inez", info: "Twin. Strategist. Observant. Archive believes she knows more than she says." },
+  { name: "Brandon", info: "Athletic. Unstable record. Holds history with Amara. Emotional volatility detected." },
+  { name: "Niko", info: "Top performer. Hidden motives. Record partially sealed. Dangerous if provoked." },
+  { name: "Layla", info: "Legacy student. Experiment subject. Unaware of role. Strong social influence." }
+];
+
+const archiveContainer = document.querySelector('.archive-files');
+characters.forEach((char, index) => {
+  const card = document.createElement('div');
+  card.className = 'archive-card';
+  card.innerHTML = `
+    <div class="folder-top"></div>
+    <div class="folder-body">
+      <h3>${char.name}</h3>
+      <p>${char.info}</p>
+    </div>
+  `;
+  archiveContainer.appendChild(card);
+});
+
+let scrollAmount = 0;
+const scrollStep = 300;
+const container = document.querySelector('.archive-files');
+
+document.querySelector('.carousel-control.prev').addEventListener('click', () => {
+  scrollAmount -= scrollStep;
+  container.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+});
+
+document.querySelector('.carousel-control.next').addEventListener('click', () => {
+  scrollAmount += scrollStep;
+  container.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+});
+</script>
+
+<style>
+.archive-carousel {
+  position: relative;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+.archive-files {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+.archive-card {
+  background: #e8dacb;
+  border: 2px solid #6b4f3f;
+  width: 250px;
+  min-width: 250px;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  font-family: 'Playfair Display', serif;
+  position: relative;
+}
+.folder-top {
+  height: 20px;
+  background: #b58b64;
+  width: 60%;
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  border-radius: 4px 4px 0 0;
+}
+.carousel-control {
+  background: #6b4f3f;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+.carousel-control.prev { left: 0; }
+.carousel-control.next { right: 0; }
+</style>
 
 <!-- Footer -->
 <footer>
