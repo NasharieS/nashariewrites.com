@@ -204,36 +204,57 @@
 </section>
 
 <style>
-/* Quotes beside timeline */
-.quote-block {
-  flex: 1;
-  background: #fdf4dc;
-  border-left: 5px solid #0077FF;
-  margin: 40px 20px;
-  padding: 20px;
-  font-size: 20px;
+.interview-quotes-section {
+  background: #fff;
+  padding: 100px 20px;
+}
+
+.quote-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.interview-quote {
+  max-width: 80%;
+  padding: 30px;
+  border-left: 8px solid #E0C097;
+  background: #fef6ed;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
   font-style: italic;
-  color: #3e2f1c;
+  line-height: 1.8;
+  color: #5C4033;
   position: relative;
-  border-radius: 8px;
-  box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
-  max-width: 420px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
-.quote-block span {
+
+.interview-quote.left {
+  align-self: flex-start;
+  border-left-color: #0077FF;
+}
+
+.interview-quote.right {
+  align-self: flex-end;
+  border-left-color: #FF5722;
+}
+
+.quote-source {
   display: block;
-  font-size: 14px;
-  color: #888;
+  margin-top: 15px;
+  font-size: 16px;
   font-style: normal;
-  margin-top: 10px;
+  font-weight: bold;
+  color: #777;
 }
-.quote-block.left {
-  transform: rotate(-2deg);
-  background: #fff4e6;
-}
-.quote-block.right {
-  transform: rotate(2deg);
-  background: #f0f8ff;
-}
+
+@media (max-width: 768px) {
+  .interview-quote {
+    max-width: 100%;
+    font-size: 18px;
+  }
 
 /* Remove carousel arrows */
 .carousel-control {
