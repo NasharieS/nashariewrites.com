@@ -275,21 +275,13 @@
     font-size: 18px;
   }
 
-/* Remove carousel arrows */
-.carousel-control {
-  display: none !important;
-}
+  /* Remove carousel arrows */
+  .carousel-control {
+    display: none !important;
   }
- </style>
-</section>
+}
+</style>
 
-    </div> <!-- end .writing-process-content -->
-</section>
-
-<!-- ✅ Move footer here inside the flex container -->
-<footer class="soft-footer">
-  <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
-</footer>
 
 </div> <!-- ✅ This closes the .page-wrapper div -->
 </body>
@@ -411,7 +403,7 @@ window.addEventListener('click', (e) => {
   border-radius: 4px 4px 0 0;
 }
 
-  .writing-left-quotes blockquote,
+.writing-left-quotes blockquote,
 .writing-right-quotes blockquote {
   background: #fff8dc;
   padding: 30px;
@@ -444,9 +436,18 @@ window.addEventListener('click', (e) => {
   font-style: italic;
 }
 
-    #timeline-popup.active {
-      display: block;
-      opacity: 1;
-      pointer-events: auto;
-    }
+#timeline-popup.active {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
 </style>
+
+<!-- ✅ Footer now appears outside of style block -->
+<footer class="soft-footer">
+  <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
+</footer>
+
+</div> <!-- ✅ Closes .page-wrapper -->
+</body>
+</html>
