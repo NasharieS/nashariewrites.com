@@ -490,13 +490,14 @@ body {
 }
 
 /* ======= Timeline Popup (Polaroid Style) ======= */
-#timeline-popup {
+#timeline-popup,
+#timeline-popup.polaroid-wrapper {
   display: none;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-2deg);
-  background: white;
+  background: #ffffff; /* clean white */
   padding: 16px 16px 24px;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
@@ -518,9 +519,9 @@ body {
 #popup-img {
   width: 100%;
   height: auto;
-  border-radius: 6px;
-  background: white;
+  background: #ffffff;
   padding: 6px;
+  border-radius: 6px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   margin-bottom: 12px;
 }
@@ -529,9 +530,9 @@ body {
   font-size: 14px;
   color: #444;
   font-style: italic;
+  margin-top: 12px;
   padding: 0 10px;
 }
-
 
 /* ================= Timeline Quotes Comic Style ================= */
 .writing-left-quotes blockquote,
