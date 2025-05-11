@@ -283,42 +283,6 @@
   </div>
 </section>
 
-<!-- Timeline Popup (click instead of hover) -->
-<div id="timeline-popup">
-  <img id="popup-img" src="" alt="Timeline Image" style="max-width:90%; border-radius:8px; margin-bottom:10px;">
-  <div id="popup-caption" style="font-size:16px; color:#555;"></div>
-</div>
-
-
-<script>
-// Corrected Timeline Popup Script
-document.querySelectorAll('.timeline-dot').forEach(dot => {
-  dot.addEventListener('click', () => {
-    const content = dot.parentElement.querySelector('.timeline-content');
-    const imgSrc = content.getAttribute('data-img');
-    const captionText = content.getAttribute('data-caption');
-
-    if (imgSrc && imgSrc !== "none") {
-      document.getElementById('popup-img').src = imgSrc;
-      document.getElementById('popup-caption').textContent = captionText;
-      const popup = document.getElementById('timeline-popup');
-      popup.classList.add('active');
-      popup.style.display = 'block';
-    }
-  });
-});
-
-document.addEventListener('click', (e) => {
-  const popup = document.getElementById('timeline-popup');
-  if (!popup.contains(e.target) && !e.target.classList.contains('timeline-dot')) {
-    popup.classList.remove('active');
-    setTimeout(() => {
-      popup.style.display = 'none';
-    }, 300);
-  }
-});
-</script>
-
 <script>
 const characters = [
   { name: "Amara", info: "Subject: █████. Origin: unknown. Abilities manifesting beyond predicted scope. Surveillance compromised. Notes: She's remembering." },
@@ -357,6 +321,46 @@ document.querySelector('.carousel-control.prev').addEventListener('click', () =>
 document.querySelector('.carousel-control.next').addEventListener('click', () => {
   scrollAmount += scrollStep;
   container.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+});
+</script>
+
+  <!-- Timeline Popup (Polaroid Style) -->
+<div id="timeline-popup" class="polaroid-wrapper">
+  <img id="popup-img" src="" alt="Timeline Image">
+  <div id="popup-caption"></div>
+</div>
+
+<script>
+// Timeline dot click to show polaroid popup
+const timelineDots = document.querySelectorAll('.timeline-dot');
+const popup = document.getElementById('timeline-popup');
+const popupImg = document.getElementById('popup-img');
+const popupCaption = document.getElementById('popup-caption');
+
+// Show popup on click
+timelineDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const content = dot.parentElement.querySelector('.timeline-content');
+    const imgSrc = content.getAttribute('data-img');
+    const caption = content.getAttribute('data-caption') || content.innerText;
+
+    if (imgSrc && imgSrc !== "none") {
+      popupImg.src = imgSrc;
+      popupCaption.innerText = caption;
+      popup.classList.add('active');
+      popup.style.display = 'block';
+    }
+  });
+});
+
+// Hide popup on outside click
+window.addEventListener('click', (e) => {
+  if (!popup.contains(e.target) && !e.target.classList.contains('timeline-dot')) {
+    popup.classList.remove('active');
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 300);
+  }
 });
 </script>
 
