@@ -24,8 +24,8 @@
   </div>
 </div>
 
-<!-- Book + Button Click Target -->
-<div class="book-link" id="book-link" style="cursor:pointer;">
+<!-- Right: Book Cover and Sneak Peek Button -->
+<div class="book-link" id="book-link-wrapper" style="cursor: pointer;">
   <div class="book-container">
     <div class="book">
       <div class="book-pages">
@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const popupMessage = document.getElementById('popup-message');
   const closeBtn = document.querySelector('.close-popup');
   const form = document.getElementById('email-form');
-  const bookLink = document.getElementById('book-link');
+  const bookLink = document.getElementById('book-link-wrapper');
   const subscribedHash = localStorage.getItem('subscribed_hash');
 
   function showPopupIfNotSubscribed() {
@@ -443,6 +443,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
+
 </body>
 </html>
-
