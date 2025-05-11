@@ -278,7 +278,7 @@
 .carousel-control {
   display: none !important;
 }
-</style>
+  }
     </div>
   </div>
 </section>
@@ -297,7 +297,7 @@ document.querySelectorAll('.timeline-dot').forEach(dot => {
     const imgSrc = content.getAttribute('data-img');
     if (imgSrc && imgSrc !== "none") {
       document.getElementById('popup-img').src = imgSrc;
-      document.getElementById('popup-caption').innerText = content.innerText;
+      document.getElementById('popup-caption').innerText = content.getAttribute('data-caption');
       document.getElementById('timeline-popup').classList.add('active');
       document.getElementById('timeline-popup').style.display = 'block';
     }
