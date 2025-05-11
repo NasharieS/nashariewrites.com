@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,36 +9,8 @@
   <link rel="icon" type="image/png" href="../images/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
+
 <body>
-
-<!-- Sneak Peek Email Popup -->
-<div id="sneak-peek-popup" class="popup-overlay" style="display:none;">
-  <div class="popup-content">
-    <h3>Get a Sneak Peek</h3>
-    <p>Enter your email to unlock the first few pages of <em>The Transfer Student</em> and receive updates.</p>
-    <form id="email-form">
-      <input type="email" name="email" id="popup-email" placeholder="Enter your email" required>
-      <button type="submit">Submit</button>
-    </form>
-    <p id="popup-message"></p>
-    <span class="close-popup">&times;</span>
-  </div>
-</div>
-
-<!-- Right: Book Cover and Sneak Peek Button -->
-<div class="book-link" id="book-link-wrapper" style="cursor: pointer;">
-  <div class="book-container">
-    <div class="book">
-      <div class="book-pages">
-        <div class="middle-page"></div>
-        <div class="middle-page"></div>
-        <div class="middle-page"></div>
-      </div>
-      <div class="book-cover"></div>
-    </div>
-    <div class="cta-button" id="sneak-peek-button">Take a Sneak Peek</div>
-  </div>
-</div>
 
 <!-- Header Section -->
 <header class="header">
@@ -92,6 +65,7 @@
 
       <!-- Right: Book Cover and Sneak Peek Button -->
 <!-- Right: Book Cover and Sneak Peek Button -->
+<a href="../pages/sneak-peek.html" class="book-link" id="book-link">
   <div class="book-container">
     <div class="book">
       <div class="book-pages">
@@ -101,12 +75,14 @@
       </div>
       <div class="book-cover"></div>
     </div>
+    <div class="cta-button" id="sneak-peek-button">Take a Sneak Peek</div>
   </div>
+</a>
     </div>
   </main>
 </section>
 
-<!-- World Building Section -->
+  <!-- World Building Section -->
 <section class="world-building-section">
   <div class="world-building-container">
     <h2 class="section-title">World Building</h2>
@@ -114,75 +90,13 @@
       Education systems shape futures—and Amara is about to learn just how different those futures can be. 
       Dive into the global journey of <em>The Transfer Student</em> and explore the cities, schools, and secrets that make up its world.
     </p>
-    <div id="earth" style="width: 100%; max-width: 700px; height: 500px; margin: 0 auto; border-radius: 10px;"></div>
+    
+    <!-- Placeholder for interactive map or world content -->
+    <div class="world-elements">
+      <p>[Interactive map or city highlights will go here soon!]</p>
+    </div>
   </div>
 </section>
-
-<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
-<script src="https://unpkg.com/three-globe@2.24.13/dist/three-globe.min.js"></script>
-<script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-
-<script>
-window.addEventListener('DOMContentLoaded', () => {
-  const container = document.getElementById('earth');
-
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setSize(container.clientWidth, container.clientHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
-  container.appendChild(renderer.domElement);
-
-  const scene = new THREE.Scene();
-
-  const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 2000);
-  camera.position.z = 400;
-
-  const controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.enableZoom = false;
-  controls.autoRotate = true;
-  controls.autoRotateSpeed = 0.5;
-
-  const starGeometry = new THREE.SphereGeometry(1000, 64, 64);
-  const starTexture = new THREE.TextureLoader().load('https://unpkg.com/three-globe/example/img/night-sky.png');
-  const starMaterial = new THREE.MeshBasicMaterial({ map: starTexture, side: THREE.BackSide });
-  const starMesh = new THREE.Mesh(starGeometry, starMaterial);
-  scene.add(starMesh);
-
-  const globe = new ThreeGlobe()
-    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
-    .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-    .pointsData([
-      { lat: 39.9526, lng: -75.1652, city: "Philadelphia", school: "Belmont High", characters: ["Amara", "Kai", "Brandon"] },
-      { lat: 25.2048, lng: 55.2708, city: "Dubai", school: "The Academy at Dubai Crossing", characters: ["Niko", "Layla"] },
-      { lat: 60.1699, lng: 24.9384, city: "Helsinki", school: "Sisu Learning Center", characters: ["Tia"] }
-    ])
-    .pointAltitude(0.05)
-    .pointRadius(0.6)
-    .pointColor(() => '#FF5722')
-    .onPointClick(d => alert(`${d.city}\n${d.school}\nCharacters: ${d.characters.join(", ")}`));
-  scene.add(globe);
-
-  scene.add(new THREE.AmbientLight(0xbbbbbb));
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-  directionalLight.position.set(50, 50, 50);
-  scene.add(directionalLight);
-
-  function animate() {
-    requestAnimationFrame(animate);
-    controls.update();
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  window.addEventListener('resize', () => {
-    const width = container.clientWidth;
-    const height = container.clientHeight;
-    renderer.setSize(width, height);
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-  });
-});
-</script>
-
 
 <!-- Quote Section -->
 <section class="quote-section">
@@ -201,7 +115,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
    <!-- Writing Blurb -->
 <div class="writing-intro">
-  <p><strong>Writing <em>The Transfer Student</em></strong> has been a way to creatively share everything I’ve learned from studying education systems around the world through speculative fiction.<br><br>
+  <p><strong>Writing <em>The Transfer Student</em></strong> has been a way to creatively share everything I’ve learned from studying education systems around the world.<br><br>
   Thanks to the <a href="https://www.obama.org/programs/voyager-scholarship/2023-2025/nasharie-stewart/" target="_blank" style="color:#0077FF; font-weight:bold; text-decoration:none;">Obama-Chesky Voyager Scholarship for Public Service</a>, I traveled to Boston, Dubai, Helsinki, and Tokyo—conducting interviews, visiting schools, and witnessing firsthand the global dimensions of education.<br><br>
   I wanted to make these insights accessible, especially to young students who might see themselves in Amara’s experiences, in <em>The Transfer Student</em>.<br><br>
   I am currently revising my manuscript and preparing to query literary agents in Summer 2025.<br><br>
@@ -366,77 +280,6 @@ document.addEventListener('mousemove', (e) => {
 <footer>
   <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
 </footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const popup = document.getElementById('sneak-peek-popup');
-  const popupMessage = document.getElementById('popup-message');
-  const closeBtn = document.querySelector('.close-popup');
-  const form = document.getElementById('email-form');
-  const bookLink = document.getElementById('book-link-wrapper');
-
-  function hashEmail(email) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(email);
-    return crypto.subtle.digest('SHA-256', data).then(buffer => {
-      return [...new Uint8Array(buffer)].map(b => b.toString(16).padStart(2, '0')).join('');
-    });
-  }
-
-  function showPopupIfNotSubscribed() {
-    if (!localStorage.getItem('subscribed_hash')) {
-      popup.style.display = 'flex';
-    } else {
-      window.location.href = '../pages/sneak-peek.html';
-    }
-  }
-
-  if (bookLink) {
-    bookLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      showPopupIfNotSubscribed();
-    });
-  }
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function () {
-      popup.style.display = 'none';
-    });
-  }
-
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const email = document.getElementById('popup-email').value;
-      hashEmail(email).then(hash => {
-        localStorage.setItem('subscribed_hash', hash);
-
-        fetch('https://script.google.com/macros/s/AKfycbxMOm9TyrRQYn5lpX4kqzHiTLsWgySCOEl3rG_8VAJkMdyqG3OMV84d5T7zzJ8z-yRf/exec', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams({ email })
-        })
-        .then(response => response.text())
-        .then(responseText => {
-          if (responseText.includes('duplicate')) {
-            popupMessage.textContent = "Thank you, you've already subscribed.";
-          } else {
-            popupMessage.textContent = "Thank you! Here's your sneak peek.";
-            setTimeout(() => {
-              window.location.href = '../pages/sneak-peek.html';
-            }, 1500);
-          }
-          popupMessage.style.color = 'green';
-        })
-        .catch(() => {
-          popupMessage.textContent = "Error. Please try again.";
-          popupMessage.style.color = 'red';
-        });
-      });
-    });
-  }
-});
-</script>
 
 </body>
 </html>
