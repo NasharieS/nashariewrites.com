@@ -403,49 +403,9 @@ body {
   font-style: italic;
 }
 
-/* ================= Archive Files Carousel ================= */
-.folder-carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  padding: 60px 0;
-  position: relative;
-}
-
-.folder {
-  width: 280px;
-  height: 360px;
-  background: #D2B48C;
-  border-radius: 8px;
-  box-shadow: 4px 6px 12px rgba(0,0,0,0.2);
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  transition: transform 0.4s ease;
-}
-
-.folder::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 60px;
-  width: 100%;
-  background: #b89466;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-.folder-content {
-  background: white;
-  padding: 20px;
-  margin-top: 60px;
-  height: calc(100% - 60px);
-  overflow-y: auto;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #333;
+/* ================= Archive Card Update ================= */
+.archive-carousel .carousel-control {
+  display: none !important;
 }
 
 .archive-files {
@@ -453,14 +413,30 @@ body {
   overflow-x: auto;
   scroll-behavior: smooth;
   gap: 1rem;
-  padding: 1rem 3rem; /* Increased from 0 to 3rem on sides */
+  padding: 1rem 3rem;
 }
 
 .archive-card {
+  background: #e8dacb;
+  border: 2px solid #6b4f3f;
+  width: 250px;
+  min-width: 250px;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  font-family: 'Playfair Display', serif;
   position: relative;
-  z-index: 1;
 }
 
+.folder-top {
+  height: 20px;
+  background: #b58b64;
+  width: 60%;
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  border-radius: 4px 4px 0 0;
+}
 
 /* ================= Quote Section ================= */
 .quote-section {
@@ -509,6 +485,40 @@ body {
   display: block;
   margin-top: 20px;
   font-size: 16px;
+  color: #777;
+  font-style: italic;
+}
+
+/* ================= Timeline Quotes Comic Style ================= */
+.writing-left-quotes blockquote,
+.writing-right-quotes blockquote {
+  background: #fff8dc;
+  padding: 30px;
+  margin: 60px 0;
+  border: 4px solid #5c4033;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 #000;
+  max-width: 300px;
+  font-size: 20px;
+  line-height: 1.6;
+  color: #333;
+  position: relative;
+}
+
+.writing-left-quotes blockquote {
+  margin-right: auto;
+  transform: rotate(-1.5deg);
+}
+
+.writing-right-quotes blockquote {
+  margin-left: auto;
+  transform: rotate(1.5deg);
+}
+
+.quote-source {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
   color: #777;
   font-style: italic;
 }
