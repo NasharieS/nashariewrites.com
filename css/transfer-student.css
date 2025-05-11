@@ -448,6 +448,14 @@ body {
   color: #333;
 }
 
+.archive-files {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 1rem 3rem; /* Increased from 0 to 3rem on sides */
+}
+
 .folder-nav-btn {
   background: #5C4033;
   color: white;
