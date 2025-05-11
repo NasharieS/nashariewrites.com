@@ -264,44 +264,34 @@
   </div>
 </section>
 
-<!-- Timeline Hover Popup (Image Viewer) -->
+<!-- Timeline Popup (click instead of hover) -->
 <div id="timeline-popup">
   <img id="popup-img" src="" alt="Timeline Image" style="max-width:90%; border-radius:8px; margin-bottom:10px;">
   <div id="popup-caption" style="font-size:16px; color:#555;"></div>
 </div>
 
 <script>
-// Timeline hover effect for popup
-const timelineDots = document.querySelectorAll('.timeline-dot');
-const popup = document.getElementById('timeline-popup');
-const popupImg = document.getElementById('popup-img');
-const popupCaption = document.getElementById('popup-caption');
+document.querySelectorAll('.timeline-dot').forEach(dot => {
+  dot.addEventListener('click', () => {
+    const content = dot.parentElement.querySelector('.timeline-content');
+    const imgSrc = content.getAttribute('data-img');
+    if (imgSrc && imgSrc !== "none") {
+      document.getElementById('popup-img').src = imgSrc;
+      document.getElementById('popup-caption').innerText = content.innerText;
+      document.getElementById('timeline-popup').classList.add('active');
+      document.getElementById('timeline-popup').style.display = 'block';
+    }
+  });
+});
 
-// New variables to track hover state
-let activeDot = null;
-
-// Function to show popup
-function showPopup(dot) {
-  const timelineItem = dot.parentElement;
-  const content = timelineItem.querySelector('.timeline-content');
-  const imgSrc = content.getAttribute('data-img');
-
-  // Only show popup if the data-img is valid
-  if (imgSrc && imgSrc !== "none") {
-    popupImg.src = imgSrc;
-    popupCaption.innerText = content.innerText;
-    popup.classList.add('active');
-    popup.style.display = 'block';
+document.addEventListener('click', (e) => {
+  const popup = document.getElementById('timeline-popup');
+  if (!popup.contains(e.target) && !e.target.classList.contains('timeline-dot')) {
+    popup.classList.remove('active');
+    setTimeout(() => { popup.style.display = 'none'; }, 300);
   }
-}
-
-// Function to hide popup
-function hidePopup() {
-  popup.classList.remove('active');
-  setTimeout(() => {
-    popup.style.display = 'none';
-  }, 300);
-}
+});
+</script>
 
 // Listen for mouseenter and mouseleave
 timelineDots.forEach(dot => {
@@ -414,6 +404,39 @@ document.querySelector('.carousel-control.next').addEventListener('click', () =>
   top: -10px;
   left: 20px;
   border-radius: 4px 4px 0 0;
+}
+
+  .writing-left-quotes blockquote,
+.writing-right-quotes blockquote {
+  background: #fff8dc;
+  padding: 30px;
+  margin: 60px 0;
+  border: 4px solid #5c4033;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 #000;
+  max-width: 300px;
+  font-size: 20px;
+  line-height: 1.6;
+  color: #333;
+  position: relative;
+}
+
+.writing-left-quotes blockquote {
+  margin-right: auto;
+  transform: rotate(-1.5deg);
+}
+
+.writing-right-quotes blockquote {
+  margin-left: auto;
+  transform: rotate(1.5deg);
+}
+
+.quote-source {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #777;
+  font-style: italic;
 }
 </style>
 
