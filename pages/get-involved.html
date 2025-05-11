@@ -82,12 +82,11 @@
   const SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwoWOUundSaZO0BEm1byPMqh1YuABuOVRUoN9wcsrAgvbfGTJJKFERoHfZus5GqgE2Z/exec';
 
   const map = L.map('map').setView([20, 0], 2);
-  L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${MAPBOX_TOKEN}`, {
-    attribution: '© Mapbox | © OpenStreetMap',
-    tileSize: 512,
-    zoomOffset: -1,
-    maxZoom: 18
-  }).addTo(map);
+L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}@2x?access_token=${MAPBOX_TOKEN}`, {
+  attribution: '© Mapbox © OpenStreetMap',
+  tileSize: 512,
+  zoomOffset: -1
+}).addTo(map);
 
   document.getElementById("thank-form").addEventListener("submit", async function (e) {
     e.preventDefault();
