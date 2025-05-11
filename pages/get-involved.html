@@ -13,15 +13,9 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="../css/get-involved.css" />
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
-  <style>
-    #map {
-      width: 100%;
-      height: 500px;
-      margin-top: 40px;
-      border-radius: 10px;
-    }
-  </style>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
 </head>
 <body>
 
@@ -47,7 +41,6 @@
   </nav>
 </header>
 
-<!-- Blurb Section (White) -->
 <section class="blurb-section">
   <div class="intro-container">
     <h1 class="intro-title">Get Involved</h1>
@@ -59,7 +52,6 @@
   </div>
 </section>
 
-<!-- Form + Map Section (Yellow) -->
 <section class="submission-section">
   <div class="form-container">
     <form id="thank-form">
@@ -70,72 +62,82 @@
       <textarea id="message" name="message" required maxlength="1500" placeholder="Write your thank you here..."></textarea>
 
       <button type="submit">Submit</button>
+      <p id="confirmation" style="margin-top:15px;color:green;font-weight:bold;"></p>
     </form>
   </div>
 
-  <div id="map"></div>
+  <div class="map-container">
+    <div id="map" style="height: 100%; width: 100%;"></div>
+  </div>
 </section>
 
 <footer>
   <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
 </footer>
 
-<script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
-  mapboxgl.accessToken = 'pk.eyJ1IjoibnN0ZXdhcnQxMjgiLCJhIjoiY21hazV6OGd5MTUyazJrb3AyZzI1cTk4NiJ9.IbrFh9nn3zJzCIqC7O8KPQ';
-  const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [0, 20],
-    zoom: 1.5
+  const MAPBOX_TOKEN = 'pk.eyJ1IjoibnN0ZXdhcnQxMjgiLCJhIjoiY21hazV6OGd5MTUyazJrb3AyZzI1cTk4NiJ9.IbrFh9nn3zJzCIqC7O8KPQ';
+  const SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx0Wf4PbcpuzK6sBemEUVqX3ARGFYZ_qFrLH8psgEacarGIh4z11BK5RdtIQJPuapI/exec';
+
+  const map = L.map('map').setView([20, 0], 2);
+  L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${MAPBOX_TOKEN}`, {
+    attribution: '© Mapbox | © OpenStreetMap',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: MAPBOX_TOKEN
+  }).addTo(map);
+
+  // Submit Handler
+  document.getElementById("thank-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const location = document.getElementById("location").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const confirmation = document.getElementById("confirmation");
+
+    if (!location || !message) return;
+
+    // Geocode with Mapbox
+    const geoRes = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location)}.json?access_token=${MAPBOX_TOKEN}`);
+    const geoData = await geoRes.json();
+    const coords = geoData.features[0]?.center;
+
+    if (!coords) {
+      alert("Couldn't find that location. Try being more specific.");
+      return;
+    }
+
+    // Add to map
+    L.marker([coords[1], coords[0]]).addTo(map).bindPopup(`<strong>${location}</strong><br>${message}`).openPopup();
+    map.flyTo([coords[1], coords[0]], 4);
+
+    // Send to Google Sheet
+    await fetch(SHEETS_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ location, message, lat: coords[1], lng: coords[0] })
+    });
+
+    confirmation.innerText = 'Thank you for your message!';
+    document.getElementById("thank-form").reset();
   });
 
-  async function loadMarkers() {
-    const res = await fetch('https://script.google.com/macros/s/AKfycbx0Wf4PbcpuzK6sBemEUVqX3ARGFYZ_qFrLH8psgEacarGIh4z11BK5RdtIQJPuapI/exec');
+  // Load markers from Google Sheets
+  async function loadPins() {
+    const res = await fetch(SHEETS_ENDPOINT);
     const data = await res.json();
+    if (!Array.isArray(data)) return;
     data.forEach(entry => {
-      if (entry.lat && entry.lng) {
-        new mapboxgl.Marker()
-          .setLngLat([entry.lng, entry.lat])
-          .setPopup(new mapboxgl.Popup().setHTML(`<strong>${entry.location}</strong><br>${entry.message}`))
-          .addTo(map);
+      if (entry.lat && entry.lng && entry.location && entry.message) {
+        L.marker([parseFloat(entry.lat), parseFloat(entry.lng)])
+          .addTo(map)
+          .bindPopup(`<strong>${entry.location}</strong><br>${entry.message}`);
       }
     });
   }
 
-  loadMarkers();
-
-  document.getElementById("thank-form").addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const location = document.getElementById("location").value;
-    const message = document.getElementById("message").value;
-
-    const geoRes = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location)}.json?access_token=${mapboxgl.accessToken}`);
-    const geoData = await geoRes.json();
-    const coords = geoData.features[0]?.geometry?.coordinates;
-
-    if (!coords) return alert("Location not found. Try again.");
-
-    // Add marker immediately
-    new mapboxgl.Marker()
-      .setLngLat(coords)
-      .setPopup(new mapboxgl.Popup().setHTML(`<strong>${location}</strong><br>${message}`))
-      .addTo(map);
-
-    // Save to Google Sheets
-    await fetch('https://script.google.com/macros/s/AKfycbx0Wf4PbcpuzK6sBemEUVqX3ARGFYZ_qFrLH8psgEacarGIh4z11BK5RdtIQJPuapI/exec', {
-      method: 'POST',
-      body: new URLSearchParams({
-        location: location,
-        message: message,
-        lat: coords[1],
-        lng: coords[0]
-      })
-    });
-
-    document.getElementById("thank-form").reset();
-  });
+  loadPins();
 </script>
 
 </body>
