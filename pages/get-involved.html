@@ -16,9 +16,6 @@
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <style>
-    #map { height: 500px; width: 100%; margin-top: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-  </style>
 </head>
 <body>
 
@@ -49,7 +46,7 @@
     <h1 class="intro-title">Get Involved</h1>
     <p class="intro-text">
       In <em>The Transfer Student</em>, teachers are powerful forces for change — shaping not just classrooms, but futures.
-      Whether you graduated years ago or are just starting your educational journey, if a teacher made an impact on your life, we invite you to honor them here.
+      Whether you graduated years ago or are just starting your educational journey, if a teacher made an impact on your life, I invite you to honor them here.
       Share a thank you message and where you went to school. Your story will appear on our live gratitude map, inspiring others to celebrate the power of community and education.
     </p>
   </div>
@@ -69,7 +66,9 @@
     </form>
   </div>
 
-  <div id="map"></div>
+  <div class="map-container">
+    <div id="map" style="height: 100%; width: 100%;"></div>
+  </div>
 </section>
 
 <footer>
@@ -79,19 +78,49 @@
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const MAPBOX_TOKEN = 'pk.eyJ1IjoibnN0ZXdhcnQxMjgiLCJhIjoiY21hazhhYjNxMHp4eTJqcHphbW5ja25hZyJ9.SWpVtK-bA4JEaF5NW5Mk5Q';
-    const SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx0Wf4PbcpuzK6sBemEUVqX3ARGFYZ_qFrLH8psgEacarGIh4z11BK5RdtIQJPuapI/exec';
+  const MAPBOX_TOKEN = 'pk.eyJ1IjoibnN0ZXdhcnQxMjgiLCJhIjoiY21hazhhYjNxMHp4eTJqcHphbW5ja25hZyJ9.SWpVtK-bA4JEaF5NW5Mk5Q';
+  const SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwoWOUundSaZO0BEm1byPMqh1YuABuOVRUoN9wcsrAgvbfGTJJKFERoHfZus5GqgE2Z/exec';
 
-    const map = L.map('map').setView([20, 0], 2);
-    L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${MAPBOX_TOKEN}`, {
-      attribution: '© Mapbox | © OpenStreetMap',
-      tileSize: 512,
-      zoomOffset: -1,
-      maxZoom: 18
-    }).addTo(map);
+  const map = L.map('map').setView([20, 0], 2);
+  L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${MAPBOX_TOKEN}`, {
+    attribution: '© Mapbox | © OpenStreetMap',
+    tileSize: 512,
+    zoomOffset: -1,
+    maxZoom: 18
+  }).addTo(map);
 
-    async function loadPins() {
+  document.getElementById("thank-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const location = document.getElementById("location").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const confirmation = document.getElementById("confirmation");
+
+    if (!location || !message) return;
+
+    const geoRes = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location)}.json?access_token=${MAPBOX_TOKEN}`);
+    const geoData = await geoRes.json();
+    const coords = geoData.features[0]?.center;
+
+    if (!coords) {
+      alert("Couldn't find that location. Try being more specific.");
+      return;
+    }
+
+    L.marker([coords[1], coords[0]]).addTo(map).bindPopup(`<strong>${location}</strong><br>${message}`).openPopup();
+    map.flyTo([coords[1], coords[0]], 4);
+
+    await fetch(SHEETS_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ location, message, lat: coords[1], lng: coords[0] })
+    });
+
+    confirmation.innerText = 'Thank you for your message!';
+    document.getElementById("thank-form").reset();
+  });
+
+  async function loadPins() {
+    try {
       const res = await fetch(SHEETS_ENDPOINT);
       const data = await res.json();
       if (!Array.isArray(data)) return;
@@ -102,40 +131,13 @@
             .bindPopup(`<strong>${entry.location}</strong><br>${entry.message}`);
         }
       });
+    } catch (err) {
+      console.error("Failed to load map pins:", err);
     }
+  }
 
-    document.getElementById("thank-form").addEventListener("submit", async function (e) {
-      e.preventDefault();
-      const location = document.getElementById("location").value.trim();
-      const message = document.getElementById("message").value.trim();
-      const confirmation = document.getElementById("confirmation");
-
-      if (!location || !message) return;
-
-      const geoRes = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location)}.json?access_token=${MAPBOX_TOKEN}`);
-      const geoData = await geoRes.json();
-      const coords = geoData.features[0]?.center;
-
-      if (!coords) {
-        alert("Couldn't find that location. Try being more specific.");
-        return;
-      }
-
-      L.marker([coords[1], coords[0]]).addTo(map).bindPopup(`<strong>${location}</strong><br>${message}`).openPopup();
-      map.flyTo([coords[1], coords[0]], 4);
-
-      await fetch(SHEETS_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ location, message, lat: coords[1], lng: coords[0] })
-      });
-
-      confirmation.innerText = 'Thank you for your message!';
-      document.getElementById("thank-form").reset();
-    });
-
-    loadPins();
-  });
+  document.addEventListener("DOMContentLoaded", loadPins);
 </script>
+
 </body>
 </html>
