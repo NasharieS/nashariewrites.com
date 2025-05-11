@@ -67,7 +67,7 @@
   </div>
 
   <div class="map-container">
-    <div id="map" style="height: 100%; width: 100%; min-height: 400px;"></div>
+    <div id="map" style="height: 100%; width: 100%;"></div>
   </div>
 </section>
 
@@ -78,14 +78,15 @@
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
-  const MAPBOX_TOKEN = 'pk.eyJ1IjoibnN0ZXdhcnQxMjgiLCJhIjoiY21hazV6OGd5MTUyazJrb3AyZzI1cTk4NiJ9.IbrFh9nn3zJzCIqC7O8KPQ';
+  const MAPBOX_TOKEN = 'pk.eyJ1IjoibnN0ZXdhcnQxMjgiLCJhIjoiY21hazhhYjNxMHp4eTJqcHphbW5ja25hZyJ9.SWpVtK-bA4JEaF5NW5Mk5Q';
   const SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx0Wf4PbcpuzK6sBemEUVqX3ARGFYZ_qFrLH8psgEacarGIh4z11BK5RdtIQJPuapI/exec';
 
   const map = L.map('map').setView([20, 0], 2);
   L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${MAPBOX_TOKEN}`, {
     attribution: '© Mapbox | © OpenStreetMap',
     tileSize: 512,
-    zoomOffset: -1
+    zoomOffset: -1,
+    maxZoom: 18
   }).addTo(map);
 
   document.getElementById("thank-form").addEventListener("submit", async function (e) {
@@ -96,7 +97,6 @@
 
     if (!location || !message) return;
 
-    // Geocode with Mapbox
     const geoRes = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location)}.json?access_token=${MAPBOX_TOKEN}`);
     const geoData = await geoRes.json();
     const coords = geoData.features[0]?.center;
@@ -106,50 +106,34 @@
       return;
     }
 
-    const lat = coords[1];
-    const lng = coords[0];
+    L.marker([coords[1], coords[0]]).addTo(map).bindPopup(`<strong>${location}</strong><br>${message}`).openPopup();
+    map.flyTo([coords[1], coords[0]], 4);
 
-    // Add marker to map
-    L.marker([lat, lng])
-      .addTo(map)
-      .bindPopup(`<strong>${location}</strong><br>${message}`)
-      .openPopup();
-    map.flyTo([lat, lng], 4);
+    await fetch(SHEETS_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ location, message, lat: coords[1], lng: coords[0] })
+    });
 
-    // Send to Google Sheets
-    try {
-      await fetch(SHEETS_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ location, message, lat, lng })
-      });
-
-      confirmation.innerText = 'Thank you for your message!';
-      document.getElementById("thank-form").reset();
-    } catch (err) {
-      alert("Submission error. Please try again.");
-      console.error(err);
-    }
+    confirmation.innerText = 'Thank you for your message!';
+    document.getElementById("thank-form").reset();
   });
 
   async function loadPins() {
-    try {
-      const res = await fetch(SHEETS_ENDPOINT);
-      const data = await res.json();
-      if (!Array.isArray(data)) return;
-      data.forEach(entry => {
-        if (entry.lat && entry.lng && entry.location && entry.message) {
-          L.marker([parseFloat(entry.lat), parseFloat(entry.lng)])
-            .addTo(map)
-            .bindPopup(`<strong>${entry.location}</strong><br>${entry.message}`);
-        }
-      });
-    } catch (err) {
-      console.error("Error loading pins:", err);
-    }
+    const res = await fetch(SHEETS_ENDPOINT);
+    const data = await res.json();
+    if (!Array.isArray(data)) return;
+    data.forEach(entry => {
+      if (entry.lat && entry.lng && entry.location && entry.message) {
+        L.marker([parseFloat(entry.lat), parseFloat(entry.lng)])
+          .addTo(map)
+          .bindPopup(`<strong>${entry.location}</strong><br>${entry.message}`);
+      }
+    });
   }
 
-  loadPins();
+  document.addEventListener("DOMContentLoaded", loadPins);
 </script>
+
 </body>
 </html>
