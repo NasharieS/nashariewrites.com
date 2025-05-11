@@ -35,11 +35,9 @@
       </div>
       <div class="book-cover"></div>
     </div>
-    <div class="cta-button">Take a Sneak Peek</div>
+    <div class="cta-button" id="sneak-peek-button">Take a Sneak Peek</div>
   </div>
 </div>
-
-<body>
 
 <!-- Header Section -->
 <header class="header">
@@ -379,15 +377,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeBtn = document.querySelector('.close-popup');
   const form = document.getElementById('email-form');
   const bookLink = document.getElementById('book-link-wrapper');
-  const subscribedHash = localStorage.getItem('subscribed_hash');
-
-  function showPopupIfNotSubscribed() {
-    if (!subscribedHash) {
-      popup.style.display = 'flex';
-    } else {
-      window.location.href = '../pages/sneak-peek.html';
-    }
-  }
 
   function hashEmail(email) {
     const encoder = new TextEncoder();
@@ -395,6 +384,14 @@ document.addEventListener('DOMContentLoaded', function () {
     return crypto.subtle.digest('SHA-256', data).then(buffer => {
       return [...new Uint8Array(buffer)].map(b => b.toString(16).padStart(2, '0')).join('');
     });
+  }
+
+  function showPopupIfNotSubscribed() {
+    if (!localStorage.getItem('subscribed_hash')) {
+      popup.style.display = 'flex';
+    } else {
+      window.location.href = '../pages/sneak-peek.html';
+    }
   }
 
   if (bookLink) {
