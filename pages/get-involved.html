@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get Involved | Nasharie Writes</title>
 
+  <!-- Mapbox GL JS -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../images/favicon.png" />
 
@@ -13,9 +17,17 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="../css/get-involved.css" />
+  <style>
+    #map {
+      height: 500px;
+      width: 100%;
+      margin-top: 40px;
+      border-radius: 8px;
+    }
+  </style>
 </head>
-<body>
 
+<body>
 <header class="header">
   <a href="../index.html">
     <img src="../images/blanklogo.png" alt="Nasharie Writes Logo" class="header-logo">
@@ -24,23 +36,21 @@
   <nav class="nav-container">
     <ul>
       <li><a href="../index.html">Home</a></li>
-
       <li class="dropdown">
         <a href="#" onclick="return false;">Works <span class="arrow">▼</span></a>
         <ul class="dropdown-menu">
           <li><a href="../pages/transfer-student.html">The Transfer Student</a></li>
           <li><a href="../pages/works.html#short-stories">Short Stories</a></li>
-         <li><a href="works.html#paper-trails">Paper Trails</a></li>
+          <li><a href="works.html#paper-trails">Paper Trails</a></li>
         </ul>
       </li>
-
       <li><a href="../pages/get-involved.html">Get Involved</a></li>
       <li><a href="../pages/contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
 
-<!-- Blurb Section (White) -->
+<!-- Blurb Section -->
 <section class="blurb-section">
   <div class="intro-container">
     <h1 class="intro-title">Get Involved</h1>
@@ -52,7 +62,7 @@
   </div>
 </section>
 
-<!-- Form + Map Section (Yellow) -->
+<!-- Form + Map Section -->
 <section class="submission-section">
   <div class="form-container">
     <form id="thank-form">
@@ -66,9 +76,49 @@
     </form>
   </div>
 
+  <div id="map"></div>
+</section>
+
 <footer>
   <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
 </footer>
 
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoibnN0ZXdhcnQxMjgiLCJhIjoiY21hazV6OGd5MTUyazJrb3AyZzI1cTk4NiJ9.IbrFh9nn3zJzCIqC7O8KPQ';
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v11',
+    center: [-98.5795, 39.8283], // US center
+    zoom: 2
+  });
+
+  document.getElementById('thank-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const location = document.getElementById('location').value;
+    const message = document.getElementById('message').value;
+
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location)}.json?access_token=${mapboxgl.accessToken}`)
+      .then(response => response.json())
+      .then(data => {
+        if (!data.features.length) {
+          alert('Location not found. Please try again with a more specific location.');
+          return;
+        }
+
+        const [lng, lat] = data.features[0].geometry.coordinates;
+
+        new mapboxgl.Marker()
+          .setLngLat([lng, lat])
+          .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(`<strong>${location}</strong><br>${message}`))
+          .addTo(map);
+
+        map.flyTo({ center: [lng, lat], zoom: 5 });
+
+        document.getElementById('thank-form').reset();
+      })
+      .catch(() => alert('Error locating the place. Please try again.'));
+  });
+</script>
 </body>
 </html>
