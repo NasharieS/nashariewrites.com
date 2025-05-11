@@ -293,44 +293,6 @@ document.addEventListener('click', (e) => {
 });
 </script>
 
-// Listen for mouseenter and mouseleave
-timelineDots.forEach(dot => {
-  dot.addEventListener('mouseenter', () => {
-    const content = dot.parentElement.querySelector('.timeline-content');
-    const imgSrc = content.getAttribute('data-img');
-    if (imgSrc && imgSrc !== "none") {
-      activeDot = dot;
-      showPopup(dot);
-    }
-  });
-
-  dot.addEventListener('mouseleave', () => {
-    activeDot = null;
-    hidePopup();
-  });
-});
-
-// New: Listen for mousemove on document
-document.addEventListener('mousemove', (e) => {
-  if (!activeDot) return; // Only care if hovering over valid dot
-
-  const rect = activeDot.getBoundingClientRect();
-  const inDot = (
-    e.clientX >= rect.left &&
-    e.clientX <= rect.right &&
-    e.clientY >= rect.top &&
-    e.clientY <= rect.bottom
-  );
-
-  if (inDot) {
-    showPopup(activeDot);
-  } else {
-    activeDot = null;
-    hidePopup();
-  }
-});
-</script>
-
 <script>
 const characters = [
   { name: "Amara", info: "Subject: █████. Origin: unknown. Abilities manifesting beyond predicted scope. Surveillance compromised. Notes: She's remembering." },
