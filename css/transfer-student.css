@@ -789,12 +789,16 @@ body {
 
 /* ================= Footer ================= */
 footer {
-  background: #FFF9E5;
+  background: #E8DACB;
   color: #5C4033;
   text-align: center;
-  padding: 20px 0;
+  padding: 30px 20px;
   font-size: 14px;
-  width: 100%;
-  position: relative; /* ensures safe spacing */
-  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05); /* optional for consistency */
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
+  border-top: 3px solid #6B4F3F;
+  box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 10;
 }
+
