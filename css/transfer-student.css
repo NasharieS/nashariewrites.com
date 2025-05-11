@@ -461,22 +461,6 @@ body {
   z-index: 1;
 }
 
-.folder-nav-btn {
-  background: #5C4033;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 18px;
-  margin: 0 10px;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: background 0.3s ease;
-}
-
-.folder-nav-btn:hover {
-  background: #3f2e23;
-}
-
 
 /* ================= Quote Section ================= */
 .quote-section {
@@ -618,6 +602,76 @@ body {
 /* Audio/Right Column */
 .writing-right {
   flex: 1;
+}
+
+/* === QUOTES IN WRITING PROCESS SECTION === */
+.timeline-quote {
+  max-width: 480px;
+  background: #fff3cd;
+  color: #5c4033;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.timeline-quote::before,
+.timeline-quote::after {
+  content: '"';
+  font-size: 36px;
+  position: absolute;
+  color: #d89c3d;
+  font-family: serif;
+}
+
+.timeline-quote::before {
+  top: -10px;
+  left: -10px;
+}
+
+.timeline-quote::after {
+  bottom: -10px;
+  right: -10px;
+  transform: rotate(180deg);
+}
+
+/* Zigzag effect */
+.timeline-quote.zigzag-left {
+  align-self: flex-start;
+  transform: rotate(-1deg);
+}
+
+.timeline-quote.zigzag-right {
+  align-self: flex-end;
+  transform: rotate(1deg);
+}
+
+/* Flex wrapper for quote alignment */
+.quote-flex-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin: 60px 0;
+  padding: 0 20px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .timeline-quote {
+    font-size: 18px;
+    padding: 20px;
+  }
+  .timeline-quote.zigzag-left,
+  .timeline-quote.zigzag-right {
+    align-self: center;
+    transform: none;
+  }
 }
 
 /* ================= Timeline Popup (Polaroid) ================= */
