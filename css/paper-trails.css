@@ -1,52 +1,173 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Paper Trails | Nasharie Writes</title>
-  <link rel="stylesheet" href="../css/paper-trails.css" />
-  <link rel="icon" type="image/png" href="../images/favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins&display=swap" rel="stylesheet">
-</head>
+/* ========== General Reset ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
-<body class="paper-trails-page">
-<div class="page-wrapper">
+html, body {
+  height: 100%;
+  background: #FFF9E5;
+  color: #0D1B2A;
+  overflow-x: hidden;
+}
 
-  <!-- Header -->
-  <header class="header">
-    <a href="../index.html">
-      <img src="../images/blanklogo.png" alt="Nasharie Writes Logo" class="header-logo">
-    </a>
+/* ========== Page Wrapper ========== */
+.page-wrapper {
+  padding-top: 110px; /* matches fixed header height */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-    <nav class="nav-container">
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li class="dropdown">
-          <a href="#" onclick="return false;">Works <span class="arrow">▼</span></a>
-          <ul class="dropdown-menu">
-            <li><a href="transfer-student.html">The Transfer Student</a></li>
-            <li><a href="works.html#short-stories">Short Stories</a></li>
-            <li><a href="works.html#paper-trails">Paper Trails</a></li>
-          </ul>
-        </li>
-        <li><a href="get-involved.html">Get Involved</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+/* ========== Header ========== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FFF9E5;
+  padding: 10px 30px;
+  height: 110px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
 
-  <!-- Main Content -->
-  <main>
-    <section class="coming-soon-section">
-      <h1 class="coming-soon-text">Coming Soon</h1>
-    </section>
-  </main>
+.header-logo {
+  height: 110px;
+  width: auto;
+}
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
-  </footer>
+.nav-container ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
 
-</div>
-</body>
-</html>
+.nav-container ul li a {
+  position: relative;
+  text-decoration: none;
+  color: #5C4033;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 12px 0;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-container ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #ffffff;
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.nav-container ul li a:hover::after {
+  width: 100%;
+}
+
+.nav-container ul li a:hover {
+  color: #0077FF;
+  text-shadow: 0 0 6px rgba(0,119,255,0.5);
+}
+
+.arrow {
+  display: inline-block;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #FFF9E5;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  margin-top: 5px;
+  padding: 10px 0;
+  min-width: 200px;
+  z-index: 1001;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dropdown:hover > .dropdown-menu {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown > a:hover .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu li {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.dropdown-menu li a {
+  color: #5C4033;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+  color: #0077FF;
+}
+
+/* ========== Coming Soon Section ========== */
+.coming-soon-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF9E5;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.coming-soon-text {
+  font-size: 64px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  color: #5C4033;
+}
+
+/* ========== Footer ========== */
+footer {
+  background: #FFF9E5;
+  color: #5C4033;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .nav-container ul {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .coming-soon-text {
+    font-size: 42px;
+    padding: 0 10px;
+  }
+}
