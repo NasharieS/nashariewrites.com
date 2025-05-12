@@ -1,4 +1,4 @@
-/* ================= General Reset ================= */
+/* ========== General Reset ========== */
 * {
   margin: 0;
   padding: 0;
@@ -8,12 +8,21 @@
 
 html, body {
   height: 100%;
-  overflow-x: hidden;
   background: #FFF9E5;
   color: #0D1B2A;
+  overflow-x: hidden;
 }
 
-/* ================= Header ================= */
+/* ========== Page Wrapper ========== */
+.page-wrapper {
+  padding-top: 110px; /* matches fixed header height */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ========== Header ========== */
 .header {
   display: flex;
   align-items: center;
@@ -47,7 +56,6 @@ html, body {
   font-weight: bold;
   font-size: 18px;
   padding: 12px 0;
-  text-align: center;
   transition: color 0.3s, text-shadow 0.3s;
 }
 
@@ -124,15 +132,15 @@ html, body {
   color: #0077FF;
 }
 
-/* ================= Coming Soon ================= */
+/* ========== Coming Soon Section ========== */
 .coming-soon-section {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  padding-top: 110px; /* space for fixed header */
-  text-align: center;
   background: #FFF9E5;
+  padding: 60px 20px;
+  text-align: center;
 }
 
 .coming-soon-text {
@@ -142,26 +150,24 @@ html, body {
   color: #5C4033;
 }
 
-/* ================= Footer ================= */
+/* ========== Footer ========== */
 footer {
   background: #FFF9E5;
   color: #5C4033;
   text-align: center;
   padding: 20px 0;
   font-size: 14px;
-  width: 100%;
-  position: relative;
-  z-index: 1;
 }
 
-/* ================= Responsive ================= */
+/* ========== Responsive ========== */
 @media (max-width: 768px) {
   .nav-container ul {
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .coming-soon-text {
     font-size: 42px;
-    padding: 0 20px;
+    padding: 0 10px;
   }
 }
