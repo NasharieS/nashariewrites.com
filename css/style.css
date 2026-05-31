@@ -640,6 +640,44 @@ body {
   font-style: italic;
 }
 
+/* FINAL OVERRIDES — homepage section colors and spacing */
+
+.hero-section {
+  min-height: 50vh;
+  padding-bottom: 0;
+}
+
+.featured-speech-section {
+  background: #FFF9E5;
+  padding: 25px 20px 70px;
+}
+
+.featured-speech-section .block-title {
+  margin-bottom: 35px;
+}
+
+.speech-text p {
+  font-size: 22px;
+  line-height: 1.8;
+}
+
+.about-me-section {
+  background: #fff;
+}
+
+.about-book-section {
+  background: #FFF9E5;
+}
+
+.logo-meaning {
+  background: #FFF9E5;
+  padding-bottom: 20px;
+}
+
+.soft-footer {
+  margin-top: 0;
+}
+
 /* Footer */
 footer, .soft-footer {
   background: #FFF9E5;
