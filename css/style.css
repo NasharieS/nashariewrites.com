@@ -212,7 +212,7 @@ body {
 }
 
 /* CTA Button */
-.button-container { margin-top: 30px; }
+.button-container { margin-top: 45px; }
 
 .cta-button {
   background: #0077FF;
@@ -534,7 +534,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 60px;
   max-width: 1100px;
   margin: 0 auto;
