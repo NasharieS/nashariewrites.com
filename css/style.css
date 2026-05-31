@@ -24,7 +24,7 @@ body {
 /* Hero Section */
 .hero-section {
   background: #FFF9E5;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -517,12 +517,12 @@ body {
 
 /* Make hero less tall so the first section starts sooner */
 .hero-section {
-  min-height: 75vh;
+  min-height: 55vh;
 }
 
 /* Featured Speech Section */
 .featured-speech-section {
-  padding: 70px 20px;
+  padding: 30px 20px 70px;
   text-align: center;
 }
 
