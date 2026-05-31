@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Transfer Student | Nasharie Writes</title>
+  <title>The Transfer Student | Nasharie Stewart</title>
   <link rel="stylesheet" href="../css/transfer-student.css" />
   <link rel="icon" type="image/png" href="../images/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script&display=swap" rel="stylesheet">
@@ -22,14 +22,14 @@
     <ul>
       <li><a href="../index.html">Home</a></li>
 <li class="dropdown">
-  <a href="#" onclick="return false;">Works <span class="arrow">▼</span></a>
+  <a href="#" onclick="return false;">Writing and Work <span class="arrow">▼</span></a>
   <ul class="dropdown-menu">
     <li><a href="../pages/transfer-student.html">The Transfer Student</a></li>
-    <li><a href="../pages/works.html#short-stories">Short Stories</a></li>
-    <li><a href="works.html#paper-trails">Paper Trails</a></li>
+    <li><a href="../pages/works.html#short-stories">Op-Eds</a></li>
+    <li><a href="works.html#paper-trails">Featured Speeches</a></li>
   </ul>
 </li>
-      <li><a href="../pages/get-involved.html">Get Involved</a></li>
+      <li><a href="../pages/get-involved.html">College Essay Help</a></li>
       <li><a href="../pages/contact.html">Contact</a></li>
     </ul>
   </nav>
@@ -80,22 +80,6 @@
 </a>
     </div>
   </main>
-</section>
-
-<!-- World Building Section -->
-<section class="world-building-section">
-  <div class="world-building-container">
-    <h2 class="section-title">World Building: Classified Profiles</h2>
-    <p class="world-intro">
-      Compiled by the Archive, these files offer a glimpse into the lives of those entangled in Amara’s story.<br>
-      What’s real, what’s missing, and who decided what to hide?
-    </p>
-    <div class="archive-carousel">
-      <button class="carousel-control prev">&#10094;</button>
-      <div class="archive-files"></div>
-      <button class="carousel-control next">&#10095;</button>
-    </div>
-  </div>
 </section>
 
 <!-- Quote Section -->
@@ -285,72 +269,6 @@
 </div> <!-- ✅ This closes the .page-wrapper div -->
 </body>
 </html>
-
-
-<script>
-const characters = [
-  { 
-    name: "Amara", 
-    info: "Subject: █████. Student Record: Inconsistent enrollment history. Abilities manifesting beyond predicted scope. Recommend temporary containment and narrative redirection." 
-  },
-  { 
-    name: "Andre", 
-    info: "Relation: Amara's younger brother. Emotional tether to her. We suggest no intervention *for now*." 
-  },
-  { 
-    name: "Kai", 
-    info: "Self-directed researcher. Asset potential: medium. Motivations unclear. Flag for observation." 
-  },
-  { 
-    name: "Titi", 
-    info: "Resistance history flagged. Subject may possess unrecorded historical insight. Recommendation: █████; escalate if influence expands beyond household." 
-  },
-  { 
-    name: "Inez", 
-    info: "Strategic thinking exceeds developmental benchmarks. Subject demonstrates skepticism toward institutional authority." 
-  },
-  { 
-    name: "Brandon", 
-    info: "Athletic file. Incomplete psychological data due to corruption in early uploads. Exhibits █████." 
-  },
-  { 
-    name: "Niko", 
-    info: "Origin: Dubai. Records sealed at Level 4. Appears socially integrated." 
-  },
-  { 
-    name: "Layla", 
-    info: "Legacy confirmed. Descendant of █████. Maintain influence structure, but prepare for contingency adjustment." 
-  }
-];
-
-const archiveContainer = document.querySelector('.archive-files');
-characters.forEach((char, index) => {
-  const card = document.createElement('div');
-  card.className = 'archive-card';
-  card.innerHTML = `
-    <div class="folder-top"></div>
-    <div class="folder-body">
-      <h3>${char.name}</h3>
-      <p>${char.info}</p>
-    </div>
-  `;
-  archiveContainer.appendChild(card);
-});
-
-let scrollAmount = 0;
-const scrollStep = 300;
-const container = document.querySelector('.archive-files');
-
-document.querySelector('.carousel-control.prev').addEventListener('click', () => {
-  scrollAmount -= scrollStep;
-  container.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-});
-
-document.querySelector('.carousel-control.next').addEventListener('click', () => {
-  scrollAmount += scrollStep;
-  container.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-});
-</script>
 
   <!-- Timeline Popup (Polaroid Style) -->
 <div id="timeline-popup" class="polaroid-wrapper">
