@@ -588,6 +588,58 @@ body {
   }
 }
 
+/* Final homepage spacing + color rhythm fixes */
+.hero-section {
+  min-height: 62vh;
+  padding-bottom: 25px;
+}
+
+.about-me-section {
+  padding: 45px 20px 70px;
+}
+
+.featured-speech-section {
+  padding: 75px 20px;
+}
+
+.speech-text p {
+  font-size: 22px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.about-book-section {
+  padding: 70px 20px 80px;
+}
+
+.logo-meaning {
+  padding: 60px 20px;
+  margin-bottom: 0;
+}
+
+.soft-footer {
+  margin-top: 0;
+}
+
+/* Keep concept cover note directly under book */
+.book-container {
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+}
+
+.cover-note {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 14px;
+  font-size: 13px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #777;
+  font-style: italic;
+}
+
 /* Footer */
 footer, .soft-footer {
   background: #FFF9E5;
