@@ -236,7 +236,7 @@ body {
 .page-section {
   width: 100%;
   background: #ffffff; /* <<< True white block for section */
-  padding: 100px 0; /* top and bottom breathing room */
+  padding: 100px 0 50px; /* top and bottom breathing room */
 }
 
 .page-title {
@@ -366,8 +366,8 @@ body {
 
 /* ================= Quote Section ================= */
 .quote-section {
-  background: #ffffff; /* pure white */
-  padding: 80px 20px;
+  background: #ffffff;
+  padding: 20px 20px 80px;
   width: 100%;
 }
 
