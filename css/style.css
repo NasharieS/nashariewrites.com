@@ -314,6 +314,16 @@ body {
   border-radius: 8px;
 }
 
+.cover-note {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #888;
+  font-style: italic;
+}
+
 /* 🎯 Updated Hover Animations */
 .book.hovered,
 .book-container:hover .book,
