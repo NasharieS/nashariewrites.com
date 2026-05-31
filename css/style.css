@@ -515,6 +515,79 @@ body {
   transform: translateY(-2px);
 }
 
+/* Make hero less tall so the first section starts sooner */
+.hero-section {
+  min-height: 75vh;
+}
+
+/* Featured Speech Section */
+.featured-speech-section {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.speech-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.speech-image-container {
+  flex: 1 1 380px;
+  max-width: 470px;
+}
+
+.speech-image {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.speech-text {
+  flex: 1 1 380px;
+  max-width: 500px;
+  text-align: left;
+}
+
+.speech-text p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* Fix cover note placement */
+.book-container {
+  flex-direction: column;
+  overflow: visible;
+}
+
+.cover-note {
+  width: 100%;
+  text-align: center;
+  margin-top: 14px;
+  font-size: 13px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #777;
+  font-style: italic;
+}
+
+/* Mobile speech layout */
+@media (max-width: 800px) {
+  .speech-text {
+    text-align: center;
+  }
+
+  .hero-section {
+    min-height: 70vh;
+  }
+}
+
 /* Footer */
 footer, .soft-footer {
   background: #FFF9E5;
