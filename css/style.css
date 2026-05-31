@@ -414,7 +414,7 @@ body {
 
 /* Logo Meaning Section */
 .logo-meaning {
-  padding: 50px 20px;
+  padding: 60px 20px 20px;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
@@ -647,6 +647,6 @@ footer, .soft-footer {
   text-align: center;
   padding: 20px 0;
   font-size: 14px;
-  margin-top: 100px;
+  margin-top: 0;
   box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
 }
