@@ -3,215 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Op-Eds | Nasharie Stewart</title>
+  <title>Published Writing | Nasharie Stewart</title>
   <link rel="stylesheet" href="../css/op-eds.css" />
   <link rel="icon" type="image/png" href="../images/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins&display=swap" rel="stylesheet">
 </head>
 
-<body class="short-stories-page">
+<body class="op-eds-page">
   <div class="page-wrapper">
 
     <header class="header">
       <a href="../index.html">
-        <img src="../images/blanklogo.png" alt="Nasharie Writes Logo" class="header-logo">
+        <img src="../images/blanklogo.png" alt="Nasharie Stewart Logo" class="header-logo">
       </a>
 
       <nav class="nav-container">
         <ul>
           <li><a href="../index.html">Home</a></li>
-     <li class="dropdown">
-  <a href="#" onclick="return false;">Writing & Work <span class="arrow">▼</span></a>
-  <ul class="dropdown-menu">
-    <li><a href="transfer-student.html">The Transfer Student</a></li>
-    <li><a href="op-eds.html">Op-Eds</a></li>
-    <li><a href="featured-speeches.html">Featured Speeches</a></li>
-  </ul>
-</li>
+          <li class="dropdown">
+            <a href="#" onclick="return false;">Writing & Work <span class="arrow">▼</span></a>
+            <ul class="dropdown-menu">
+              <li><a href="transfer-student.html">The Transfer Student</a></li>
+              <li><a href="op-eds.html">Op-Eds</a></li>
+              <li><a href="featured-speeches.html">Featured Speeches</a></li>
+            </ul>
+          </li>
+          <li><a href="college-essay-help.html">College Essay Help</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-<li><a href="college-essay-help.html">College Essay Help</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
-</header>
+    <main>
+      <section class="opeds-hero">
+        <h1>Published Writing</h1>
+        <p>
+          Essays, commentary, and reflections on education, equity, public policy, and the students who continue to shape my work.
+        </p>
+      </section>
 
-    /* === General Reset === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+      <section class="opeds-section">
 
-html, body {
-  height: 100%;
-  background: #FFF9E5;
-  color: #0D1B2A;
-  overflow-x: hidden;
-}
+        <article class="oped-card">
+          <p class="oped-label">Penn Capital-Star</p>
+          <h2>Fair Funding for PA Schools Also Means Fair Funding for Special Education</h2>
+          <p>
+            A reflection on how Pennsylvania's school funding crisis disproportionately affects students with disabilities and why true equity requires addressing both general and special education funding.
+          </p>
+          <a href="https://penncapital-star.com/commentary/fair-funding-for-pa-schools-also-means-fair-funding-for-special-education-opinion/" target="_blank" class="read-link">
+            Read the Full Piece
+          </a>
+        </article>
 
-.page-wrapper {
-  padding-top: 110px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+        <article class="oped-card">
+          <p class="oped-label">The Philadelphia Inquirer</p>
+          <h2>Pennsylvania Schools Don't Need a "Don't Say Gay" Bill</h2>
+          <p>
+            An argument against legislation restricting classroom discussion of LGBTQ+ identities and the impact such policies have on students seeking belonging and support in schools.
+          </p>
+          <a href="https://www.inquirer.com/opinion/commentary/pennsylvania-schools-dont-say-gay-senate-bill-1278-20220824.html" target="_blank" class="read-link">
+            Read the Full Piece
+          </a>
+        </article>
 
-/* === Header === */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #FFF9E5;
-  padding: 10px 30px;
-  height: 110px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-}
+        <article class="oped-card">
+          <p class="oped-label">Penn Capital-Star</p>
+          <h2>Memories of an Adequately Funded School District</h2>
+          <p>
+            A personal reflection connecting school funding debates to lived experiences and illustrating what students gain when schools have the resources they need.
+          </p>
+          <a href="https://penncapital-star.com/funding-the-500/funding-the-500-memories-of-an-adequately-funded-school-district-opinion/" target="_blank" class="read-link">
+            Read the Full Piece
+          </a>
+        </article>
 
-.header-logo {
-  height: 110px;
-  width: auto;
-}
+        <article class="oped-card">
+          <p class="oped-label">Education Trust</p>
+          <h2>How a Black Teacher Impacted Me</h2>
+          <p>
+            A reflection on representation, mentorship, and the lasting impact educators can have when students see themselves reflected in the classroom.
+          </p>
+          <a href="https://edtrust.org/blog/how-a-black-teacher-impacted-me/" target="_blank" class="read-link">
+            Read the Full Piece
+          </a>
+        </article>
 
-.nav-container ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  align-items: center;
-}
+        <article class="oped-card">
+          <p class="oped-label">Children First PA</p>
+          <h2>Student Advocacy Feature</h2>
+          <p>
+            A piece highlighting student advocacy, educational opportunity, and the importance of amplifying youth voices in policy conversations.
+          </p>
+          <a href="https://childrenfirstpa.org/news/5-21-21_enews/" target="_blank" class="read-link">
+            Read the Full Piece
+          </a>
+        </article>
 
-.nav-container ul li a {
-  position: relative;
-  text-decoration: none;
-  color: #5C4033;
-  font-weight: bold;
-  font-size: 18px;
-  padding: 12px 0;
-  transition: color 0.3s, text-shadow 0.3s;
-}
-
-.nav-container ul li a::after {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  background: #ffffff;
-  bottom: 0;
-  left: 0;
-  transition: width 0.3s ease;
-}
-
-.nav-container ul li a:hover::after {
-  width: 100%;
-}
-
-.nav-container ul li a:hover {
-  color: #0077FF;
-  text-shadow: 0 0 6px rgba(0,119,255,0.5);
-}
-
-.arrow {
-  display: inline-block;
-  margin-left: 5px;
-  transition: transform 0.3s ease;
-}
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown-menu {
-  display: none;
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #FFF9E5;
-  flex-direction: column;
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-  margin-top: 5px;
-  padding: 10px 0;
-  min-width: 200px;
-  z-index: 1001;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.dropdown:hover > .dropdown-menu {
-  display: flex;
-  opacity: 1;
-  visibility: visible;
-}
-
-.dropdown > a:hover .arrow {
-  transform: rotate(180deg);
-}
-
-.dropdown-menu li {
-  padding: 10px 20px;
-  text-align: center;
-}
-
-.dropdown-menu li a {
-  color: #5C4033;
-  font-size: 16px;
-  text-decoration: none;
-}
-
-.dropdown-menu li a:hover {
-  color: #0077FF;
-}
-
-/* === Coming Soon Section === */
-.coming-soon-section {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 20px;
-  background: #FFF9E5;
-  text-align: center;
-}
-
-.coming-soon-text {
-  font-size: 64px;
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  color: #5C4033;
-}
-
-/* === Footer === */
-footer {
-  background: #FFF9E5;
-  color: #5C4033;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 14px;
-}
-
-/* === Responsive === */
-@media (max-width: 768px) {
-  .nav-container ul {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .coming-soon-text {
-    font-size: 42px;
-    padding: 0 10px;
-  }
-}
+      </section>
+    </main>
 
     <footer>
       <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
     </footer>
-    
+
   </div>
 </body>
 </html>
