@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Nasharie Writes</title>
+  <title>Contact | Nasharie Stewart</title>
   <link rel="stylesheet" href="../css/contact.css" />
   <link rel="icon" type="image/png" href="../images/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins&display=swap" rel="stylesheet">
@@ -20,15 +20,15 @@
     <ul>
       <li><a href="../index.html">Home</a></li>
       <li class="dropdown">
-  <a href="#" onclick="return false;">Works <span class="arrow">▼</span></a>
+  <a href="#" onclick="return false;">Writing and Works <span class="arrow">▼</span></a>
   <ul class="dropdown-menu">
     <li><a href="../pages/transfer-student.html">The Transfer Student</a></li>
-    <li><a href="../pages/works.html#short-stories">Short Stories</a></li>
-    <li><a href="../pages/works.html#paper-trails">Paper Trails</a></li>
+    <li><a href="../pages/works.html#short-stories">Op-eds</a></li>
+    <li><a href="../pages/works.html#paper-trails">Featured Speeches</a></li>
   </ul>
 </li>
 
-      <li><a href="../pages/get-involved.html">Get Involved</a></li>
+      <li><a href="../pages/College-essay-help.html">Get Involved</a></li>
       <li><a href="../pages/contact.html">Contact</a></li>
     </ul>
   </nav>
@@ -39,7 +39,7 @@
     <h1 class="section-title">Let's Connect</h1>
     <div class="contact-content">
       <p>
-        For literary agents, or professional opportunities related to <em>The Transfer Student</em> or future projects, please use the contact details below.
+        For literary agents, or professional opportunities related to <em> speaking engagements</em> or The Transfer Student, please use the contact details below.
       </p>
 
       <div class="contact-methods">
@@ -50,53 +50,10 @@
       <p class="note">Additional materials, including manuscript samples are available upon request.</p>
     </div>
 
-    <div class="subscribe-box">
-      <h2>Subscribe for Updates</h2>
-      <form id="subscribe-form">
-        <input type="email" id="subscriber-email" name="email" placeholder="Enter your email" required />
-        <button type="submit">Subscribe</button>
-        <p id="subscribe-confirmation" style="margin-top:10px;font-weight:bold;"></p>
-      </form>
-    </div>
-  </section>
 </main>
 
 <footer>
   <p>&copy; 2025 Nasharie Stewart | All Rights Reserved</p>
 </footer>
 
-<script>
-  const SUBSCRIBE_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwoWOUundSaZO0BEm1byPMqh1YuABuOVRUoN9wcsrAgvbfGTJJKFERoHfZus5GqgE2Z/exec';
 
-  document.getElementById('subscribe-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const email = document.getElementById('subscriber-email').value.trim();
-    const confirmation = document.getElementById('subscribe-confirmation');
-
-    if (!email) return;
-
-    // Check localStorage to avoid duplicate submissions
-    const subscribed = localStorage.getItem('subscribed-email');
-    if (subscribed === email) {
-      confirmation.innerText = 'You’ve already subscribed — thank you!';
-      return;
-    }
-
-    try {
-      await fetch(SUBSCRIBE_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      });
-
-      localStorage.setItem('subscribed-email', email);
-      confirmation.innerText = 'Thank you for subscribing!';
-      document.getElementById('subscribe-form').reset();
-    } catch (error) {
-      confirmation.innerText = 'There was an error. Please try again later.';
-    }
-  });
-</script>
-
-</body>
-</html>
