@@ -131,23 +131,19 @@ html, body {
   color: #0077FF;
 }
 
-/* === Coming Soon Section === */
-.coming-soon-section {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 20px;
-  background: #FFF9E5;
-  text-align: center;
+.speech-video {
+width: 100%;
+margin: 25px 0;
 }
 
-.coming-soon-text {
-  font-size: 64px;
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  color: #5C4033;
+.speech-video iframe {
+width: 100%;
+aspect-ratio: 16 / 9;
+border: none;
+border-radius: 12px;
+box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
+
 
 /* === Footer === */
 footer {
