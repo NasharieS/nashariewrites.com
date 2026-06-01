@@ -332,6 +332,17 @@ body {
   transition: transform 0.8s ease-in-out;
 }
 
+.cover-note {
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 280px;
+}
+
 /* Hover Effects */
 .book-container:hover .book-cover {
   transform: rotateY(-25deg);
